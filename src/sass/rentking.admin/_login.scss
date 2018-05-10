@@ -1,0 +1,32 @@
+body.login {background:url(../imgs/rentking.admin/bg_login.jpg?20170809090500) no-repeat center bottom;background-size:cover;
+	$loginform-width:360px;
+	$loginform-height:200px;
+	#loginform {position:absolute;left:50%;top:50%;width:$loginform-width;height:$loginform-height;margin-left:-$loginform-width/2;margin-top:-$loginform-height/2;background:rgba(0,0,0,.5);
+		* {box-sizing:border-box;}
+		.id, .pw {height:36px;font-size:14px;width:230px;position:absolute;left:20px;padding:4px;border:none;}
+		.id {top:20px;}
+		.pw {top:66px;}
+		button {width:80px;height:82px;position:absolute;right:20px;top:20px;border:none;color:#fff;background:$primary-color;font-size:14px;
+			&:hover, &:focus {background:$primary-color-focus;}
+		}
+
+		.description {color:#f39c12;position:absolute;width:100%;padding:20px;bottom:0;left:0;font-size:11px;
+			li:first-child {margin-bottom:10px;}
+		}
+
+		.logo {display:block;position:absolute;left:50%;top:-80px;width:319px;height:66px;margin-left:-159.5px;
+			.logo-ci {display:block;@include sprite($logo-ci-admin);}
+			.logo-text1 {display:block;@include sprite($logo-text1-admin);}
+			.logo-text2 {display:block;@include sprite($logo-text2-admin);}
+		}
+
+		@include mq(120dpi, resolution) {
+			.logo {@include transform(scale(.7));@include transform-origin(50% 100%);}
+		}
+
+		@include mq(400px, width, max) {
+			width:300px;margin-left:-150px;margin-top:-130px;
+			.id, .pw {width:170px;}
+		}
+	}
+}

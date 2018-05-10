@@ -1,0 +1,7 @@
+@import '../common/datetimepicker';
+
+.bootstrap-datetimepicker-widget {
+	&.dropdown-menu {
+		&.timepicker-sbs {width:318px;}
+	}
+}

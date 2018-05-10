@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{#head}
+</head>
+<body>
+	{#header}
+	<div id="contentWrap">
+		{#side_member}
+		<div id="content">
+			<div class="conBanner">
+				<div class="txt">
+					<h2>쿠폰북</h2>
+					<strong>바로바로 할인!</strong>
+					<p>실시간으로 올라오는 특별한 할인쿠폰을 만나보세요!</p>
+				</div><!--//txt-->
+				<span>
+					<img src="/imgs/rentking.w/coupnBkTopIcon.jpg" alt="Icon">
+				</span>
+			</div><!--//conBanner-->
+			<form method="post" style="position:relative;background:#f8f8f8;border:solid 1px #ccc;padding:10px 208px 10px 110px;">
+				<input type="hidden" name="mode" value="r" />
+				<input type="text" class="" name="nums" id="coupon" value="" placeholder="코드를 입력해주세요." style="display:block;width:100%;line-height:10px;padding:10px;">
+				<button type="submit" class="btn-point" style="position:absolute;top:10px;right:122px;">등록하기</button>
+			</form>
+			<div class="couponCon">
+				<ul>
+					{@ clist }
+					<li>
+						<img src="{global.imgserver}{.path}" alt="쿠폰이미지">
+						<table class="list" style="border-top:none;">
+							<colgroup>
+								<col width="100px">
+								<col>
+							</colgroup>
+							<tr>
+								<th>쿠폰명</th>
+								<td>{.name}</td>
+							</tr>
+							<tr>
+								<th>사용기간</th>
+								<td>
+									{.sdate} ~ {.edate}
+								</td>
+							</tr>
+						</table>
+					</li>
+					{/}
+				</ul>
+			</div>
+		</div>
+	</div>
+	{#footer}
+</body>
+</html>
+

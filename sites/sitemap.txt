@@ -1,0 +1,4 @@
+http://www.local.rentking.co.kr/rent/search.php
+http://www.local.rentking.co.kr/bbs/list.php?boardid=event
+http://www.local.rentking.co.kr/bbs/list.php?boardid=notice
+http://www.local.rentking.co.kr/customer-center/faq.php

@@ -1,0 +1,51 @@
+@include keyframes(tooltip-scale-in) {
+	0% {
+		transform: scale(1);
+		opacity: 0;
+	}
+	1% {
+		transform: scale(0);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.tooltip {opacity:0;
+	&.fade {@include transition(none);}
+	&.in {opacity:0;}
+	&.scale {opacity:1;@include animation(tooltip-scale-in $transitionDuration $material-transition-timing);
+		&.out {@include transform(scale(0));@include transition(transform $transitionDuration);}
+	}
+	.tooltip-inner {background:$primary-color;border-radius:0;padding:4px 14px;max-width:none;}
+
+	&.top {@include transform-origin(50% 100%);
+		.tooltip-arrow {border-top-color:$primary-color;}
+	}
+	&.right {@include transform-origin(0 50%);
+		.tooltip-arrow {border-right-color:$primary-color;}
+	}
+	&.bottom {@include transform-origin(50% 0);
+		.tooltip-arrow {border-bottom-color:$primary-color;}
+	}
+	&.left {@include transform-origin(100% 50%);
+		.tooltip-arrow {border-left-color:$primary-color;}
+	}
+
+	.error & {
+		&.top .tooltip-arrow {border-top-color:$error-color;}
+		&.right .tooltip-arrow {border-right-color:$error-color;}
+		&.bottom .tooltip-arrow {border-bottom-color:$error-color;}
+		&.left .tooltip-arrow {border-left-color:$error-color;}
+		.tooltip-inner {background:$error-color;}
+	}
+
+	.nowrap {white-space:nowrap;}
+	.left {text-align:left;}
+	dl {padding:4px 0;
+		dt {font-size:14px;font-weight:600;line-height:26px;}
+		dd {margin-bottom:10px;}
+	}
+}

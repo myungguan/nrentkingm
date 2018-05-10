@@ -1,0 +1,1 @@
+UPDATE site_vehicle_opt_std sv set sv.ishave = 'Y' WHERE sv.ishave = ''

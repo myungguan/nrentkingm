@@ -1,0 +1,141 @@
+//자주묻는질문
+ul.faq {
+	li {border-bottom:solid 1px #ccc;
+		a.handle {display:block;padding:11px 25px;position:relative;font-size:14px;
+			&:before {content:'';position:absolute;@include sprite4x($m-ico-faq-q);top:10px;left:0;}
+			&:after {content:'';position:absolute;@include sprite4x($m-arrow-bottom);top:16px;right:0;}
+		}
+		.content {display:none;padding-left:25px;position:relative;
+			&:before {content:'';position:absolute;@include sprite4x($m-ico-faq-a);top:0;left:0;}
+			img {max-width:100%;}
+		}
+		&.on {
+			a.handle {border-bottom:solid 1px #ccc;
+				&:after {@include sprite4x($m-arrow-top);}
+			}
+			.content {display:block;}
+		}
+	}
+}
+
+//게시판
+div.board {
+	ul.list {
+		li {border-bottom:solid 1px #ccc;
+			a {display:block;padding:10px 0;
+				.title, .date {display:block;}
+				.date {color:#aaa;}
+			}
+		}
+	}
+
+	div.paging {text-align:center;margin-top:30px;
+		a {display:inline-block;height:22.5px;padding:0 6px;line-height:22.5px;
+			&.now {font-weight:600;text-decoration:underline;}
+			&.prev, &.next {width:22.5px;overflow:hidden;vertical-align:top;text-indent:-1000px;border:solid 1px #ccc;position:relative;
+				&:after {content:'';position:absolute;@include center($m-arrow-left-width/4,$m-arrow-left-height/4);}
+				&:hover, &:active {border-color:$primary-color;}
+			}
+			&.prev {
+				&:after {@include sprite4x($m-arrow-left);}
+				&:hover, &:active {
+					&:after {@include sprite4x($m-arrow-left-on);}
+				}
+			}
+			&.next {
+				&:after {@include sprite4x($m-arrow-right);}
+				&:hover, &:active {
+					&:after {@include sprite4x($m-arrow-right-on);}
+				}
+			}
+		}
+	}
+
+	div.view {
+		div.title {font-size:14px;font-weight:600;border-bottom:solid 1px #ccc;padding-bottom:6px;}
+		div.content {
+			img {max-width:100%;}
+		}
+		div.qna-content {}
+		div.qna-answer {}
+	}
+}
+
+//쿠폰북
+div.coupon-book {
+	form {position:relative;margin-bottom:10px;
+		.input-wrap {margin-right:64px;}
+		button {position:absolute;right:0;top:0;width:60px;}
+	}
+
+	ul.list {
+		li {border:solid 1px #ccc;margin-bottom:7.5px;
+			.title {font-size:14px;padding:8px 10px;background:#f2f2f2;border-bottom:solid 1px #ccc;}
+			img {width:100%;}
+			.description {border-top:solid 1px #ccc;padding:8px 10px;
+				p {margin:4px 0;}
+			}
+		}
+	}
+}
+
+//결제 내용
+.payment-description {width:100%;
+	li {line-height:20px;
+		&.total {border-top:solid 1px #ccc;padding-top:10px;margin-top:10px;}
+		.price {float:right;height:18px;}
+	}
+}
+
+//결제내역
+.orderitem {position:relative;margin-top:40px;
+	a {color:#222;}
+	h3.header {position:relative;padding-right:30px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+		&:after {content:'';position:absolute;@include sprite4x($m-arrow-bottom);@include center-y($m-arrow-bottom-height/4);right:15px;}
+	}
+	.info {font-size:12px;padding-right:20px;
+		.date {letter-spacing:-1px;}
+	}
+	.add-info {display:none;}
+	.info {border-bottom:none;}
+
+	button.cancel {position:absolute;top:-30px;right:-1px;}
+	a.extend {position:absolute;top:-30px;right:-1px;}
+
+	&:after {content:'';position:absolute;top:-30px;left:-1px;background:#f2f2f2;display:inline-block;height:30px;line-height:30px;border:solid 1px #ccc;border-bottom:none;font-size:12px;padding:0 8px;}
+
+	&.dan1 {
+		h3.header {background:$error-color;color:#fff;margin-left:-1px;margin-right:-1px;margin-top:-1px;}
+		&:after {content:'예약';background:$error-color;color:#fff;border:none;}
+	}
+
+	&.dan2 {
+		h3.header {background:$primary-color;color:#fff;margin-left:-1px;margin-right:-1px;margin-top:-1px;}
+		&:after {content:'대여중';background:$primary-color;color:#fff;border:none;}
+	}
+
+	&.dan3 {
+		&:after {content:'반납완료';}
+	}
+
+	&.dan4 {
+		h3.header {background:$error-color;color:#fff;margin-left:-1px;margin-right:-1px;margin-top:-1px;}
+		&:after {content:'취소요청';background:$error-color;color:#fff;border:none;}
+	}
+
+	&.dan5 {
+		&:after {content:'취소완료';}
+	}
+
+
+	&:hover, &:active {border-color:$primary-color;
+		&:after {border-color:$primary-color;}
+	}
+	&.on {
+		.add-info {display:block;}
+		h3.add-info {border-top:solid 1px #ccc;margin-top:-1px;}
+	}
+}
+
+//Allat Mobile pay
+#ALLAT_MOBILE_PAY {position:fixed !important;z-index:2000 !important;width:100% !important;height:100% !important;}

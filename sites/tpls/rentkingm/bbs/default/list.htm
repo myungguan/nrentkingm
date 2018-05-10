@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{#head}
+</head>
+<body>
+	{#header}
+	<div id="contentWrap">
+
+		<div class="board">
+			<ul class="list">
+				{@ bbs2}
+				<li>
+					<a href="{.readlinks}">
+						<span class="title">{.title}</span>
+						<span class="date">{.dt_create}</span>
+					</a>
+				</li>
+				{:}
+				<li>작성된 글이 없습니다.</li>
+				{/}
+			</ul>
+
+			<div class="paging">
+				{? paging.total_record!=0 }
+				<a href="{paging.first}" class="prev">이전</a>
+				{/}
+				{@ loop_paging}
+					{? .page==paging.nowpage }
+					<a href="javascript:return false;" class="now">{.page}</a>
+					{:}
+					<a href="{.links}">{.page}</a>
+					{/}
+				{/}
+				{? paging.total_record!=0 }
+				<a href="{paging.last}" class="next">다음</a>
+				{/}
+			</div>
+		</div>
+	</div>
+	{#footer}
+</body>
+</html>
+

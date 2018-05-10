@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{#head}
+</head>
+<body>
+	{#header}
+	<div id="contentWrap">
+		<div class="conBanner">
+			<div class="txt">
+				<h2>결제 <a href="/partials/help/payment.w.html?20170913051830" class="help-tooltip openPopup" data-title="결제" title="도움말" data-width="744"></a></h2>
+				<strong>가격과 보험사항을 확인해주세요!</strong>
+				<p>이제 결제만 해주시면 정말 쉬워진 렌트카 예약을 경험하실 수 있습니다!</p>
+			</div><!--//txt-->
+			<span><img src="/imgs/rentking.w/paymentTopicon.jpg" alt="결제내역Icon"></span>
+		</div><!--//conBanner-->
+		<form action="/payment/allat_payment_form.php" method="post" id="reservationForm">
+			<input type="hidden" name="order_idx" value="{data.idx}" />
+			<input type="hidden" name="liscense" value="{data.liscense.idx}" />
+			<input type="hidden" name="delcharge" value="{data.car.delcharge}" />
+			<input type="hidden" name="extend" value="{data.order.extend}" />
+			<input type="hidden" name="buymethod" id="buymethod" value="{? data.order.retype == 2 && (data.order.ddata1 > 1 || data.order.ddata2 > 0)}F{:}C{/}" />
+			<input type="hidden" name="allat_enc_data" value="" />
+
+			<div class="sub-title">
+				<h3>대여정보</h3>
+			</div>
+			<table class="list" style="margin-bottom:33px">
+				<colgroup>
+					<col style="width:162px;">
+					<col style="width:120px;">
+					<col>
+				</colgroup>
+				<tbody>
+				<tr>
+					<td rowspan="4" style="position:relative;vertical-align:middle" id="carImage">
+						<img src="{global.imgserver}{? data.car.car_image_path}{data.car.car_image_path}?{data.car.car_image_timestamp}{:}{data.car.default_image_path}?{data.car.default_image_timestamp}{/}" style="width:100%;" />
+					</td>
+					<th>모델명</th>
+					<td>{data.car.modelname} ({data.car.fuel_sname})</td>
+				</tr>
+				<tr>
+					<th>대여기간</th>
+					<td>{data.order.sdate} ~ {data.order.edate}</td>
+				</tr>
+				<tr>
+					<th>대여방법</th>
+					<td>
+						{?data.order.extend == 'N'}
+							{?data.car.delavail}
+							<label style="margin-right:10px;"><input type="radio" name="ptype" value="2" /> 지점방문</label>
+							<label style="margin-right:10px;"><input type="radio" name="ptype" value="1" /> 배달대여 ({? data.car.delcharge > 0}+{=number_format(data.car.delcharge)}원{:}무료{/})</label>
+							{:}
+							지점방문
+							<input type="hidden" name="ptype" value="2" />
+							{/}
+						{:}
+							연장
+							<input type="hidden" name="ptype" value="{data.extend_order.ptype}" />
+						{/}
+					</td>
+				</tr>
+				<tr id="positionRentshop">
+					<th>지점위치</th>
+					<? // <td>[{data.car.rentshop_name}({data.car.affiliate})] {data.car.rentshop_addr1} {data.car.rentshop_addr2}</td> ?>
+					<td>{data.car.rentshop_addr}</td>
+				</tr>
+				<tr id="positionPickup" style="display:none;">
+					<th>픽업위치</th>
+					<td>{data.order.addr}</td>
+				</tr>
+				<tr id="positionReturn" style="display:none;">
+					<th>반납위치</th>
+					<td>{data.order.raddr}</td>
+				</tr>
+				</tbody>
+			</table>
+
+			<div class="sub-title">
+				<h3>상세정보</h3>
+				<div class="description">* 지점의 사정으로 인하여 동급, 또는 상급의 차량으로 변경 될 수 있습니다.</div>
+			</div>
+			<table class="list" style="margin-bottom:33px">
+				<colgroup>
+					<col style="width:120px;">
+					<col>
+					<col>
+					<col>
+					<col>
+					<col>
+					<col>
+				</colgroup>
+				<tbody>
+				<tr>
+					<th>차량옵션</th>
+					<td colspan="{?data.order.insu_limit}7{:}6{/}">{data.car.opt}</td>
+				</tr>
+				{?data.order.distance_limit}
+				<tr>
+					<th>주행거리제한</th>
+					<td colspan="{?data.order.insu_limit}7{:}6{/}">{=number_format(data.order.distance_limit)}&#13214;/월 (추가: {=number_format(data.order.distance_additional_price)}원/&#13214;)</td>
+				</tr>
+				{/}
+				<tr>
+					<th rowspan="2">보험안내</th>
+					<th>운전자나이</th>
+					<th>면허취득</th>
+					<th>자차보험 고객부담금 <a href="/partials/help/insurance.html" class="help-tooltip openPopup" data-title="자차보험 고객부담금" title="도움말" data-width="490"></a></th>
+					{?data.order.insu_limit}<th>자차보상한도</th>{/}
+					<th>대인</th>
+					<th>대물</th>
+					<th>자손</th>
+				</tr>
+				<tr>
+					<td>만 {data.car.rentage}세 이상</td>
+					<td>만 {data.car.license_limit}년 이상</td>
+					<td>
+						{? data.order.pricetype == 2 || data.order.insu >= 1}
+							{=number_format(data.order.insu_exem)}원/건
+						{:}
+							자차미포함
+						{/}
+					</td>
+					{?data.order.insu_limit}<td>{=number_format(data.order.insu_limit)}원/건</td>{/}
+					<td>{data.car.insu_per}</td>
+					<td>{=number_format(data.car.insu_goods)}원</td>
+					<td>{=number_format(data.car.insu_self)}원</td>
+				</tr>
+				</tbody>
+			</table>
+
+			{? data.order.extend == 'N'}
+			<div class="sub-title">
+				<h3>운전자정보 <a href="/partials/help/driver_license.html?20170731022208" class="help-tooltip openPopup" data-title="면허증" title="도움말" data-width="920"></a></h3>
+				<div class="description">* 대여방법이 지점방문 대여일 경우, 면허증 등록을 하지 않으셔도 대여가 가능합니다.</div>
+			</div>
+			<table class="list" style="margin-bottom:33px">
+				<colgroup>
+					<col style="width:120px;">
+					<col>
+					<col style="width:120px;">
+					<col>
+				</colgroup>
+				<thead>
+				<tr class="border-b">
+					<th colspan="2">제1운전자(예약자)</th>
+					<th colspan="2">제2운전자</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<th>이름</th>
+					<td>{data.member.name}</td>
+					<th>이름</th>
+					<td><input type="text" name="namesub" maxlength="50" /></td>
+				</tr>
+				<tr>
+					<th>휴대폰번호</th>
+					<td>{data.member.cp}</td>
+					<th>휴대폰번호</th>
+					<td><input type="text" name="cpsub" maxlength="50" /></td>
+				</tr>
+				<tr>
+					<th>면허종류</th>
+					<td>
+						<select name="kinds">
+							<option value="FN" {? data.liscense.kinds=='FN'}selected{/}>1종 보통</option>
+							<option value="FL" {? data.liscense.kinds=='FL'}selected{/}>1종 대형</option>
+							<option value="SN" {? data.liscense.kinds=='SN'}selected{/}>2종 보통</option>
+						</select>
+					</td>
+					<th>면허종류</th>
+					<td>
+						<select name="kindsub">
+							<option value="FN">1종 보통</option>
+							<option value="FL">1종 대형</option>
+							<option value="SN">2종 보통</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>면허번호</th>
+					<td>
+						<input type="text" name="nums" maxlength="30" value="{data.liscense.nums}" />
+					</td>
+					<th>면허번호</th>
+					<td>
+						<input type="text" name="numsub" maxlength="30" value="" />
+					</td>
+				</tr>
+				<tr>
+					<th>적성검사 만료일</th>
+					<td>
+						<input type="text" name="date1" value="{data.liscense.date1}" class="datePicker" data-parent="body" readonly />
+					</td>
+					<th>적성검사 만료일</th>
+					<td>
+						<input type="text" name="date1sub" value="" class="datePicker" data-parent="body" readonly />
+					</td>
+				</tr>
+				<tr>
+					<th>발급일</th>
+					<td>
+						<input type="text" name="date2" value="{data.liscense.date2}" class="datePicker" data-parent="body" readonly />
+					</td>
+					<th>발급일</th>
+					<td>
+						<input type="text" name="date2sub" value="" class="datePicker" data-parent="body" readonly />
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			{/}
+
+			<div class="sub-title">
+				<h3>결제정보</h3>
+			</div>
+			<table class="list" style="margin-bottom:33px">
+				<colgroup>
+					<col style="width:120px;">
+					<col>
+				</colgroup>
+				<tbody>
+				<tr>
+					<th>결제내역</th>
+					<td>
+						<ul class="payment-description">
+							{? data.order.retype == 2 && data.order.extend != 'Y'}
+							<li>
+								보증금
+								<a href="/partials/help/deposit.html" class="help-tooltip openPopup" data-title="보증금" title="도움말" data-width="380"></a>
+								<span class="price">{=number_format(data.order.preaccount)}원</span>
+							</li>
+							{/}
+							<li>차량 대여료
+								<span class="price">{=number_format(data.order.account)}원</span>
+							</li>
+							{? data.car.delavail}
+							<li style="display:none;" id="delCharge">배달료
+								<span class="price">{? data.car.delcharge > 0}{=number_format(data.car.delcharge)}원{:}무료{/}</span>
+							</li>
+							{/}
+							{? data.car.pricetype == 2}
+							<li>보험료 <span class="price">포함</span></li>
+							{: data.order.insuac > 0}
+							<li>보험료
+								<span class="price">{=number_format(data.order.insuac)}원</span>
+							</li>
+							{/}
+							<li class="total">총 금액
+								<span class="price text-point"><span class="numberAnimation numberAnimationAutoStart" id="totalPrice" data-target="{data.order.totalaccount}" data-total-account="{data.order.totalaccount}">0</span>원</span>
+							</li>
+						</ul>
+					</td>
+				</tr>
+				{? data.order.retype == 2 && (data.order.ddata1 > 1 || data.order.ddata2 > 0)}
+				<tr>
+					<th>결제방법</th>
+					<td>
+						{? data.order.ddata1 > 0}
+						<label><input type="radio" name="payType" value="2" checked /> 정기결제</label>
+						<a href="/partials/help/fixed_payment.html?20170717103158" class="help-tooltip openPopup mr-10" data-title="정기결제" title="도움말" data-width="350"></a>
+						{/}
+						<label class="mr-10"><input type="radio" name="payType" value="1" {? data.order.ddata1 == 0}checked {/}> 전액결제</label>
+
+						<span class="text-muted" id="paymentDescription">
+							<span class="month text-point">{=number_format(data.order.account1)}원</span> X {data.order.ddata1} + {=number_format(data.order.account2)}원 =
+							<span class="all">{=number_format(data.order.totalaccount)}원</span>
+						</span>
+					</td>
+				</tr>
+				{/}
+				{? count(data.coupon) > 0 && !data.promotion}
+				<tr>
+					<th>쿠폰선택</th>
+					<td>
+						<select name="coupon" id="coupon" style="width:auto;">
+							<option value="0" data-account="0">사용하실 쿠폰을 선택해 주세요.</option>
+							{@ data.coupon}
+							<option value="{.idx}" data-account="{.account}{? .actype == 2}%{/}">{.name} ({? .actype == 1}{=number_format(.account)}원{:}{.account}%{/})</option>
+							{/}
+						</select>
+						{? data.order.retype == 2 && (data.order.ddata1 > 1 || data.order.ddata2 > 0)}
+						<span class="text-muted">* 당월 결제금액에 적용됩니다.</span>
+						{/}
+					</td>
+				</tr>
+				{/}
+				{? data.promotion }
+				<tr>
+					<th>{=promotion(data.promotion[0])}</th>
+					<td><span id="discount" class="numberAnimation" data-target="0">0</span>원</td>
+				</tr>
+				{/}
+				<tr>
+					<th>결제금액</th>
+					<td><span class="text-point"><span class="numberAnimation" id="paymentAmount"
+						data-amount="{? data.order.retype != 2 || (data.order.retype == 2 && data.order.ddata1 == 0)}{data.order.totalaccount}{:}{data.order.account1}{/}"
+						data-month="{data.order.account1}"
+						data-all="{data.order.totalaccount}"
+						data-delcharge="0"
+						{? data.promotion }data-promotion="{data.promotion[1]}"{/}
+						data-target="{? data.order.retype != 2}{data.order.totalaccount}{:}{data.order.account1}{/}">0</span>원</span></td>
+				</tr>
+				</tbody>
+			</table>
+
+			<div class="sub-title">
+				<h3>취소 수수료 규정</h3>
+			</div>
+			<table class="list" style="margin-bottom:20px">
+				<colgroup>
+					<col style="width:240px;">
+					<col>
+				</colgroup>
+				<thead>
+				<tr class="border-b">
+					<th>취소구분</th>
+					<th>대여구분</th>
+					<th>수수료</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<th>결제 후 1시간 이내 취소</th>
+					<td></td>
+					<td>
+						<span class="text-point">없음</span><br />
+					</td>
+				</tr>
+				<tr>
+					<th>픽업시간 24시간 이전 취소</th>
+					<td></td>
+					<td>
+						<span class="text-point">없음</span><br />
+					</td>
+				</tr>
+				<tr>
+					<th>24시간전 부터 픽업시간까지</th>
+					<td>단기대여(1개월미만)<br />장기대여(1개월이상)</td>
+					<td class="text-point">결제금액의 10%<br />1개월 금액의 5%</td>
+				</tr>
+				<tr>
+					<th>픽업시간 이후 취소</th>
+					<td>단기대여(1개월미만)<br />장기대여(1개월이상)</td>
+					<td class="text-point">결제금액의 20%<br />1개월 금액의 10%</td>
+				</tr>
+				<tr>
+					<th>차량 배달 시작 후 취소</th>
+					<td colspan="2" class="text-point">취소 수수료 및 환불처리는 대여지점의 내규에 따릅니다.</td>
+				</tr>
+				<tr>
+					<th>조기반납</th>
+					<td colspan="2" class="text-point">취소 수수료 및 환불처리는 대여지점의 내규에 따릅니다.</td>
+				</tr>
+				</tbody>
+			</table>
+
+			<div class="clause2" style="margin-bottom:5px;">
+				<? include "{$_SERVER['DOCUMENT_ROOT']}/old/sites/partials/terms/transaction.html";?>
+			</div>
+
+			<div>
+				<label><input type="checkbox" id="agreeCancel" data-title="취소수수료 규정"> 취소수수료 규정 동의</label><br />
+				<label><input type="checkbox" id="agreeTransaction" data-title="전자금융거래 기본약관"> 전자금융거래 기본약관 동의</label><br />
+			</div>
+
+			<div class="button-box">
+				<button type="submit" class="btn-point big">결제하기</button>
+			</div>
+		</form>
+		<div id="paymentForm"></div>
+	</div>
+	{#footer}
+
+	<script type="text/javascript" charset="EUC-KR" src="https://tx.allatpay.com/common/NonAllatPayRE.js"></script>
+	<script type="text/javascript" charset="EUC-KR" src="https://tx.allatpay.com/common/NonAllatPayREPlus.js"></script>
+	<script type="text/javascript" src="/js/rentking.reservation.min.js?2018011710{? !global.production}_{=time()}{/}"></script>
+</body>
+</html>
+
+
+

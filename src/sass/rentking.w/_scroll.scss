@@ -1,0 +1,18 @@
+.scrollWrap { overflow:hidden;
+	.scrollWrapBar {position:absolute;width:8px;right:5px;top:0;opacity:0;@include transition(opacity $transitionDuration);cursor:pointer;
+		&:after {content:'';display:block;position:absolute;top:5px;left:0;right:0;bottom:5px;background:$line-color;border-radius:5px;@include transition(background $transitionDuration);}
+		&:hover:after {background:#888;}
+	}
+	&:hover {
+		.scrollWrapBar {opacity:1;}
+	}
+	&.noscroll {
+		.scrollWrapBar {display:none;}
+	}
+	&.on {
+		-moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none;-ms-user-select: none; user-select: none;
+		.scrollWrapBar {opacity:1;
+			&:after {background:#888;}
+		}
+	}
+}

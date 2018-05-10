@@ -1,0 +1,28 @@
+//search bar
+#searchBar {position:relative;
+	ul {
+		li {position:relative;
+			label {display:block;width:100%;font-weight:normal;margin:0;color:#fff;
+				span {display:block;height:100%;font-size:14px;line-height:40px;border-bottom:solid 1px #fff;
+					&.placeholder {border-bottom:none;font-size:18px;height:27px;line-height:27px;}
+					&.date, &.time {font-size:22px;height:37px;line-height:37px;margin-top:7px;position:relative;padding-left:34px;
+						&:before {content:'';position:absolute;left:0;}
+						&:after {content:'';position:absolute;@include sprite4x($m-arrow-bottom-w);right:0;@include center-y($m-arrow-bottom-w-height/4);}
+					}
+					&.date:before {@include sprite4x($m-ico-date);@include center-y($m-ico-date-height/4);}
+					&.time:before {@include sprite4x($m-ico-time);@include center-y($m-ico-time-height/4);}
+				}
+			}
+			select, input {display:block;width:100%;height:40px;position:absolute;top:0;left:0;}
+			select {opacity:0;color:#222;}
+			input[type=text] {background:none;border:none;color:#fff;font-size:14px;text-align:right;margin:0;padding-right:20.5px;position:absolute;width:100%;height:100%;opacity:0;}
+			button[type=submit] {display:block;width:100%;height:40px;background:$primary-color;font-size:16px;font-weight:600;border:solid 1px #fff;color:#fff;background:rgba(255,255,255,.1);outline:none;@include transition(background $transitionDuration);
+				&:hover, &:focus, &:active {background:rgba(255,255,255,.2);}
+			}
+
+			&.edate {padding-top:25px;}
+			&.submit {border-bottom:none;padding-top:20px;height:55px;}
+		}
+	}
+	.help-tooltip {display:none;position:absolute;right:0;top:0;}
+}

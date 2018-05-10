@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<title> ALL@Pay MOBILE 결제 샘플 페이지입니다. </title>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" /> 
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes, width=device-width"/> 
+
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+
+<style type="text/css">
+body { font-size: 10px; text-decoration:none; overflow:hidden; border:0px;margin:0;}
+html { overflow-y:scroll;}
+</style>
+
+<script type="text/javascript" charset="euc-kr" src="https://tx.allatpay.com/common/AllatPayM.js"></script>
+
+<script type="text/javascript">
+
+	// 결제페이지 호출
+	function approval(sendFm) {
+		Allat_Mobile_Fix(sendFm,"0","0"); /* 포지션 지정 (결제창 크기, 320*360) */ 
+	}
+
+	// 결과값 반환( receive 페이지에서 호출 )
+	function result_submit(result_cd,result_msg,enc_data) {
+
+		Allat_Mobile_Close();
+
+		if( result_cd != '0000' ){
+			alert(result_cd + " : " + result_msg);
+		} else {
+			sendFm.allat_enc_data.value = enc_data;
+
+			sendFm.action = "allat_fix.php";
+			sendFm.method = "post";
+			sendFm.target = "_self";
+			sendFm.submit();
+		}
+	}
+
+</script>
+
+<table border=0 cellpadding=0 cellspacing=0 width=320 bgcolor=8d8d8d>
+	<tr color=bbbbbb>
+		<td align=center colspan=2 height=25 style='font-size:14px'><b>ALL@Pay MOBILE 결제 샘플 페이지입니다. </b></td>
+	</tr>
+</table>
+<br>
+
+<form name="sendFm" method="post">
+<font color=red>◆ 필수정보 : <b>결제 필수 항목</b></font>
+<table border=0 cellpadding=3 cellspacing=1 bgcolor=8d8d8d width=320>
+	<tr bgcolor=d3d3d3>
+		<td width=135>상점아이디<br>(allat_shop_id)</td>
+		<td>&nbsp;<input type=text name="allat_shop_id" value="rentking"></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>주문번호<br>(allat_order_no)</td>
+		<td>&nbsp;<input type=text name="allat_order_no" value="test111"></td>
+	</tr>	
+	<tr bgcolor=d3d3d3>
+		<td>인증정보수신URL<br>(shop_receive_url)</td>
+		<td>&nbsp;<input type="text" name="shop_receive_url" value="http://www.local.rentking.co.kr/testm/allat_fix_receive.php"></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>주문정보암호화필드<br>(allat_enc_data)</td>
+		<td>&nbsp;<input type="hidden" name="allat_enc_data"></td>
+	</tr>
+</table>
+
+<br>
+ <table border=0 cellpadding=3 cellspacing=1 bgcolor=8d8d8d width=320>
+    <font color=blue><b>◆ 옵션정보</b>( 값이나 필드가 없을 경우 상점 속성이나 Default값이 반영됨 )</font>
+	<tr bgcolor=d3d3d3>
+        <td width=135>회원ID<br>(allat_pmember_id)</td>
+        <td><input type=text name="allat_pmember_id" value="admin" size="19" maxlength=20></td>
+    </tr>
+    <tr bgcolor=d3d3d3>
+        <td>승인금액<br>(allat_amt)</td>
+        <td ><input type=text name="allat_amt" value="100" size="19" maxlength=20></td>
+    </tr>
+    <tr bgcolor=d3d3d3>
+        <td>상품명<br>(allat_product_nm)</td>
+        <td ><input type=text name="allat_product_nm" value="테스트상품" size="19" maxlength=100></td>
+   </tr>
+    <tr bgcolor=d3d3d3>
+        <td>결제 정보 수신 E-mai<br>(allat_email_addr)</td>
+        <td ><input type=text name="allat_email_addr" value="gwontaegom@empal.com" size="19" maxlength=50></td>
+  </tr>
+    <tr bgcolor=d3d3d3>
+        <td>생년월일<br>(allat_registry_no)</td>
+        <td ><input type=text name="allat_registry_no" value="800630" size="19" maxlength=6></td>
+   </tr>
+    <tr bgcolor=d3d3d3>
+        <td>정기과금 타입<br>(allat_fix_type)</td>
+        <td ><input type=text name="allat_fix_type" value="FIX" size="19" maxlength=3></td>
+   </tr>
+    <tr bgcolor=d3d3d3>
+        <td>테스트 여부<br>(allat_test_yn)</td>
+        <td ><input type=text name="allat_test_yn" value="Y" size="19" maxlength=1></td>
+    </tr>
+	<tr bgcolor=ffffcc>
+		<td>인코딩선택<br>(allat_encode_type)</td>
+		<td>&nbsp;<input type=text name="allat_encode_type" value=""></td>
+	</tr>
+
+    </table>
+
+<br>
+
+<table border=0 cellpadding=3 cellspacing=1 bgcolor=8d8d8d width=320>
+	<tr bgcolor=bbbbbb>
+		<td align=center style='font-size:14px'>
+			<a href="javascript:approval(sendFm);"><b>[인증하기]</b></a>
+		</td>
+	</tr>
+</table>
+</form>
+</html>

@@ -1,0 +1,3 @@
+$(function() {
+	$('#contentWrap').addClass('load');
+});

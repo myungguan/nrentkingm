@@ -1,0 +1,163 @@
+$breakpoints: (
+		"phone":        400px,
+		"phone-wide":   480px,
+		"phablet":      560px,
+		"tablet-small": 640px,
+		"tablet":       768px,
+		"tablet-wide":  1024px,
+		"desktop":      1248px,
+		"desktop-wide": 1440px
+);
+
+@mixin mq($width, $dimension: width, $type: min) {
+	@if map_has_key($breakpoints, $width) {
+		$width: map_get($breakpoints, $width);
+		@if $type == max {
+			$width: $width - 1px;
+		}
+		@media only screen and (#{$type}-#{$dimension}: $width) {
+			@content;
+		}
+	} @else {
+		@if $type == max {
+			$width: $width - 1px;
+		}
+		@media only screen and (#{$type}-#{$dimension}: $width) {
+			@content;
+		}
+	}
+}
+
+@function vendor-args($arg, $vendor) {
+	$result: ();
+	@each $i in $arg {
+		@if $i == transform { $result: append($result, #{$vendor}$i); }
+		@else { $result: append($result, $i); }
+	}
+	@return $result;
+}
+
+@mixin vendor($property, $args...){
+	@each $vendor in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+		$out: null;
+		@each $arg in nth($args,1) {
+			$out: ($out, vendor-args($arg, $vendor));
+		}
+		#{$vendor}#{$property}: $out;
+	}
+}
+
+@mixin transition($args...) {
+	@include vendor(transition, $args);
+}
+
+@mixin transition-delay ($transition-delay) {
+	-webkit-transition-delay: $transition-delay;
+	-moz-transition-delay: $transition-delay;
+	-ms-transition-delay: $transition-delay;
+	-o-transition-delay: $transition-delay;
+	transition-delay: $transition-delay;
+}
+
+@mixin transition-duration ($transition-duration) {
+	-webkit-transition-duration: $transition-duration;
+	-moz-transition-duration: $transition-duration;
+	-ms-transition-duration: $transition-duration;
+	-o-transition-duration: $transition-duration;
+	transition-duration: $transition-duration;
+}
+
+@mixin transition-timing-function ($transition-timing-function) {
+	-webkit-transition-timing-function: $transition-timing-function;
+	-moz-transition-timing-function: $transition-timing-function;
+	-ms-transition-timing-function: $transition-timing-function;
+	-o-transition-timing-function: $transition-timing-function;
+	transition-timing-function: $transition-timing-function;
+}
+
+@mixin transform($transform) {
+	-webkit-transform: $transform;
+	-moz-transform: $transform;
+	-ms-transform: $transform;
+	-o-transform: $transform;
+	transform: $transform;
+}
+
+@mixin transform-origin ($transform-origin) {
+	-webkit-transform-origin: $transform-origin;
+	-moz-transform-origin: $transform-origin;
+	-ms-transform-origin: $transform-origin;
+	-o-transform-origin: $transform-origin;
+	transform-origin: $transform-origin;
+}
+
+@mixin perspective ($perspective) {
+	-webkit-perspective: $perspective;
+	-moz-perspective: $perspective;
+	-ms-perspective: $perspective;
+	-o-perspective: $perspective;
+	perspective: $perspective;
+}
+
+@mixin perspective-origin ($perspective-origin) {
+	-webkit-perspective-origin: $perspective-origin;
+	-moz-perspective-origin: $perspective-origin;
+	-ms-perspective-origin: $perspective-origin;
+	-o-perspective-origin: $perspective-origin;
+	perspective-origin: $perspective-origin;
+}
+
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+	@-moz-keyframes #{$animation-name} {
+		@content;
+	}
+	@-ms-keyframes #{$animation-name} {
+		@content;
+	}
+	@-o-keyframes #{$animation-name} {
+		@content;
+	}
+	@keyframes #{$animation-name} {
+		@content;
+	}
+}
+
+@mixin animation($animation) {
+	-webkit-animation: $animation;
+	-moz-animation: $animation;
+	-ms-animation: $animation;
+	-o-animation: $animation;
+	animation: $animation;
+}
+
+@mixin animation-delay($animation-delay) {
+	-webkit-animation-delay: $animation-delay;
+	-moz-animation-delay: $animation-delay;
+	-ms-animation-delay: $animation-delay;
+	-o-animation-delay: $animation-delay;
+	animation-delay: $animation-delay;
+}
+
+@mixin sprite4x($sprite) {
+	background-image:url(nth($sprite, 9));
+	background-position:nth($sprite, 3) / 4 nth($sprite, 4) / 4;
+	width:nth($sprite, 5) / 4;
+	height:nth($sprite, 6) / 4;
+	background-size:nth($sprite, 7) / 4 auto;
+}
+
+@mixin center-x($width) {
+	left:50%;margin-left:-$width/2;
+}
+
+@mixin center-y($height) {
+	top:50%;margin-top:-$height/2;
+}
+
+@mixin center($width, $height) {
+	@include center-x($width);
+	@include center-y($height);
+}

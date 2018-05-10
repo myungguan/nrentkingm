@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{#head}
+</head>
+<body>
+	{#header}
+	<div id="contentWrap">
+		{#side_customer_center}
+		<div id="content">
+			<div class="conBanner">
+				<div class="txt">
+					<h2>Q&amp;A</h2>
+					<strong>무엇이든 물어보세요!</strong>
+					<p>자주 묻는 질문에 없는 궁금증은 Q&amp;A를 통해 물어봐주세요!</p>
+				</div><!--//txt-->
+				<span>
+					<img alt="Icon" src="/imgs/rentking.w/clauseTopIcon.jpg">
+				</span>
+			</div><!--//conBanner-->
+			<table class="list">
+				<colgroup>
+					<col width="*">
+					<col width="120px">
+				</colgroup>
+				<thead>
+				<tr>
+					<th>{qna.subject}</th>
+					<th>{=substr(qna.dt_create,0,10)}</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td colspan="2">{qna.memo}</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="padding-top:40px;">
+						{? qna.dt_answer }
+						<p><strong>렌트킹님이 {qna.dt_answer} 에 답변하였습니다.</strong></p>
+						<p>{qna.answer}</p>
+
+						{:}
+						<p>답변이 등록되지 않았습니다.</p>
+						{/}
+					</td>
+				</tr>
+				</tbody>
+			</table><!--//boxTop-->
+
+			<div class="btnArea">
+				<a href="qnalist.php" class="btn-point">목록</a>
+			</div><!--//btnWrap-->
+		</div>
+	</div>
+	{#footer}
+</body>
+</html>

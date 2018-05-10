@@ -1,0 +1,145 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>New All@Pay 카드인증</title>
+<style><!--
+body { font-family:굴림체; font-size:12px; }
+td   { font-family:굴림체; font-size:12px; }
+.title { font-family:굴림체; font-size:16px; }
+.head { background-color:#EFF7FC; padding: 3 3 0 5 }
+.body { background-color:#FFFFFF; padding: 3 3 0 5  }
+.nbody { background-color:#FFFFCC; padding: 3 3 0 5  }
+//--></style>
+<script language=JavaScript charset='euc-kr' src="http://tx.allatpay.com/common/NonAllatPayREPlus.js"></script>
+
+<script language=Javascript>
+function ftn_fix(dfm) {
+	Allat_Plus_Fix(dfm, "0", "0");  
+}
+
+function result_submit(result_cd,result_msg,enc_data) {
+	Allat_Plus_Close();
+	if(result_cd != '0000') {
+		alert(result_cd + " : " + result_msg);
+	} else {
+		fm.allat_enc_data.value = enc_data;
+		fm.action = "allat_fix.php";
+		fm.method = "post";
+		fm.target = "_self";
+		fm.submit();
+	}
+}
+</script>
+
+</head>
+<body>
+
+    <p align=center class=title><u>New All@Pay™ 정기과금 카드등록 예제페이지</u></p>
+
+    <form name="fm"  method=POST action="allat_fix.php"> <!--카등인증요청 및 결과수신페이지 지정 //-->
+
+    <table border=0 cellpadding=0 cellspacing=1 bgcolor="#606060" width=1152 align=center style="TABLE-LAYOUT: fixed;">
+    <font color=red>◆ 필수정보 : <b>인증 필수 항목</b></font>
+    <tr>
+        <td width="140" class="head">항목</td>
+        <td width="160" class="body">예시 값</td>
+        <td width="70"  class="body">&nbsp최대길이<br>(영문기준)</td>
+        <td width="120"  class="body">변수명</td>
+        <td class="body">변수 설명</td>
+    </tr>
+    <tr>
+        <td class="head">상점 ID</td>
+        <td class="body"><input type=text name="allat_shop_id" value="rentking" size="19" maxlength=20></td>
+        <td class="body">20</td>
+        <td class="body">allat_shop_id</td>
+        <td class="body">Allat에서 발급한 고유 상점 ID</td>
+    </tr>
+    <tr>
+        <td class="head">주문번호</td>
+        <td class="body"><input type=text name="allat_order_no" value="1111" size="19" maxlength=70></td>
+        <td class="body">70</td>
+        <td class="body">allat_order_no</td>
+        <td class="body">쇼핑몰에서 사용하는 고유 주문번호 : 공백,작은따옴표('),큰따옴표(") 사용 불가</td>
+    </tr>
+	<tr>
+	<td class="head">Receive URL<br>(shop_receive_url)</td>
+	<td class="body"><input type="text" name="shop_receive_url" value="http://www.local.rentking.co.kr/allat/fix/allat_receive.php" size="19"></td>
+	<td class="body">-</td>
+	<td class="body">shop_receive_url</td>
+	<td class="body"></td>
+	</tr>
+
+    <tr>
+        <td class="head">주문정보암호화필드</td>
+        <td class="body"><font color=red>값은 자동으로 설정됨</font></td>
+        <td class="body">-</td>
+        <td class="body">allat_enc_data</td>
+        <td class="body"><font color=red>&ltinput type=hidden name=allat_enc_data value=''&gt<br>
+                          ※hidden field로 설정해야함</font></td>
+        <input type=hidden name=allat_enc_data value=''>
+    </tr>
+    </table>
+    <br>
+    <table border=0 cellpadding=0 cellspacing=1 bgcolor="#606060" width=1152 align=center style="TABLE-LAYOUT: fixed;" >
+    <font color=blue><b>◆ 옵션정보</b>( 값이나 필드가 없을 경우 상점 속성이나 Default값이 반영됨 )</font>
+	<tr>
+        <td width=140 class="head">회원ID</td>
+        <td width=160 class="body"><input type=text name="allat_pmember_id" value="" size="19" maxlength=20></td>
+        <td width=70  class="body">20</td>
+        <td width=120 class="body">allat_pmember_id</td>
+        <td class="body">쇼핑몰의 회원ID : 공백,작은따옴표('),큰따옴표(") 사용 불가</td>
+    </tr>
+    <tr>
+        <td class="head">승인금액</td>
+        <td class="body"><input type=text name="allat_amt" value="" size="19" maxlength=20></td>
+        <td class="body">20</td>
+        <td class="body">allat_amt</td>
+        <td class="body">결제금액( 1회 결제금액 )</td>
+    </tr>
+    <tr>
+        <td class="head">상품명</td>
+        <td class="body"><input type=text name="allat_product_nm" value="" size="19" maxlength=100></td>
+        <td class="body">100</td>
+        <td class="body">allat_product_nm</td>
+        <td class="body">여러상품의 경우 대표상품만 기록</td>
+    </tr>
+    <tr>
+        <td class="head">결제 정보 수신 E-mail</td>
+        <td class="body"><input type=text name="allat_email_addr" value="" size="19" maxlength=50></td>
+        <td class="body">50</td>
+        <td class="body">allat_email_addr</td>
+        <td class="body"></td>
+    </tr>
+    <tr>
+        <td class="head">주민번호</td>
+        <td class="body"><input type=text name="allat_registry_no" value="" size="19" maxlength=13></td>
+        <td class="body">6</td>
+        <td class="body">allat_registry_no</td>
+		<td class="body"><font color=blue>2014.08.04 부터 변경 : 생년월일 YYMMDD (주민번호 앞 6자리)</font></td>
+    </tr>
+    <tr>
+        <td class="head">정기과금 타입</td>
+        <td class="body"><input type=text name="allat_fix_type" value="" size="19" maxlength=3></td>
+        <td class="body">3</td>
+        <td class="body">allat_fix_type</td>
+        <td class="body">FIX : 상점정기과금, HOF : 호스팅정기과금, Default : FIX</td>
+    </tr>
+    <tr>
+        <td class="head">테스트 여부</td>
+        <td class="body"><input type=text name="allat_test_yn" value="Y" size="19" maxlength=1></td>
+        <td class="body">1</td>
+        <td class="body">allat_test_yn</td>
+        <td class="body">테스트(Y),서비스(N) - Default : N</td>
+    </tr>
+    </table>
+    <p align=center>
+    <table border=0 cellpadding=0 cellspacing=1 width=1152 align=center>
+    <tr><td align=center>
+    <input type=button value="  인  증  " name=app_btn onClick="javascript:ftn_fix(document.fm);">
+    </td></tr>
+    </table>
+    </p>
+    </form>
+</body>
+</html>
+

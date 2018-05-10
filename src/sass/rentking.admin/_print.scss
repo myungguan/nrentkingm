@@ -1,0 +1,8 @@
+@media print {
+	#container {width:100%;}
+	.topImg, .topRight, .topMenu {display:none;}
+	.leftAndMain {width:1255px;margin:0 auto;max-width:100%;
+		.leftMenuContaner {display:none;}
+		.mainContent {width:100%;padding-right:20px;}
+	}
+}

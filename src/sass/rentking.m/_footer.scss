@@ -1,0 +1,24 @@
+.go-top {display:block;width:40px;height:40px;border:solid 1px #ccc;background:#fff;position:fixed;right:10px;bottom:52px;color:transparent;overflow:hidden;text-indent:-1000px;z-index:1000;
+	@include transform(translate3d(0, 100px, 0) scale(0));@include transition($material-transition);
+	&:after {content:'';@include sprite4x($m-arrow-top-big);position:absolute;@include center($m-arrow-top-big-width/4, $m-arrow-top-big-height/4);}
+	&:hover, &:focus, &:active {background:$table-header-bg;border:solid 1px $primary-color;}
+
+	body.show-go-top & {@include transform(translate3d(0, 0, 0) scale(1));}
+}
+footer {background:url(../imgs/rentking.m/header_bg.jpg) center bottom;background-size:100% auto;width:100%;position:fixed;height:45px;bottom:0;left:0;z-index:1000;box-shadow:$default-shadow;
+	ul {
+		li {width:25%;float:left;
+			a {color:#fff;font-size:10px;display:block;width:100%;height:100%;text-align:center;padding-top:28px;position:relative;
+				&:after {content:'';position:absolute;}
+				&.home:after {@include sprite4x($m-ico-home);@include center($m-ico-home-width/4,$m-ico-home-height/4+8px);}
+				&.login:after {@include sprite4x($m-ico-login);@include center($m-ico-login-width/4,$m-ico-login-height/4+8px);}
+				&.join:after {@include sprite4x($m-ico-join);@include center($m-ico-join-width/4,$m-ico-join-height/4+8px);}
+				&.myinfo:after {@include sprite4x($m-ico-myinfo);@include center($m-ico-myinfo-width/4,$m-ico-myinfo-height/4+8px);}
+				&.orderlist:after {@include sprite4x($m-ico-orderlist);@include center($m-ico-orderlist-width/4,$m-ico-orderlist-height/4+8px);}
+				&.faq:after {@include sprite4x($m-ico-faq);@include center($m-ico-faq-width/4,$m-ico-faq-height/4+8px);}
+
+				&:hover, &:active {color:#fff;}
+			}
+		}
+	}
+}

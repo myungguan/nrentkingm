@@ -1,0 +1,118 @@
+.bootstrap-datetimepicker-widget {box-shadow:$default-shadow;
+	&.dropdown-menu.timepicker-sbs {
+		.datepicker-days, .datepicker-months, .datepicker-years, .datepicker-decades {}
+	}
+
+	&.dropdown-menu {
+		&:before, &:after {display:none;}
+	}
+	.datepicker {
+		tr, td {height:39px;padding:0;vertical-align:middle;}
+		tbody td {border-top:solid 1px $table-header-bg;}
+		thead th {font-weight:bold;}
+	}
+	.datepicker-days table {
+		tr {
+			td {font-weight:normal;font-size:13px;
+				&.new, &.old {color:rgba(34,34,34,.6);}
+				&.weekend:first-of-type {color:$error-color}
+				&.weekend:last-of-type {color:$primary-color;}
+				&.old.weekend:first-of-type, &.new.weekend:first-of-type {color:rgba(221,26,26,.6);}
+				&.old.weekend:last-of-type, &.new.weekend:last-of-type {color:rgba(16,62,138,.6);}
+				&.disabled {text-decoration:line-through;}
+				&.active {color:#fff !important;}
+			}
+		}
+		td.active.weekend, td.active.weekend:hover {color:#fff !important;}
+	}
+	.datepicker-months, .datepicker-years, .datepicker-decades {
+		table {
+			tr {
+				td {
+					.disabled {text-decoration:line-through;}
+				}
+			}
+		}
+	}
+
+	table {border:none !important;
+		td, th {border-radius: 0;}
+		td {
+			span {border-radius:0;
+				&.active {background-color:$primary-color;}
+			}
+			&.today:before {border:none;width:4px;height:4px;background:$primary-color;border-radius:0;right:auto;left:50%;margin-left:-2px;}
+			&.active, &.active:hover {background:none;position:relative;z-index:1;
+				&:after {content:'';display:block;position:absolute;width:80%;height:31px;top:4px;left:10%;background:$primary-color;z-index:-1;}
+			}
+		}
+	}
+
+	.prev {position:relative;
+		.arrow-left {width:100%; height:33px; position:absolute; left:0; top:0;
+			&:after {content:'';@include sprite($arrow-left-on);position:absolute;left:50%;top:50%;@include transform(translate3d(-50%, -50%, 0));}
+		}
+		&.disabled {
+			.arrow-left:after {@include sprite($arrow-left);}
+		}
+	}
+	.next {position:relative;
+		.arrow-right { width:100%; height:33px; position:absolute; left:0; top:0;
+			&:after { content:''; @include sprite($arrow-right-on); position:absolute; left:50%; top:50%; @include transform(translate3d(-50%, -50%, 0)); }
+		}
+		&.disabled {
+			.arrow-right:after {@include sprite($arrow-right);}
+		}
+	}
+	.timepicker {display:none;
+		//table {
+		//	td {height:42px;line-height:42px;padding:0 5px;
+		//		span {height:40px;line-height:40px;margin:0;}
+		//	}
+		//}
+		//a[data-action] {padding:0;}
+		//.timepicker-picker {
+		//	td { position: relative;
+		//		a { display: block; width: 100%; height: 64px; position: absolute; top: 0; left: 0; border-radius: 0;
+		//			&:hover { background: #eee; }
+		//			.arrow-top { @include sprite($arrow-top-on); position: absolute; left: 50%; top: 50%; @include transform(translate3d(-50%, -50%, 0));
+		//				&:hover { background-color: transparent !important; }
+		//			}
+		//			.arrow-bottom { @include sprite($arrow-bottom-on); position: absolute; left: 50%; top: 50%; @include transform(translate3d(-50%, -50%, 0));
+		//				&:hover { background-color: transparent !important; }
+		//			}
+		//		}
+		//		.timepicker-hour, .timepicker-minute { display: block; width: 100%; height: 74px; position: absolute; top: 0; left: 0; }
+		//	}
+		//}
+		//.timepicker-hours td {font-weight:bold;}
+		//.timepicker-minutes td {font-weight:bold;}
+	}
+
+	.add-on {padding-bottom:10px;
+		ul {margin:0 4px;
+			li {width:16.666%;float:left;padding:0 2px;margin-top:4px;
+				button {display:inline-block;margin:0;width:100%;height:26px;white-space:nowrap;font-size:11px;background:none;border:solid 1px #ccc;
+					&:hover, &:active {border:solid 1px $primary-color;}
+				}
+			}
+			&:after {content:'';clear:both;float:none;display:block;}
+		}
+	}
+
+	.time-selector {position:relative;text-align:center;font-size:16px;margin-bottom:10px;line-height:32px;
+		button {display:inline-block;width:32px;height:32px;min-width:0;padding:0;position:absolute;top:0;color:#222 !important;
+			&.prev-time {left:6px;}
+			&.next-time {right:6px;}
+		}
+		.time {}
+	}
+	.picker-switch.accordion-toggle {float:none !important;margin:0;display:block;background:#fff;padding-bottom:10px;
+		a[data-action] {display:block;height:32px;padding:0;margin:0 6px 0 6px;text-decoration:none;border:solid 1px $primary-color;background:$primary-color;cursor:pointer;line-height:32px;@include transition(background $transitionDuration, border-color $transitionDuration);
+			span {display:none;}
+
+			&:after {content:'확인';display:block;height:100%;color:#fff;text-decoration:none;}
+			&:hover, &:focus, &:active {border:solid 1px $primary-color-focus;background:$primary-color-focus;}
+		}
+	}
+}

@@ -1,0 +1,1 @@
+ALTER TABLE `site_eng` ADD COLUMN `car` VARCHAR(100) NULL AFTER `vclass`;

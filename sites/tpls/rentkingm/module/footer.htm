@@ -1,0 +1,29 @@
+{? global.nowurlh!='/index.php'}
+<!--<div id="debugger"></div>-->
+<button class="go-top">위로</button>
+<footer style="background:url({global.imgserver}{global.config['image.main.m']}) center bottom;background-size:100% auto;">
+	<ul>
+		<li><a href="/" class="home">홈</a></li>
+		{? global.memislogin =='Y' }
+		<li><a href="/member/mypage.php" class="myinfo">내정보</a></li>
+		<li><a href="/member/payment.php" class="orderlist">결제내역</a></li>
+		{:}
+		<li><a href="/member/login.php" class="login">로그인</a></li>
+		<li><a href="/member/join.php" class="join">회원가입</a></li>
+		{/}
+		<li><a href="/customer-center/faq.php" class="faq">자주묻는질문</a></li>
+	</ul>
+</footer>
+{/}
+
+<?
+	$pageType='mobile';
+	if($TPL_VAR['global']['production']) {
+		include_once($_SERVER['DOCUMENT_ROOT']."/old/inc/log/analytics.php");
+		include_once($_SERVER['DOCUMENT_ROOT']."/old/inc/log/naverkeyword.php");
+	}
+
+    //channel.io 모바일에서는 첫 메인화면에서만 실행
+	if($TPL_VAR['global']['isMain'])
+		include_once($_SERVER['DOCUMENT_ROOT']."/old/inc/plugins/channel.io.php");
+?>

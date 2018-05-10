@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{#head}
+</head>
+<body>
+	{#header}
+	<div id="contentWrap">
+		<form name="joinform" id="joinform" method="post" action="/mo/pro.php">
+			<input type='hidden' name='modtype' value='mem_join'>
+			<input type='hidden' name='mem_type' id='mem_type' value='{page.mtype}'>
+			<input type='hidden' name='memgrade' id='memgrade' value='{? page.mtype=="p"}100{:}99{/}'>
+			<input type='hidden' name='idcheck' id='idcheck' value='N'>
+			<input type='hidden' name='cpcheck' id='cpcheck' value='XXXXXX'>
+			<input type='hidden' name='cpcheckcp' id='cpcheckcp' value='XXXXXX'>
+			<input type='hidden' name='channel' id='channel' value='{page.channel}'>
+			<input type='hidden' name='ch_id' value='{page.id}'>
+
+			<div class="form-box">
+				<h3>기본정보</h3>
+				<div class="form-field row-100-a">
+					<div class="col">아이디(이메일)</div>
+					<div class="col"><input type="text" valch="yes" msg="아이디" class="mWt60p" name="id" id="id" value="{page.email}" placeholder="이메일주소" /></div>
+					<div class="col"></div>
+					<div class="col"><button type="button" class="checkId btn btn-primary">중복확인</button></div>
+				</div>
+				{? page.channel==''}
+				<div class="form-field row-100-a">
+					<div class="col">비밀번호</div>
+					<div class="col"><input type="password" valch="yes" msg="비밀번호" id='passwd' class="mWt100p" name="passwd" value="" placeholder=" 비밀번호"></div>
+				</div>
+				<div class="form-field row-100-a">
+					<div class="col">비밀번호 확인</div>
+					<div class="col"><input type="password" valch="yes" msg="비밀번호 확인" id='repasswd' class="mWt100p" name="repasswd" value="" placeholder=" 비밀번호 재입력"></div>
+				</div>
+				{/}
+			</div>
+
+			<div class="form-box">
+				<h3>회원정보</h3>
+				<div class="form-field row-100-a">
+					<div class="col">이름</div>
+					<div class="col"><input type="text" valch="yes" msg="이름" class="mWt100p" name="name" value="" placeholder="실명을 입력하세요."></div>
+					(실명과 다를경우 예약에 제한이 있을 수 있습니다.)
+				</div>
+
+				<div class="form-field row-100-a">
+					<div class="col">휴대폰번호</div>
+					<div class="col"><input type="number" valch="yes" msg="휴대폰" class="mWt50p left" name="cp" id='cp' value="" placeholder="&quot;-&quot; 구분없이 입력"></div>
+					<div class="col"></div>
+					<div class="col"><button type="button" class="btn btn-primary" id="setSms">인증번호 전송</button></div>
+				</div>
+
+				<div class="form-field row-100-a">
+					<div class="col">인증번호</div>
+					<div class="col"><input type="number" valch="yes" msg="인증번호" class="mWt100p" name="returnnum" id='returnnum' value="" placeholder="인증번호"></div>
+				</div>
+
+				<div class="form-field row-100-a">
+					<div class="col">생년월일</div>
+					<div class="col"><input type="text" valch="yes" msg="생년월일" class="mWt100p datePicker" data-min-view-mode="years" data-parent="body" name="birth" id="birth" value="" readonly></div>
+				</div>
+
+				<div class="form-field row-100-a">
+					<div class="col">성별</div>
+					<div class="col">
+						<input type="radio" name="sex" value="F" id="woman"> <label for="woman">여성</label>
+						<input type="radio" name="sex" value="M" id="man"> <label for="man">남성</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row-a-60">
+				<div class="col"><input type="checkbox" class="mCheckbox" valch="yes" msg="이용약관 동의" name="terms_agree1" id="terms_agree1" value="Y"><label for="terms_agree1"> 이용약관 동의</label></div>
+				<div class="col text-right"><a href="/partials/terms/use.html" class="more openPopup" data-title="이용약관" data-width="500">전문보기&gt;</a></div>
+			</div>
+
+			<div class="row-a-60">
+				<div class="col"><input type="checkbox" class="mCheckbox" valch="yes" msg="개인정보 취급방침 동의" name="terms_agree2" id="terms_agree2" value="Y"><label for="terms_agree2"> 개인정보 취급방침 동의</label></div>
+				<div class="col text-right"><a href="/partials/terms/privacy.html" class="more openPopup" data-title="개인정보 취급방침" data-width="500">전문보기&gt;</a></div>
+			</div>
+
+			<div class="form-box">
+				<h3>마케팅 정보 수신 동의</h3>
+				<div class="form-field">
+					<input type="checkbox" class="mCheckbox" name="mailser" id="mailser" value="Y" checked><label for="mailser"> 이메일</label>
+					<input type="checkbox" class="mCheckbox" name="smsser" id="smsser" value="Y" checked><label for="smsser"> SMS</label>
+				</div>
+			</div>
+
+			<div class="text-muted mb-10">
+				렌트킹은 통신판매중개자이며 통신판매의 당사자가 아닙니다.<br />
+				따라서 렌트킹은 상품·거래정보 및 거래에 대하여 책임을 지지 않습니다.
+			</div>
+
+			<button class="btn btn-primary big" type="submit">회원가입</button>
+		</form>
+
+	</div>
+	{#footer}
+	<script type="text/javascript">
+		$(function() {
+			var $cp = $('#cp');
+			var $cpCheck = $('#cpcheck');
+			var $cpCheckCp = $('#cpcheckcp');
+			var $setSms = $('#setSms');
+			var $returnnum = $('#returnnum');
+
+			$(document)
+				.on('click', '#setSms', function(e) {
+					e.stopPropagation();
+
+					if ($cp.val() == '') {
+						alert('휴대폰번호를 입력하세요');
+						return;
+					}
+
+					if(!$setSms.data('process')) {
+						$setSms.data('process', true)
+							.text('전송중...');
+
+						var param = "cp=" + $cp.val() + "&memg=" + $("#memgrade").val();
+
+						$.getJSON('/mo/proajax.php?modtype=mem_common&han=cpcheck&' + param, function (result) {
+							if (result['res'] == 'ok') {
+								$cpCheck.val(result['data']);
+								$cpCheckCp.val(result['cp']);
+								$setSms.text('전송완료');
+								$returnnum.focus();
+							} else {
+								alert('이미 가입된 휴대폰번호 입니다.');
+								$setSms.data('process', false)
+									.text('인증번호전송');
+							}
+						});
+					}
+
+				})
+				.on('input', '#cp', function() {
+					if($cp.val() != $cpCheckCp.val()) {
+						$setSms.data('process', false)
+							.text('인증번호전송');
+					} else {
+						$setSms.data('process', true)
+							.text('전송완료');
+						$returnnum.focus();
+					}
+
+				})
+		});
+	</script>
+</body>
+</html>

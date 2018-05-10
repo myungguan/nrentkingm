@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{#head}
+</head>
+<body>
+	{#header}
+	<div id="contentWrap">
+		<a class="btn btn-primary big" href="qnaw.php">질문작성</a>
+
+		<div class="board">
+			<ul class="list">
+				{@ qnalist}
+				<li>
+					<a href="qnar.php?idx={.index}">
+						<span class="title">{? .dt_answer }[답변완료]{:}[답변대기]{/} {.subject}</span>
+						<span class="date">{.dt_create}</span>
+					</a>
+				</li>
+				{/}
+			</ul>
+		</div>
+
+	</div>
+	{#footer}
+</body>
+</html>

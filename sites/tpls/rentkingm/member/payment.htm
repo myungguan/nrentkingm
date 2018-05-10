@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    {#head}
+</head>
+<body>
+    {#header}
+    <div id="contentWrap">
+		{@ olist }
+		<div class="form-box orderitem dan{.dan} {? .dan != '1'}mb-20{/} ">
+			<a href="#{.order_idx}" class="handle">
+				<h3 class="header">{.modelname} ({.fuel_sname})</h3>
+				<div class="form-field only-text info">
+					대여기간: <span class="date">{=substr(.sdate, 0, 16)} ~ {=substr(.edate, 0, 16)}</span><br />
+					결제금액: {=number_format(.payment_account)}원<br />
+					지점: {.rentshop_name}({.affiliate}, {=phone_number_format(.rentshop_dphone2)})<br />
+					<span class="text-muted">({.rentshop_addr1} {.rentshop_addr2})</span>
+				</div>
+
+				<h3 class="add-info">대여정보</h3>
+				<div class="form-field row-80-a add-info only-text">
+					<div class="col">대여방법</div>
+					<div class="col text-right">{? .ptype == 1}배달대여{:}지점방문{/}</div>
+				</div>
+				<!--
+				<div class="form-field row-80-a add-info only-text">
+					<div class="col">지점</div>
+					<div class="col text-right">{.rentshop_name}({.affiliate})<br />{.rentshop_addr1} {.rentshop_addr2}</div>
+				</div>
+				-->
+				{? .ptype == 1}
+				<div class="form-field row-80-a add-info only-text">
+					<div class="col">픽업위치</div>
+					<div class="col text-right">{.addr}</div>
+				</div>
+				<div class="form-field row-80-a add-info only-text">
+					<div class="col">반납위치</div>
+					<div class="col text-right">{.raddr}</div>
+				</div>
+				{/}
+
+				<h3 class="add-info">상세정보</h3>
+				<div class="form-field row-80-a add-info only-text">
+					<div class="col">차량옵션</div>
+					<div class="col text-right">{.opt}</div>
+				</div>
+				{?.distance_limit}
+				<div class="form-field row-80-a add-info only-text">
+					<div class="col">주행거리제한</div>
+					<div class="col text-right">{=number_format(.distance_limit)}&#13214;/월 (추가: {=number_format(.distance_additional_price)}원/&#13214;)</div>
+				</div>
+				{/}
+				<div class="form-field row-80-a add-info only-text">
+					<div class="col">운전자나이</div>
+					<div class="col text-right">만 {.car_rentage}세 이상</div>
+				</div>
+				<div class="form-field row-80-a add-info only-text">
+					<div class="col">면허취득</div>
+					<div class="col text-right">만 {.car_license_limit}년 이상</div>
+				</div>
+				<div class="form-field row-80-a add-info only-text">
+					<div class="col">자차보험</div>
+					<div class="col text-right">
+						{? .pricetype == 2 || .insu >= 1}
+							고객부담금({=number_format(.insu_exem)}원/건)
+						{:}
+							자차미포함
+						{/}
+					</div>
+				</div>
+				{? .insu_limit}
+				<div class="form-field row-80-a add-info only-text">
+					<div class="col">자차보상한도</div>
+					<div class="col text-right">
+						{=number_format(.insu_limit)}원/건
+					</div>
+				</div>
+				{/}
+				<div class="form-field row-80-a add-info only-text">
+					<div class="col">대인</div>
+					<div class="col text-right">{.car_insu_per}</div>
+				</div>
+				<div class="form-field row-80-a add-info only-text">
+					<div class="col">대물</div>
+					<div class="col text-right">{=number_format(.car_insu_goods)}원</div>
+				</div>
+				<div class="form-field row-80-a add-info only-text">
+					<div class="col">자손</div>
+					<div class="col text-right">{=number_format(.car_insu_self)}원</div>
+				</div>
+
+				<h3 class="add-info">결제정보</h3>
+				<div class="form-field row-80-a add-info only-text">
+					<div class="col">결제일</div>
+					<div class="col text-right">{.dt_create}</div>
+				</div>
+				<div class="form-field row-80-a add-info only-text">
+					<div class="col">결제금액</div>
+					<div class="col text-right">{=number_format(.payment_account)}원</div>
+				</div>
+
+			</a>
+			{?.dan == '1'}
+			<button type="button" class="btn-error small mb-0 inline cancel" onclick="set_cancel({.idx})">예약취소</button>
+			{/}
+			{? .dan=='2' }
+			<a href="/rent/extend.php?idx={.idx}" class="btn-point2 small mb-0 inline extend openPopup" data-title="연장신청" data-width="340" data-cache="false">연장신청</a>
+			{/}
+		</div>
+		{/}
+    </div>
+
+	<form name="cancelForm" id="cancelForm" action="/member/cancel.php" method="post">
+		<input type="hidden" name="allat_enc_data" value="" />
+		<input type="hidden" name="mode" value="c" />
+		<input type="hidden" name="order_idx" value="" />
+		<input type="hidden" name="accountReturn" value="" />
+	</form>
+	<div id="paymentForm"></div>
+    {#footer}
+
+	<script type="text/javascript" charset="EUC-KR" src="https://tx.allatpay.com/common/NonAllatPayREPlus.js"></script>
+	<script type="text/javascript">
+		var headerHeight = $('header').outerHeight();
+		$(document)
+			.on('click', 'a.handle', function(e) {
+				e.preventDefault();
+				var $handle = $(this);
+				$handle.parent().toggleClass('on').siblings('.orderitem').removeClass('on');
+				setTimeout(function() {
+					$(window).scrollTop($handle.offset().top - headerHeight - 30);
+				}, 100);
+			});
+
+		function set_cancel(idx) {
+			if (confirm('취소 하시겠습니까?')) {
+				var $cancelForm = $('#cancelForm');
+				var $paymentForm = $('#paymentForm');
+				$cancelForm.find('input[name="order_idx"]').val(idx);
+				$.post($cancelForm.attr('action'), $cancelForm.serializeArray())
+					.done(function(html) {
+						$paymentForm.html(html);
+					});
+			}
+		}
+	</script>
+</body>
+</html>
+
+

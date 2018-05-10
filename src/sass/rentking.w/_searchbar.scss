@@ -1,0 +1,35 @@
+//search bar
+#searchBar {width:940px;position:relative;height:42px;
+	ul.search {width:100%;height:100%;
+		li {float:left;height:100%;position:relative;@include transition(width .3s);
+			label {position:absolute;width:100%;height:100%;left:0;top:0;z-index:110;color:#fff;font-size:16px;line-height:42px;cursor:pointer;
+				.placeholder {position:relative;font-size:14px;white-space:nowrap;font-weight:bold;display:inline-block;width:73px;
+					&:after {content:'';position:absolute;display:block;width:1px;height:17px;background:#fff;right:0;top:13px;}
+				}
+				.date, .time {position:relative;padding-left:30px;padding-right:28px;display:inline-block;height:42px;vertical-align:top;
+					&:before {content:'';position:absolute;left:0;top:50%;}
+					&:after {content:'';@include sprite($arrow-bottom-w);position:absolute;right:0;bottom:16px;}
+				}
+				.date {margin-left:16px;
+					&:before {@include sprite($ico-date);margin-top:-8.5px;}
+				}
+				.time {margin-left:22px;
+					&:before {@include sprite($ico-time);margin-top:-9px;}
+				}
+			}
+			input[type=text] {display:block;position:absolute;color:#000;font-size:14px;z-index:100;border:none;padding:0;font-weight:bold;left:92px;top:-200px;height:230px;opacity:0;}
+			button[type=submit] {display:block;height:30px;margin:6px 0;width:100%;border:solid 1px #fff;color:#fff;font-weight:600;font-size:14px;background:rgba(255,255,255,.1);outline:none;@include transition(background $transitionDuration);
+				&:hover, &:focus, &:active {background:rgba(255,255,255,.2);}
+			}
+
+			&.sdate {width:418px; }
+			&.edate {width:418px;}
+			&.submit {width:104px;}
+
+			.bootstrap-datetimepicker-widget {margin-top:11px;margin-left:-21px;
+				&.top {margin-bottom:35px;}
+			}
+		}
+	}
+	.help-tooltip {display:none;position:absolute;right:40px;top:30px;z-index:1000;}
+}

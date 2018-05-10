@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{#head}
+</head>
+<body>
+	{#header}
+	<div id="contentWrap">
+		<div class="coupon-book">
+			<form method="post">
+				<input type="hidden" name="mode" value="r" />
+				<div class="input-wrap">
+					<input type="text" class="" name="nums" id="coupon" value="" placeholder="코드를 입력해주세요.">
+				</div>
+				<button type="submit" class="btn btn-primary register">등록</button>
+			</form>
+
+			<ul class="list">
+				{@ clist}
+				<li>
+					<div class="title">{.name}</div>
+					<img src="{global.imgserver}{.path}" alt="{.name}">
+					<div class="description">
+						<p>사용기간: {.sdate} ~ {.edate}</p>
+					</div>
+				</li>
+				{/}
+			</ul>
+		</div>
+	</div>
+	{#footer}
+</body>
+</html>

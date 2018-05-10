@@ -1,0 +1,20 @@
+.pop-wrap {display:none;position:fixed;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.3);z-index:5000;opacity:0;
+	.pop-content {position:absolute;background:#fff;box-shadow:$default-shadow;@include transform(scale(0));border:solid 1px $primary-color;
+		.pop-header {height:40px;background:$table-header-bg;position:relative;
+			h3 {padding:0 17px 0 47px;line-height:40px;font-size:14px;margin:0;}
+			.pop-close {position:absolute;display:block;top:0;right:0;background-color:transparent;text-indent:-1000px;overflow:hidden;height:100%;width:50px;border:none;
+				&:after {content:'';position:absolute;@include sprite($cross-b);left:50%;top:50%;margin-top:-7.5px;margin-left:-10px;}
+			}
+			&:after {content:'';display:block;@include sprite($ico-popup-header);position:absolute;left:20px;top:12px;}
+		}
+		.pop-body {padding:14px 17px;overflow:auto;}
+	}
+
+	&.ready {display:block;}
+	&.open {opacity:1;@include transition(opacity $popupOpenDuration);
+		.pop-content {@include transform(scale(1));@include transition(transform $popupOpenDuration);}
+	}
+	&.close {opacity:0;@include transition(opacity $popupCloseDuration);
+		.pop-content {@include transform(scale(4));@include transition(transform $popupCloseDuration );}
+	}
+}

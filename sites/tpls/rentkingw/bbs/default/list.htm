@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{#head}
+</head>
+<body>
+	{#header}
+	<div id="contentWrap">
+		{? bbs.boardid=='notice' || bbs.boardid=='pnotice'}
+		{#side_customer_center}
+		<div id="content">
+		{/}
+			<div class="conBanner">
+				<div class="txt">
+					<h2>{? bbs.boardid=='notice'}공지사항
+						{: bbs.boardid=='pnotice'}멤버사공지사항
+						{: bbs.boardid=='event'}이벤트
+						{/}</h2>
+					<strong>{? bbs.boardid=='notice' || bbs.boardid=='pnotice'}렌트킹에서 알려드립니다!
+						{: bbs.boardid=='event'}다양한 지점들의 끊임없는 이벤트!
+						{/}</strong>
+					<p>{? bbs.boardid=='notice' || bbs.boardid=='pnotice'}렌트킹의 새로운 소식! 기분 좋은 뉴스를 확인해보세요!
+						{: bbs.boardid=='event'}여러 지역, 많은 지점들의 다양한 이벤트를 경험해보세요!
+						{/}</p>
+				</div><!--//txt-->
+				<span>
+					{? bbs.boardid=='notice' || bbs.boardid=='pnotice'}<img src="/imgs/rentking.w/notice.jpg" alt="Icon">
+					{: bbs.boardid=='event'}<img src="/imgs/rentking.w/eventTopicon.jpg" alt="Icon">
+					{/}
+				</span>
+			</div><!--//conBanner-->
+			<table class="list">
+				<colgroup>
+					<col width="80px;">
+					<col width="*">
+					<col width="120px;">
+				</colgroup>
+				<thead>
+				<tr>
+					<th>번호</th>
+					<th class="etit">제목</th>
+					<th>날짜</th>
+				</tr>
+				</thead>
+				<tbody>
+				{@ bbs2}
+				<tr>
+					<td>
+						{.num}
+					</td>
+					<td class="etit" style='text-align:left;'>
+						<a href="{.readlinks}">{.title}</a>
+					</td>
+					<td>{=substr(.dt_create,0,10)}
+					</td>
+				</tr>
+				{/}
+				</tbody>
+			</table><!--//boxTop-->
+			<!-- paging -->
+			<div class="paging">
+				<!--{? paging.total_record!=0 }-->
+				<a href="{paging.first}" class="prev"></a>
+				<!--{/}-->
+				<!--{@ loop_paging}-->
+				<!--{? loop_paging.page==paging.nowpage }-->
+				<a href="#" class="on" onclick="return false;">{loop_paging.page}</a>
+				<!--{:}-->
+				<a href="{loop_paging.links}">{loop_paging.page}</a>
+				<!--{/}-->
+				<!--{/}-->
+				<!--{? paging.total_record!=0 }-->
+				<a href="{paging.last}" class="next"></a>
+				<!--{/}-->
+
+
+			</div>
+			<!-- //paging -->
+		{? bbs.boardid=='notice' || bbs.boardid=='pnotice'}
+		</div>
+		{/}
+	</div>
+	{#footer}
+</body>
+</html>

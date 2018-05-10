@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{#head}
+</head>
+<body>
+	{#header}
+	<div id="contentWrap">
+
+		<form action="/payment/allat_payment_form.php" method="post" id="reservationForm">
+			<input type="hidden" name="order_idx" value="{data.idx}" />
+			<input type="hidden" name="liscense" value="{data.liscense.idx}" />
+			<input type="hidden" name="delcharge" value="{data.car.delcharge}" />
+			<input type="hidden" name="extend" value="{data.order.extend}" />
+			<input type="hidden" name="buymethod" id="buymethod" value="{? data.order.retype == 2 && (data.order.ddata1 > 1 || data.order.ddata2 > 0)}F{:}C{/}" />
+			<input type="hidden" name="allat_enc_data" value="" />
+			<input type="hidden" name="mobile" value="Y" />
+
+			<div class="form-box">
+				<h3>{data.car.modelname} ({data.car.fuel_sname})</h3>
+				<div class="form-field">
+					<img src="{global.imgserver}{? data.car.car_image_path}{data.car.car_image_path}?{data.car.car_image_timestamp}{:}{data.car.default_image_path}?{data.car.default_image_timestamp}{/}" style="width:100%;display:block;" />
+				</div>
+			</div>
+
+			<div class="form-box">
+				<h3>대여정보</h3>
+				<div class="form-field row-80-a only-text">
+					<div class="col">대여기간</div>
+					<div class="col text-right">
+						{data.order.sdate}<br />
+						~ {data.order.edate}
+					</div>
+				</div>
+				<div class="form-field row-80-a only-text">
+					<div class="col">대여방법</div>
+					<div class="col text-right">
+						{?data.order.extend == 'N'}
+							{?data.car.delavail}
+							<div class="text-left" style="display:inline-block;">
+								<input type="radio" name="ptype" id="ptype2" value="2" /><label for="ptype2"> 지점방문</label><br />
+								<input type="radio" name="ptype" id="ptype1" value="1" /><label for="ptype1" style="margin-right:0;"> 배달대여 ({? data.car.delcharge > 0}+{=number_format(data.car.delcharge)}원{:}무료{/})</label>
+							</div>
+							{:}
+							지점방문
+							<input type="hidden" name="ptype" value="2" />
+							{/}
+						{:}
+							연장
+							<input type="hidden" name="ptype" value="{data.extend_order.ptype}" />
+						{/}
+
+
+					</div>
+				</div>
+				<div class="form-field row-80-a only-text last-child" id="positionRentshop">
+					<div class="col">지점위치</div>
+					<div class="col text-right">
+					<? // [{data.car.rentshop_name}({data.car.affiliate})]<br />{data.car.rentshop_addr1} {data.car.rentshop_addr2}?>
+						{data.car.rentshop_addr}
+					</div>
+				</div>
+				<div class="form-field row-80-a only-text" id="positionPickup" style="display:none;">
+					<div class="col">픽업위치</div>
+					<div class="col text-right">{data.order.addr}</div>
+				</div>
+				<div class="form-field row-80-a only-text" id="positionReturn" style="display:none;">
+					<div class="col">반납위치</div>
+					<div class="col text-right">{data.order.raddr}</div>
+				</div>
+			</div>
+
+			<!--
+			<div class="form-box">
+				<h3>차량정보</h3>
+				<div class="form-field row-80-a only-text">
+					<div class="col">색상</div>
+					<div class="col text-right">{data.car.color}</div>
+				</div>
+				<div class="form-field row-80-a only-text">
+					<div class="col">주행거리</div>
+					<div class="col text-right">{=number_format(data.car.rundistan)}km</div>
+				</div>
+			</div>
+			-->
+
+			<div class="form-box">
+				<h3>상세정보</h3>
+				<div class="form-field text-point">
+					* 지점의 사정으로 동급 또는 상급의 차량으로 변경될 수 있습니다.
+				</div>
+				<div class="form-field row-80-a only-text">
+					<div class="col">차량옵션</div>
+					<div class="col text-right">{data.car.opt}</div>
+				</div>
+				{?data.order.distance_limit}
+				<div class="form-field row-80-a only-text">
+					<div class="col">주행거리제한</div>
+					<div class="col text-right">{=number_format(data.order.distance_limit)}&#13214;/월 (추가: {=number_format(data.order.distance_additional_price)}원/&#13214;)</div>
+				</div>
+				{/}
+				<div class="form-field row-80-a only-text">
+					<div class="col">운전자나이</div>
+					<div class="col text-right">만 {data.car.rentage}세 이상</div>
+				</div>
+				<div class="form-field row-80-a only-text">
+					<div class="col">면허취득</div>
+					<div class="col text-right">만 {data.car.license_limit}년 이상</div>
+				</div>
+				<div class="form-field row-100-a only-text" style="height:48px;">
+					<div class="col">자차보험<br />고객부담금 <a href="/partials/help/insurance.html" class="help-tooltip openPopup" data-title="자차보험" title="도움말" data-width="490"></a></div>
+					<div class="col text-right">
+						{? data.order.pricetype == 2 || data.order.insu >= 1}
+							{=number_format(data.order.insu_exem)}원/건
+						{:}
+							자차미포함
+						{/}
+					</div>
+				</div>
+				{?data.order.insu_limit}
+				<div class="form-field row-80-a only-text">
+					<div class="col">자차보상한도</div>
+					<div class="col text-right">{=number_format(data.order.insu_limit)}원/건</div>
+				</div>
+				{/}
+				<div class="form-field row-80-a only-text">
+					<div class="col">대인</div>
+					<div class="col text-right">{data.car.insu_per}</div>
+				</div>
+				<div class="form-field row-80-a only-text">
+					<div class="col">대물</div>
+					<div class="col text-right">{=number_format(data.car.insu_goods)}원</div>
+				</div>
+				<div class="form-field row-80-a only-text">
+					<div class="col">자손</div>
+					<div class="col text-right">{=number_format(data.car.insu_self)}원</div>
+				</div>
+			</div>
+
+			{?data.order.extend == 'N'}
+			<div class="form-box">
+				<h3>제1운전자(예약자)</h3>
+				<div class="form-field row-80-a only-text">
+					<div class="col">이름</div>
+					<div class="col text-right">{data.member.name}</div>
+				</div>
+				<div class="form-field row-80-a only-text">
+					<div class="col">휴대폰번호</div>
+					<div class="col text-right">{data.member.cp}</div>
+				</div>
+				<div class="form-field row-80-a">
+					<div class="col">면허종류</div>
+					<div class="col">
+						<select name="kinds">
+							<option value="FN" {? data.liscense.kinds=='FN'}selected{/}>1종 보통</option>
+							<option value="FL" {? data.liscense.kinds=='FL'}selected{/}>1종 대형</option>
+							<option value="SN" {? data.liscense.kinds=='SN'}selected{/}>2종 보통</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-field row-80-a">
+					<div class="col">면허번호</div>
+					<div class="col"><input type="text" name="nums" maxlength="30" value="{data.liscense.nums}" /></div>
+				</div>
+				<div class="form-field row-110-a">
+					<div class="col">적성검사 만료일</div>
+					<div class="col"><input type="text" name="date1" value="{data.liscense.date1}" class="datePicker" data-parent="body" readonly /></div>
+				</div>
+				<div class="form-field row-110-a">
+					<div class="col">발급일</div>
+					<div class="col"><input type="text" name="date2" value="{data.liscense.date2}" class="datePicker" data-parent="body" readonly /></div>
+				</div>
+			</div>
+
+			<div class="form-box">
+				<h3>제2운전자</h3>
+				<div class="form-field row-80-a">
+					<div class="col">이름</div>
+					<div class="col"><input type="text" name="namesub" maxlength="50" /></div>
+				</div>
+				<div class="form-field row-80-a">
+					<div class="col">휴대폰번호</div>
+					<div class="col"><input type="number" name="cpsub" maxlength="50" /></div>
+				</div>
+				<div class="form-field row-80-a">
+					<div class="col">면허종류</div>
+					<div class="col">
+						<select name="kindsub">
+							<option value="FN">1종 보통</option>
+							<option value="FL">1종 대형</option>
+							<option value="SN">2종 보통</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-field row-80-a">
+					<div class="col">면허번호</div>
+					<div class="col"><input type="text" name="numsub" maxlength="30" value="" /></div>
+				</div>
+				<div class="form-field row-110-a">
+					<div class="col">적성검사 만료일</div>
+					<div class="col"><input type="text" name="date1sub" value="" class="datePicker" data-parent="body" readonly /></div>
+				</div>
+				<div class="form-field row-110-a">
+					<div class="col">발급일</div>
+					<div class="col"><input type="text" name="date2sub" value="" class="datePicker" data-parent="body" readonly /></div>
+				</div>
+			</div>
+			{/}
+
+			<div class="form-box">
+				<h3>결제정보</h3>
+				<div class="form-field row-80-a">
+					<div class="col">결제내역</div>
+					<div class="col">
+						<ul class="payment-description">
+							{? data.order.retype == 2 && data.order.extend != 'Y'}
+							<li>
+								보증금
+								<span class="price">{=number_format(data.order.preaccount)}원</span>
+							</li>
+							{/}
+							<li>차량 대여료
+								<span class="price">{=number_format(data.order.account)}원</span>
+							</li>
+							{? data.car.delavail}
+							<li style="display:none;" id="delCharge">배달료
+								<span class="price">{? data.car.delcharge > 0}{=number_format(data.car.delcharge)}원{:}무료{/}</span>
+							</li>
+							{/}
+							{? data.car.pricetype == 2}
+							<li>보험료 <span class="price">포함</span></li>
+							{: data.order.insuac > 0}
+							<li>보험료
+								<span class="price">{=number_format(data.order.insuac)}원</span>
+							</li>
+							{/}
+							<li class="total">총 금액
+								<span class="price text-point"><span class="numberAnimation numberAnimationAutoStart" id="totalPrice" data-target="{data.order.totalaccount}" data-total-account="{data.order.totalaccount}">0</span>원</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				{? data.order.retype == 2 && (data.order.ddata1 > 1 || data.order.ddata2 > 0)}
+				<div class="form-field row-80-a">
+					<div class="col">결제방법</div>
+					<div class="col">
+						{? data.order.ddata1 > 0}
+						<input type="radio" name="payType" id="payType2" value="2" checked /><label for="payType2"> 정기결제</label>
+						{/}
+						<input type="radio" name="payType" id="payType1" value="1" {? data.order.ddata1 == 0}checked {/}/><label for="payType1"> 전액결제</label><br />
+						<ul class="payment-description" id="paymentDescription">
+							<li>월비용
+								<span class="price"><span class="month text-point">{=number_format(data.order.account1)}원</span> X {data.order.ddata1}</span>
+							</li>
+							<li>잔금
+								<span class="price">{=number_format(data.order.account2)}원</span>
+							</li>
+							<li class="total">합계
+								<span class="price all">{=number_format(data.order.totalaccount)}원</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				{/}
+				{? count(data.coupon) > 0 && !data.promotion}
+				<div class="form-field row-80-a">
+					<div class="col">쿠폰선택</div>
+					<div class="col">
+						<select name="coupon" id="coupon">
+							<option value="0" data-account="0">사용하실 쿠폰을 선택해 주세요.</option>
+							{@ data.coupon}
+							<option value="{.idx}" data-account="{.account}{? .actype == 2}%{/}">{.name} ({? .actype == 1}{=number_format(.account)}원{:}{.account}%{/})</option>
+							{/}
+						</select>
+						{? data.order.retype == 2 && (data.order.ddata1 > 1 || data.order.ddata2 > 0)}
+						<span class="text-muted">* 당월 결제금액에 적용됩니다.</span>
+						{/}
+					</div>
+				</div>
+				{/}
+				{? data.promotion }
+				<div class="form-field row-80-a only-text">
+					<div class="col">{=promotion(data.promotion[0])}</div>
+					<div class="col text-right"><span id="discount" class="numberAnimation" data-target="0">0</span>원</div>
+				</div>
+				{/}
+				<div class="form-field row-80-a only-text">
+					<div class="col">결제금액</div>
+					<div class="col"><span class="text-point"><span class="numberAnimation" id="paymentAmount"
+						data-amount="{? data.order.retype != 2 || (data.order.retype == 2 && data.order.ddata1 == 0)}{data.order.totalaccount}{:}{data.order.account1}{/}"
+						data-month="{data.order.account1}"
+						data-all="{data.order.totalaccount}"
+						data-delcharge="0"
+						{? data.promotion }data-promotion="{data.promotion[1]}"{/}
+						data-target="{? data.order.retype != 2}{data.order.totalaccount}{:}{data.order.account1}{/}">0</span>원</span></div>
+				</div>
+			</div>
+
+			<div class="row-a-60">
+				<div class="col"><input type="checkbox" data-title="취소수수료 규정" name="agreeCancel" id="agreeCancel" value="Y"><label for="agreeCancel"> 취소수수료 규정 동의</label></div>
+				<div class="col text-right"><a href="/partials/terms/cancel.html?20170802033049{? !global.production}_{=time()}{/}" class="more openPopup" data-title="취소수수료 규정" data-width="500">전문보기&gt;</a></div>
+			</div>
+			<div class="row-a-60">
+				<div class="col"><input type="checkbox" data-title="전자금융거래 기본약관" name="agreeTransaction" id="agreeTransaction" value="Y"><label for="agreeTransaction"> 전자금융거래 기본약관 동의</label></div>
+				<div class="col text-right"><a href="/partials/terms/transaction.html" class="more openPopup" data-title="전자금융거래 기본약관" data-width="500">전문보기&gt;</a></div>
+			</div>
+
+			<button type="submit" class="btn btn-primary big" style="margin-top:20px;">결제하기</button>
+
+			<div class="text-muted" style="font-size:11px;letter-spacing:-0.05em;margin-top:10px;">렌트킹은 통신판매중개자이며 통신판매의 당사자가 아니며,<br />상품·거래정보 및 거래에 대하여 책임을 지지 않습니다.</div>
+		</form>
+		<div id="paymentForm"></div>
+	</div>
+	{#footer}
+
+	<script type="text/javascript" charset="EUC-KR" src="https://tx.allatpay.com/common/AllatPayM.js"></script>
+	<script type="text/javascript" src="/js/rentking.reservation.min.js?2018011710{? !global.production}_{=time()}{/}"></script>
+</body>
+</html>

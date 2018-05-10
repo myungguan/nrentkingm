@@ -1,0 +1,129 @@
+@import 'mixins';
+@import 'sprite';
+
+$default-color: #222;
+$primary-color: #103e8a;
+$primary-color-focus: #0d306b;
+$primary-color-disable :rgba(16,62,138,.1);
+$secondary-color: #517dae;
+$secondary-color-focus: #4371a5;
+$error-color: #dd1a1a;
+$error-color-focus: #bc1212;
+$error-color-disable:rgba(221,26,26,.1);
+$muted-color: #777;
+$visited-color: #800080;
+
+$line-color: #ccc;
+
+$table-line-color: $line-color;
+$table-header-bg: #f8f8f8;
+
+$loadingAnimationShowDuration: .25s;
+$loadingAnimationHideDuration: .3s;
+
+$popupOpenDuration: .25s;
+$popupCloseDuration: .3s;
+
+$transitionDuration: .2s;
+
+$material-transition-timing: cubic-bezier(.53,.01,.36,1.63);
+$material-transition: transform .3s $material-transition-timing;
+$material-transition-off: transform .2s ease-out;
+
+$shadow-level1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+$shadow-level2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+$shadow-level3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+$shadow-level4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+$shadow-level5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+$default-shadow: $shadow-level2; //0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+$shadow-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+
+
+//이미지 캐시
+.rentkingImagePreLoader {position:absolute;width:0;height:0;overflow:hidden;bottom:0;right:0;}
+
+.dropdown-menu {border-radius:0;}
+
+body {position:relative;}
+* {outline:none !important;
+	&:hover, &:focus, &:active {outline:none !important;}
+}
+
+//text
+.text-point {font-weight:900 !important;color:$primary-color !important;}
+.text-muted {color:$muted-color !important;}
+.text-error {color:$error-color !important;}
+.text-bold {font-weight:600 !important;}
+
+//background
+.bg-point {background:$primary-color !important;color:#fff !important;}
+.bg-muted {background:$muted-color !important;}
+.bg-error {background:$error-color !important;color:#fff !important;}
+
+//alignment
+.text-right {text-align:right !important;}
+.text-center {text-align:center !important;}
+.text-left {text-align:left !important;}
+
+//util
+@for $i from 0 through 100 {
+	//margin
+	.m-#{$i} {margin:#{$i}px !important;}
+	.mt-#{$i} {margin-top:#{$i}px !important;}
+	.mr-#{$i} {margin-right:#{$i}px !important;}
+	.mb-#{$i} {margin-bottom:#{$i}px !important;}
+	.ml-#{$i} {margin-left:#{$i}px !important;}
+
+	//padding
+	.p-#{$i} {padding:#{$i}px !important;}
+	.pt-#{$i} {padding-top:#{$i}px !important;}
+	.pr-#{$i} {padding-right:#{$i}px !important;}
+	.pb-#{$i} {padding-bottom:#{$i}px !important;}
+	.pl-#{$i} {padding-left:#{$i}px !important;}
+}
+.fleft {float:left !important;}
+.fright {float:right !important;}
+.clear:after {content:'';display:block;float:none;clear:both;}
+
+//button
+.btn-normal, .btn-point, .btn-point2, .btn-error {display:inline-block;min-width:82px;padding:0 10px;border:none;color:#fff !important;text-align:center;height:30px;line-height:28px;outline:none;@include transition(background $transitionDuration, border-color $transitionDuration);
+	&:hover, &:focus, &:active {text-decoration:none;outline:none;}
+	&.big {font-size:18px;min-width:150px;height:50px;padding-left:30px;padding-right:30px;line-height:48px;}
+	&.small {height:25px;line-height:25px;}
+}
+.btn-normal {background:#fff;color:$default-color !important;border:solid 1px #ccc;
+	&:hover, &:focus, &:active {background:$table-header-bg;border:solid 1px $primary-color;}
+}
+.btn-point {background:$primary-color;border:solid 1px $primary-color;
+	&:hover, &:focus, &:active {color:#fff;background:$primary-color-focus;border:solid 1px $primary-color-focus;}
+}
+.btn-point2 {background:$secondary-color;border:solid 1px $secondary-color;
+	&:hover, &:focus, &:active {color:#fff;background:$secondary-color-focus;border:solid 1px $secondary-color-focus;}
+}
+.btn-error {background:$error-color;border:solid 1px $error-color;
+	&:hover, &:focus, &:active {color:#fff;background:$error-color-focus;border:solid 1px $error-color-focus;}
+}
+//파일 input
+.file_input label {cursor:pointer;display:inline-block;min-width:82px;padding:0 10px;height:30px;line-height:30px;background:$primary-color;color:#fff;text-align:center;
+	&:hover, &:focus, &:active {background:$primary-color-focus;}
+	input {position:absolute;width:0;height:0;overflow:hidden;border:none;}
+}
+.button-box {text-align:center;margin-top:60px;}
+.btnArea {margin-top:20px;text-align:right; }
+
+dl {
+	dt {font-weight:bold;}
+	dt + dd {margin-bottom:10px;}
+}
+
+//help tooltip
+.help-tooltip {@include sprite($ico-help);display:inline-block;cursor:pointer;vertical-align:middle;color:transparent;overflow:hidden;text-indent:-3000px;
+	&.white {@include sprite($ico-help-w);}
+
+	@include mq(120dpi, resolution) {
+		@include sprite4x($m-ico-help);
+		&.white {@include sprite4x($m-ico-help-w);}
+	}
+}
+

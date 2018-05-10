@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../css/style.css" rel="stylesheet">
+    <title>결제내역</title>
+</head>
+<body>
+    <header>
+       <div class="util">
+            <ul>
+                <li><a href="../login/index.html">로그인</a></li>
+                <li><a href="../join/index.html">회원가입</a></li>
+                <li><a href="../mypage/myInfo.html">마이페이지</a></li>
+                <li><a href="../utilMenu/notice.html">공지사항</a></li>
+            </ul>
+        </div><!--//util-->
+        <div class="headerInner">
+            <div class="logo">
+                <a href="../index.html"><img src="../img/logo3.png" alt="렌트킹"></a>
+            </div><!--//logo-->
+            <div class="gnb">
+                <ul>
+                    <li><a href="../reservation/reservation.html"></a></li>
+                    <li><a href="../gnbMenu/estimate.html"></a></li>
+                    <li><a href="../gnbMenu/service.html"></a></li>
+                    <li><a href="../gnbMenu/English.html"></a></li>
+                </ul>
+            </div><!--//gnb-->
+        </div><!--//headerInner-->
+    </header>
+    <div class="ConWrap muF">
+        <div class="Contents">
+            <div class="lnb">
+                <table>
+                  <tr>
+                    <td>
+                       <a href="../mypage/myInfo.html">
+                           내정보<img src="../img/subArrow.png" alt="메뉴이동">
+                       </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tabOn">
+                       <a href="../breakdown/Payment1.html">
+                           결제내역<img src="../img/subArrow.png" alt="메뉴이동">
+                       </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                       <a href="../shopBag/index.html">
+                           장바구니<img src="../img/subArrow.png" alt="메뉴이동">
+                       </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                       <a href="../breakdown/deposit.html">
+                           입금내역<img src="../img/subArrow.png" alt="메뉴이동">
+                       </a>
+                    </td>
+                  </tr>
+                </table>
+                <div class="subB">
+                    <a href="../reservation/reservation.html"><img src="../img/subBnner.jpg"></a>
+                </div><!--//subB-->
+            </div>
+            <div class="Content">
+               <div class="Coninner">
+                    <div class="conBanner">
+                       <div class="txt">
+                           <h1>결제내역</h1>
+                            <strong>결제하신 내역들을 확인 할 수 있습니다.</strong>
+                            <p>렌트킹에서 결제하신 카드의 매출전표, 기간연장등을 하실 수 있습니다.</p>
+                       </div><!--//txt-->
+                        <span>
+                            <img src="../img/paymentTopicon.jpg" alt="결제내역Icon">
+                        </span>
+                    </div><!--//conBanner-->
+                    <!--<div class="quickMenu">  
+                        <ul id="right_section">
+                            <li><a href="../faq/index.html"><img alt="자주묻는질문" src="../img/quick1.png"><p>자주묻는질문</p></a></li>
+                            <li><a href="../event/index.html"><img alt="이벤트" src="../img/quick2.png"><p>이벤트</p></a></li>
+                            <li><a href="../couponBook/index.html"><img alt="쿠폰북" src="../img/quick3.png"><p>쿠폰북</p></a></li>
+                            <li><a href="../Q&A/index.html"><img alt="1:1문의" src="../img/quick4.png"><p>Q&A</p></a></li>
+                            <li><a href="../point/index.html"><img alt="포인트구매" src="../img/quick5.png"><p>포인트구매</p></a></li>
+                            <li class="quickMoveTop"><img alt="" src="../img/quick6.png" data-pin-nopin="true"></li>
+                        </ul>
+                    </div>--><!--//quickMenu-->
+                    <div class="payDBody">
+                        <div class="payDRv">
+                            <ul>
+                                <li>
+                                    <table>
+                                       <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th>구매정보</th>
+                                            <th>렌탈가격/일</th>
+                                            <th>대여일<br>반납일</th>
+                                            <th>결제금액</th>
+                                        </tr>
+                                    </table>
+                                </li>
+                                <li class="lRed">예약</li>
+                                <li class="payDCarI">
+                                    <img src="../img/carImg1.png" alt="차량사진">
+                                </li>
+                                <li>
+                                    <dl class="infoTop sD1">
+                                        <dt>K5(LPG)</dt>
+                                        <dd>옵션 : 영문네비게이션(5000원)</dd>
+                                        <dd>일반자차 : 10,000원</dd>
+                                        <dd>(고객부담금 : 1,000,000원)</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="infoTop pT sD1 tC">
+                                        <dd>1,000,000원/일</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="infoTop pT sD1">
+                                        <dd>2016.12.10  12:00</dd>
+                                        <dd>2016.01.10  17:00</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="infoTop pT sD1">
+                                        <dt>결제일</dt>
+                                        <dd>2016.12.09</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="pB Etr">
+                                        <dd>배달위치 : 서초역 2번출구</dd>
+                                        <dd>반납위치 : 서초역 2번출구</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="pB">
+                                        <dd>총 75,000원</dd>
+                                    </dl>
+                                </li>
+                                <li class="opt">
+                                    -
+                                </li>
+                                <li>
+                                    <dl class="pB">
+                                        <dd>쿠폰이름쿠폰이름쿠폰이름</dd>
+                                    </dl>
+                                </li>
+                                <li class="opt">
+                                    -
+                                </li>
+                                <li>
+                                    <dl class="pB">
+                                        <dd>1,000,000 P</dd>
+                                    </dl>
+                                </li>
+                                <li class="opt">
+                                    =
+                                </li>
+                                <li>
+                                    <dl class="pB">
+                                        <dd>결제 금액 1,000,000원</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <div class="sli cc sd1">
+                               <div class="driv">
+                                    <h2>운전자정보</h2>
+                                    <table class="payDInfo">
+                                       <tr class="tth">
+                                            <th colspan="2">제1운전자</th>
+                                            <th>제2운전자</th>
+                                       </tr>
+                                        <tr>
+                                            <th  class="th">아이디</th>
+                                            <td>이름(생년월일)</td>
+                                            <td class="twC"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th">이름(생년월일)</th>
+                                            <td>제1운전자</td>
+                                            <td class="twC"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th">휴대폰번호</th>
+                                            <td>없음 / 홍길동 / 홍길동(hong@naver.com)</td>
+                                            <td class="twC"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th">일반전화</th>
+                                            <td>최종 결제금액</td>
+                                            <td class="twC"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th">주소</th>
+                                            <td>최종 결제금액</td>
+                                            <td class="twC">
+                                            등록되지 않은 분이 운전을 하다가 사고가 나면 보험 혜택을 받지 못합니다.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th">소속법인</th>
+                                            <td>최종 결제금액</td>
+                                            <td class="twC">
+                                                <span class="drivBtn" onclick="dvShow_layer();">운전자검색</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th">면허종류</th>
+                                            <td>최종 결제금액</td>
+                                            <td class="twC"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th">면허지역</th>
+                                            <td>최종 결제금액</td>
+                                            <td class="twC"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th">갱신기간</th>
+                                            <td>최종 결제금액</td>
+                                            <td class="twC"></td>
+                                        </tr>
+                                        <tr class="bB">
+                                            <th class="th">발급일</th>
+                                            <td>최종 결제금액</td>
+                                            <td class="twC"></td>
+                                        </tr>
+                                    </table>
+                                </div><!--//driv-->
+                                <div class="payDI">
+                                    <h2>결제정보</h2>
+                                    <table class="payDInfo">
+                                        <tr class="bB">
+                                            <th class="th">총 렌트 가격</th>
+                                            <td class="th2">결제금액</td>
+                                            <td>
+                                                60,000원 (보증금 : 1,000,000원) 보증금은 렌트업체에 직접 입금하셔야 합니다.
+                                            </td>
+                                        </tr>
+                                        <tr class="bB">
+                                            <th rowspan="5" class="th">결제정보</th>
+                                            <td class="th2">최종 결제금액</td>
+                                            <td>10,000 원 - 10,000 - 10,000 = 100,000원</td>
+                                        </tr>
+                                    </table>
+                                </div><!--//payI-->
+                            </div><!--//sli-->
+                            <span class="payDBbtn">매출전표</span>
+                            <span class="payDBbtn etsnP" onclick="etsnPShow_layer();">기간연장</span>
+                            <span class="payDRbtn cl" onclick="pdRshow_layer();">예약취소</span>
+                        </div><!--//payRv-->
+                        <div class="blueDRv">
+                            <ul>
+                                <li>
+                                    <table>
+                                       <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th>구매정보</th>
+                                            <th>렌탈가격/일</th>
+                                            <th>대여일<br>반납일</th>
+                                            <th>결제금액</th>
+                                        </tr>
+                                    </table>
+                                </li>
+                                <li class="lblue">대여중</li>
+                                <li class="payDCarI">
+                                    <img src="../img/carImg1.png" alt="차량사진">
+                                </li>
+                                <li>
+                                    <dl class="infoTop sD2">
+                                        <dt>K5(LPG)</dt>
+                                        <dd>옵션 : 영문네비게이션(5000원)</dd>
+                                        <dd>일반자차 : 10,000원</dd>
+                                        <dd>(면책금 : 1,000,000원)</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="infoTop pT sD2 tC">
+                                        <dd>1,000,000원/일</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="infoTop pT sD2">
+                                        <dd>2016.12.10  12:00</dd>
+                                        <dd>2016.01.10  17:00</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="infoTop pT sD2">
+                                        <dt>결제일</dt>
+                                        <dd>2016.12.09</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="pB Etr">
+                                        <dd>배달위치 : 서초역 2번출구</dd>
+                                        <dd>반납위치 : 서초역 2번출구</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="pB">
+                                        <dd>총 75,000원</dd>
+                                    </dl>
+                                </li>
+                                <li class="opt">
+                                    -
+                                </li>
+                                <li>
+                                    <dl class="pB">
+                                        <dd>쿠폰이름쿠폰이름쿠폰이름</dd>
+                                    </dl>
+                                </li>
+                                <li class="opt">
+                                    -
+                                </li>
+                                <li>
+                                    <dl class="pB">
+                                        <dd>1,000,000 P</dd>
+                                    </dl>
+                                </li>
+                                <li class="opt">
+                                    =
+                                </li>
+                                <li>
+                                    <dl class="pB">
+                                        <dd>결제 금액 1,000,000원</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <div class="sli cc sd2">
+                               <div class="driv">
+                                    <h2>운전자정보</h2>
+                                    <table class="payDInfo">
+                                       <tr class="tth">
+                                            <th colspan="2">제1운전자</th>
+                                            <th>제2운전자</th>
+                                       </tr>
+                                        <tr>
+                                            <th  class="th">아이디</th>
+                                            <td>이름(생년월일)</td>
+                                            <td class="twC"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th">이름(생년월일)</th>
+                                            <td>제1운전자</td>
+                                            <td class="twC"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th">휴대폰번호</th>
+                                            <td>없음 / 홍길동 / 홍길동(hong@naver.com)</td>
+                                            <td class="twC"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th">일반전화</th>
+                                            <td>최종 결제금액</td>
+                                            <td class="twC"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th">주소</th>
+                                            <td>최종 결제금액</td>
+                                            <td class="twC">
+                                            등록되지 않은 분이 운전을 하다가 사고가 나면 보험 혜택을 받지 못합니다.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th">소속법인</th>
+                                            <td>최종 결제금액</td>
+                                            <td class="twC">
+                                                <span class="drivBtn" onclick="dv2Show_layer();">운전자검색</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th">면허종류</th>
+                                            <td>최종 결제금액</td>
+                                            <td class="twC"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th">면허지역</th>
+                                            <td>최종 결제금액</td>
+                                            <td class="twC"></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="th">갱신기간</th>
+                                            <td>최종 결제금액</td>
+                                            <td class="twC"></td>
+                                        </tr>
+                                        <tr class="bB">
+                                            <th class="th">발급일</th>
+                                            <td>최종 결제금액</td>
+                                            <td class="twC"></td>
+                                        </tr>
+                                    </table>
+                                </div><!--//driv-->
+                                <div class="payDI">
+                                    <h2>결제정보</h2>
+                                    <table class="payDInfo">
+                                        <tr class="bB">
+                                            <th class="th">총 렌트 가격</th>
+                                            <td class="th2">결제금액</td>
+                                            <td>
+                                                60,000원 (보증금 : 1,000,000원) 보증금은 렌트업체에 직접 입금하셔야 합니다.
+                                            </td>
+                                        </tr>
+                                        <tr class="bB">
+                                            <th rowspan="5" class="th">결제정보</th>
+                                            <td class="th2">최종 결제금액</td>
+                                            <td>10,000 원 - 10,000 - 10,000 = 100,000원</td>
+                                        </tr>
+                                    </table>
+                                </div><!--//payI-->
+                            </div><!--//sli-->
+                            <span class="payDBbtn">매출전표</span>
+                            <span class="payDBbtn etsnP" onclick="etsn2PShow_layer();">기간연장</span>
+                        </div><!--//blueRv-->
+                        <div class="grayDRv">
+                            <ul>
+                                <li>
+                                    <table>
+                                       <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th>구매정보</th>
+                                            <th>렌탈가격/일</th>
+                                            <th>대여일<br>반납일</th>
+                                            <th>결제금액</th>
+                                        </tr>
+                                    </table>
+                                </li>
+                                <li class="lgray">반납</li>
+                                <li class="payDCarI">
+                                    <img src="../img/carImg1.png" alt="차량사진">
+                                </li>
+                                <li>
+                                    <dl class="infoTop sD3">
+                                        <dt>K5(LPG)</dt>
+                                        <dd>옵션 : 영문네비게이션(5000원)</dd>
+                                        <dd>일반자차 : 10,000원</dd>
+                                        <dd>(면책금 : 1,000,000원)</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="infoTop pT sD3 tC">
+                                        <dd>1,000,000원/일</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="infoTop pT sD3">
+                                        <dd>2016.12.10  12:00</dd>
+                                        <dd>2016.01.10  17:00</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="infoTop pT sD3">
+                                        <dt>결제일</dt>
+                                        <dd>2016.12.09</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="pB Etr">
+                                        <dd>배달위치 : 서초역 2번출구</dd>
+                                        <dd>반납위치 : 서초역 2번출구</dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="pB">
+                                        <dd>총 75,000원</dd>
+                                    </dl>
+                                </li>
+                                <li class="opt">
+                                    -
+                                </li>
+                                <li>
+                                    <dl class="pB">
+                                        <dd>쿠폰이름쿠폰이름쿠폰이름</dd>
+                                    </dl>
+                                </li>
+                                <li class="opt">
+                                    -
+                                </li>
+                                <li>
+                                    <dl class="pB">
+                                        <dd>1,000,000 P</dd>
+                                    </dl>
+                                </li>
+                                <li class="opt">
+                                    =
+                                </li>
+                                <li>
+                                    <dl class="pB">
+                                        <dd>결제 금액 1,000,000원</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <div class="sli cc3 sd3">
+                                <h2>결제정보</h2>
+                                <table class="payDInfo">
+                                    <tr class="bB">
+                                        <th class="th">총 렌트 가격</th>
+                                        <td class="th2">결제금액</td>
+                                        <td>
+                                            60,000원 (보증금 : 1,000,000원) 보증금은 렌트업체에 직접 입금하셔야 합니다.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                            <th rowspan="2" class="th">고객정보</th>
+                                            <td class="th2">제1운전자</td>
+                                            <td>홍길동(hong@naver.com)</td>
+                                        </tr>
+                                        <tr class="bB">
+                                            <td class="th2">제2운전자</td>
+                                            <td>없음 / 홍길동 / 홍길동(hong@naver.com)</td>
+                                        </tr>
+                                    <tr class="bB">
+                                        <th rowspan="5" class="th">결제정보</th>
+                                        <td class="th2">최종 결제금액</td>
+                                        <td>10,000 원 - 10,000 - 10,000 = 100,000원</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <span class="payDBbtn">매출전표</span>
+                        </div><!--//grayRv-->
+                    </div><!--//payBody-->
+                </div><!--//payConinner-->
+            </div><!--//Content-->
+        </div><!--//Contents-->
+    </div><!--//ConWrap-->
+    <footer>
+       <div class="footertop">
+           <ul>
+               <li><a href="../footMenu/office.html">회사소개</a></li>
+               <li><a href="../footMenu/recruitment.html">인재채용</a></li>
+               <li><a href="../footMenu/inquiry.html">입점/제휴문의</a></li>
+               <li><a href="../footMenu/agreement_of_utilization.html">이용약관</a></li>
+               <li><a href="../footMenu/personal_information.html">개인정보취급방침</a></li>
+               <li><a href="../footMenu/customer.html">고객의소리</a></li>
+           </ul>
+        </div><!--//footertop-->
+        <div class="footerInner">
+           <div class="footCont">
+               <ul class="txt">
+                    <li class="footerLogo">
+                        <img src="../img/footerLogo.png" alt="렌트킹로고">
+                    </li>
+                    <li>
+                       <dl>
+                           <dd>주식회사 렌트킹, 대표이사 : 윤영진</dd>
+                           <dd>주소 : 서울특별시 서대문구 연세로 50<br>(신촌동, 연세대학교 공학원)</dd>
+                           <dd class="busLie cp"><a href="javascript:void(0);"  onclick='function();'>사업자등록번호 : 813-81-00123</a></dd>
+                           <dd class="mod cp"><a href="javascript:void(0);"  onclick='function();'>통신판매업신고 : 제 2016-서울서대문 - 0597호</a></dd>
+                           <dd class="ventu cp"><a href="javascript:void(0);"  onclick='function();'>벤처기업인증 : 제 2016113295 호</a></dd>
+                       </dl>
+                    </li>
+                    <li>
+                        <strong>고객센터<br>
+                        1661-3313
+                        </strong><br>
+                        <span>Fax : 0303-0955-3313<br>
+                        이메일 : info@rentking.co.kr<br>
+                        개인정보관리책임자 : 신윤호
+                        </span>
+                    </li>
+                    <li>
+
+                    </li>
+                </ul>
+                <div class="footerSns">
+                    <ul>
+                        <li><a href="#"><img src="../img/sns1.png" alt="kakaokalk"></a></li>
+                        <li><a href="#"><img src="../img/sns2.png" alt="facebook"></a></li>
+                        <li><a href="#"><img src="../img/sns3.png" alt="messenger"></a></li>
+                        <li><a href="#"><img src="../img/sns4.png" alt="line"></a></li>
+                    </ul>
+                </div>
+                <div class="lastTxt">
+                    <small>Copyright © Rentking Co. All rights reserved.</small>
+                </div>
+           </div><!--//footCont-->
+        </div><!--//footerInner-->
+        <div class="fI">
+            <div class="busLieIMG"><img src="../img/business_license.jpg" alt="사업자등록증"><span><img src="../img/close.png" alt="X"></span></div>
+            <div class="modIMG"><img src="../img/mail_order.jpg" alt="통신판매신고증"><span><img src="../img/close.png" alt="X"></span></div>
+            <div class="ventuIMG"><img src="../img/venture.jpg" alt="벤처기업확인서"><span><img src="../img/close.png" alt="X"></span></div>
+        </div>
+    </footer>
+    
+    <!--예약취소팝업-->
+    <div class="rvPop">
+       <p>예약이 취소됩니다.</p>
+        <div class="popBtn">
+            <span class="popbrd">취소</span>
+            <span class="popBlue">등록</span>
+        </div>
+    </div>
+    <!--//예약취소팝업-->
+    
+    <!--운전자검색팝업-->
+    <div class="drivPop">
+       <div class="dvsch">
+           <input type="text" size="23" style="border: 1px solid #103e8a;"><span class="popsch">검색</span>
+       </div>
+        <ul>
+            <li><a href="">렌트킹(rentking@aaaaa.bbb)</a></li>
+            <li><a href="">렌트킹(rentking@aaaaa.bbb)</a></li>
+            <li><a href="">렌트킹(rentking@aaaaa.bbb)</a></li>
+        </ul>
+        <div class="popBtn">
+            <span class="popbrd">취소</span>
+            <span class="popBlue">등록</span>
+        </div>
+    </div>
+    <!--//운전자검색팝업-->
+    
+    <!--기간연장팝업-->
+    <div class="etsnPop">
+       <span class="close">
+           <img src="../img/button_close_gray.png" alt="X">
+       </span>
+        <h2>기간연장팝업</h2>
+        <h3>연장반납일시</h3>
+        <img src="../img/calendar2.png" alt="카렌더">
+        <table>
+            <tr>
+                <th>기존 반납일시</th>
+                <td>2016.12.01 10:00</td>
+            </tr>
+            <tr>
+                <th>연장 반납일시</th>
+                <td>2016.12.01 10:00</td>
+            </tr>
+            <tr class="etsnPr">
+                <th rowspan="2">2일 8시간 연장</th>
+                <td>연장 결제금액</td>
+            </tr>
+            <tr class="etsnPr">
+                <td>1,000,000원</td>
+            </tr>
+        </table>
+        <div class="popBtn">
+            <span class="popBlue">결제하기</span>
+        </div>
+    </div>
+    <!--//기간연장팝업-->
+    
+    
+    
+    
+    
+    <script src="../js/jquery-3.1.0.js"></script>
+    
+    <!--달력팝업 -->
+    <script>
+       /*$(function(){
+           $('.large').click(function(event){
+            event.stopPropagation();
+            $('.largePop').toggle();
+            });
+
+            $(document).click(function(){
+                $('.largePop').hide();
+            });
+       });
+        */
+        $(function(){
+            $(".large").click(function(){
+                $(".largePop").show();
+            });
+            $(".cancelBtn").click(function(){
+                $(".largePop").hide();
+            });
+        });
+    </script>
+    <!--//달력팝업 -->
+    
+    <!--퀵메뉴-->
+    <script>
+        var currentPosition = parseInt($(".quickMenu").css("top"));  
+    $(window).scroll(function() {  
+            var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
+            var quickMenuHeight = (470);
+            var contentWrHeight = $(".ConWrap").height();
+            if(position>=contentWrHeight-quickMenuHeight-100){
+            	return;
+            }
+            $(".quickMenu").stop().animate({"top":position+currentPosition+"px"},1000);  
+    });  
+        $(".quickMoveTop").on("click", function(){
+    	$(window).scrollTop(0);
+    });
+    </script>
+    <!--//퀵메뉴-->
+    
+    
+    <!--서브메뉴-->
+    <script>
+        $(function(){
+            $(".lnb table td").on("click",function(){
+                $(this).addClass("tabOn");
+                $(".lnb table td").removeClass("tabOn");
+            });
+            $(".lnb table td").on("click",function(){
+                $(this).addClass("tabOn");
+            });
+        });
+
+    </script>
+    <!--//서브메뉴-->
+    
+    
+    <!--결제정보 슬라이드-->
+    <script>
+        $(function(){
+            $(".payDRv ul li").click(function(){
+                $(".sd1").slideToggle();
+            });
+            $(".blueDRv ul li").click(function(){
+                $(".sd2").slideToggle();
+            });
+            $(".grayDRv ul li").click(function(){
+                $(".sd3").slideToggle();
+            });
+            
+        });
+    </script>
+
+     <!--예약취소팝업-->
+    <script>
+        $(function(){
+            $(".cl").click(function(){
+                $(".rvPop").show();
+            });
+            $(".rvPop .popbrd").click(function(){
+                $(".rvPop").hide();
+            });
+        });
+    </script>
+    
+    <script>
+    function pdRshow_layer() {
+    var lay_pop = $('.rvPop');
+    var pos = $('.cl').position();    // 버튼의 위치에 레이어를 띄우고자 할 경우, 위치 정보 가져옴
+    lay_pop.css('top', (pos.top-250)+'px');    // 레이어 위치 지정
+    lay_pop.css('left', (pos.left-100)+'px');
+    lay_pop.show();
+    lay_pop.focus();
+    }
+    </script>
+    <!--//예약취소팝업-->
+    
+    
+    <!--운전자검색팝업-->
+     <script>
+      $( function() {
+        $( ".sd1>.driv .drivBtn" ).click(function(){
+            $(".drivPop").slideDown();
+        });
+        $( ".popbrd" ).click(function(){
+            $(".drivPop").slideUp();
+        });
+      });
+      </script>
+      
+    <script>
+    function dvShow_layer() {
+    var lay_pop = $('.drivPop');
+    var pos = $('.sd1>.driv .drivBtn').position();    // 버튼의 위치에 레이어를 띄우고자 할 경우, 위치 정보 가져옴
+    lay_pop.css('top', (pos.top+30)+'px');    // 레이어 위치 지정
+    lay_pop.css('left', (pos.left-15)+'px');
+    lay_pop.slideDown();
+    lay_pop.focus();
+    }
+    </script>
+    
+     <script>
+      $( function() {
+        $( ".sd2>.driv .drivBtn" ).click(function(){
+            $(".drivPop").slideDown();
+        });
+        $( ".popbrd" ).click(function(){
+            $(".drivPop").slideUp();
+        });
+      });
+      </script>
+      
+    <script>
+    function dv2Show_layer() {
+    var lay_pop = $('.drivPop');
+    var pos = $('.sd2>.driv .drivBtn').position();    // 버튼의 위치에 레이어를 띄우고자 할 경우, 위치 정보 가져옴
+    lay_pop.css('top', (pos.top+30)+'px');    // 레이어 위치 지정
+    lay_pop.css('left', (pos.left-15)+'px');
+    lay_pop.slideDown();
+    lay_pop.focus();
+    }
+    </script>
+    
+     <!--//운전자검색팝업-->
+    
+    <!--기간연장팝업-->
+    <script>
+        $(function(){
+            $(".payDRv>.etsnP").click(function(){
+                $(".etsnPop").show();
+            });
+            $(".etsnPop .close").click(function(){
+                $(".etsnPop").hide();
+            });
+        });
+        
+        function etsnPShow_layer() {
+        var lay_pop = $('.etsnPop');
+        var pos = $('.payDRv>.etsnP').position();    // 버튼의 위치에 레이어를 띄우고자 할 경우, 위치 정보 가져옴
+        lay_pop.css('top', (pos.top-430)+'px');    // 레이어 위치 지정
+        lay_pop.css('left', (pos.left-400)+'px');
+        lay_pop.show();
+        lay_pop.focus();
+        };
+    </script>
+    <script>
+        $(function(){
+            $(".blueDRv>.etsnP").click(function(){
+                $(".etsnPop").show();
+            });
+            $(".etsnPop .close").click(function(){
+                $(".etsnPop").hide();
+            });
+        });
+        
+        function etsn2PShow_layer() {
+        var lay_pop = $('.etsnPop');
+        var pos = $('.blueDRv>.etsnP').position();    // 버튼의 위치에 레이어를 띄우고자 할 경우, 위치 정보 가져옴
+        lay_pop.css('top', (pos.top-450)+'px');    // 레이어 위치 지정
+        lay_pop.css('left', (pos.left-400)+'px');
+        lay_pop.show();
+        lay_pop.focus();
+        };
+    </script>
+    <!--//기간연장팝업-->
+    <!--footer IMG팝업-->
+    <script>
+        $(function(){
+            $(".busLie").click(function(){
+                $(".busLieIMG").show();
+                $(".fI>div>span>img").click(function(){
+                    $(".fI>div").hide();
+                });
+            });
+            $(".mod").click(function(){
+                $(".modIMG").show();
+                $(".fI>div>span>img").click(function(){
+                    $(".fI>div").hide();
+                });
+            });
+            $(".ventu").click(function(){
+                $(".ventuIMG").show();
+                $(".fI>div>span>img").click(function(){
+                    $(".fI>div").hide();
+                });
+            });
+        });
+    </script>
+    <!--//footer IMG팝업-->
+    
+    
+</body>
+</html>

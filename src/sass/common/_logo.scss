@@ -1,0 +1,14 @@
+.logo {
+	.logo-ci {position:absolute;left:0;top:0;height:100%;}
+	.logo-text1 {position:absolute;right:0;top:23.074%;height:53.703%;opacity:0;@include transform(scale(0));@include transform-origin(50% -50%);}
+	.logo-text2 {position:absolute;right:0;top:22.222%;height:57.407%;opacity:1;@include transform(scale(1));@include transform-origin(50% 150%);}
+
+	&.init {
+		.logo-text1 {opacity:1;@include transform(scale(1));@include transition(opacity .2s, $material-transition);}
+		.logo-text2 {opacity:0;@include transform(scale(0));@include transition(opacity .2s, $material-transition-off);}
+	}
+	&:hover, &:focus {
+		.logo-text1 {opacity:0 !important;@include transform(scale(0));@include transition(opacity .2s, $material-transition-off);}
+		.logo-text2 {opacity:1 !important;@include transform(scale(1));@include transition(opacity .2s, $material-transition);}
+	}
+}

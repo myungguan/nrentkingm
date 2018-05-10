@@ -1,0 +1,12 @@
+.errorpage {position:relative;box-sizing:border-box;
+	.errormsg {font-size:16px;height:373px;text-align:center;padding:148px 10px 0;position:absolute;box-sizing:border-box;top:170px;width:100%;
+		.des1, .des2 {display:block;color:#222;letter-spacing:-0.06em;}
+		.des1 {font-size:26px;}
+		.des2 {font-size:16px;margin-top:25px;margin-bottom:52px;}
+		a {color:#fff;font-size:18px;background:$primary-color;display:inline-block;text-decoration:none;padding:10px 27px;}
+		&:before {content:'';@include sprite($ico-error);position:absolute;left:50%;top:0;margin-left:-50px;}
+		@media screen and (max-width: 767px) {top:66px;
+			&:before{@include sprite4x($m-ico-error);}
+		}
+	}
+}

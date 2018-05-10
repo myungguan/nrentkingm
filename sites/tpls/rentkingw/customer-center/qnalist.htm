@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{#head}
+</head>
+<body>
+	{#header}
+	<div id="contentWrap">
+		{#side_customer_center}
+		<div id="content">
+			<div class="conBanner">
+				<div class="txt">
+					<h2>Q&amp;A</h2>
+					<strong>무엇이든 물어보세요!</strong>
+					<p>자주 묻는 질문에 없는 궁금증은 Q&amp;A를 통해 물어봐주세요!</p>
+				</div><!--//txt-->
+				<span>
+					<img alt="Icon" src="/imgs/rentking.w/clauseTopIcon.jpg">
+				</span>
+			</div><!--//conBanner-->
+
+			<table class="list">
+				<colgroup>
+					<col width="80px;">
+					<col width="*">
+					<col width="120px;">
+				</colgroup>
+				<thead>
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>날짜</th>
+				</tr>
+				</thead>
+				<tbody>
+				{@ qnalist}
+				<tr>
+					<td>{.no}</td>
+					<td class="etit" style='text-align:left;'>
+						<a href="qnar.php?idx={qnalist.index}">{? .dt_answer }[답변완료]{:}[답변대기]{/} {.subject}</a>
+					</td>
+					<td>{=substr(.dt_create,0,10)}</td>
+				</tr>
+				{/}
+				</tbody>
+			</table><!--//boxTop-->
+			<div class="btnArea">
+				<a href="qnaw.php" class="btn-point">질문작성</a>
+			</div><!--//btnWrap-->
+			<!-- paging -->
+			<div class="paging">
+				<!--{? paging.total_record!=0 }-->
+				<a href="{paging.first}" class="prev"><img src="/imgs/rentking.w/btn_prev01.gif"></a>
+				<!--{/}-->
+				<!--{@ loop_paging}-->
+				<!--{? loop_paging.page==paging.nowpage }-->
+				<a href="javascript:return false;" class="on">{loop_paging.page}</a>
+				<!--{:}-->
+				<a href="{loop_paging.links}">{loop_paging.page}</a>
+				<!--{/}-->
+				<!--{/}-->
+				<!--{? paging.total_record!=0 }-->
+				<a href="{paging.last}" class="next"><img src="/imgs/rentking.w/btn_next01.gif"></a>
+				<!--{/}-->
+
+
+			</div>
+			<!-- //paging -->
+		</div>
+	</div>
+	{#footer}
+</body>
+</html>

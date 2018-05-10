@@ -1,0 +1,52 @@
+{
+	"name": "rentking",
+	"js": {
+		"watch": ["src/js/**/*.js"],
+		"src": [
+			{
+				"uglify": true,
+				"item": [
+					"src/js/**/*.js"
+				]
+			}
+		],
+		"dest": "js"
+	},
+	"sass": {
+		"watch": ["src/sass/**/*.scss"],
+		"src": [
+			{
+				"name": "rentking.w",
+				"item": "src/sass/rentking.w.scss"
+			},
+			{
+				"name": "rentking.m",
+				"item": "src/sass/rentking.m.scss"
+			},
+			{
+				"name": "rentking.admin",
+				"item": "src/sass/rentking.admin.scss"
+			}
+		],
+		"dest": "css"
+	},
+	"sprite": {
+		"date": 20170929035949,
+		"watch": ["src/sprite/**/*.{jpg,jpeg,png,gif}"],
+		"src": [
+			{
+				"item": ["src/sprite/**/*.{jpg,jpeg,png,gif}"],
+				"option": {
+					"imgName": "sprite.png",
+					"cssName": "_sprite.scss",
+					"imgPath": "../imgs/sprite.png",
+					"padding": 20
+				},
+				"dest": {
+					"img": "imgs",
+					"css": "src/sass/common"
+				}
+			}
+		]
+	}
+}

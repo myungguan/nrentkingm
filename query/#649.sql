@@ -1,0 +1,1 @@
+UPDATE site_member set id = 'outmember' WHERE name = '개발아이디'

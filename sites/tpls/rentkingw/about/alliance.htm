@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{#head}
+</head>
+<body>
+	{#header}
+	<div id="contentWrap">
+		{#side_about}
+		<div id="content">
+			<div class="conBanner">
+				<div class="txt">
+					<h2>입점/제휴문의</h2>
+					<strong>We go together!</strong>
+					<p>렌트킹과 함께 성장하실 렌트카 업체 사장님들을 모십니다.</p>
+				</div><!--//txt-->
+				<span><img src="/imgs/rentking.w/faqTopicon.jpg" alt="Icon"></span>
+			</div><!--//conBanner-->
+			<form name="regiform" id="regiform" action="/about/alliance.php" method="post">
+				<input type='hidden' name='mode' value='w'>
+				<table class="list">
+					<colgroup>
+						<col width="120px">
+						<col>
+					</colgroup>
+					<tbody>
+					<tr>
+						<th>법인명(단체명)</th>
+						<td><input type="text" name="company" valch="yes" msg="법인명(단체명)" maxlength="50"></td>
+					</tr>
+					<tr>
+						<th>지역</th>
+						<td>
+							<select name="location">
+								{@locations}
+								<option value="{.ac_name}">{.ac_name}</option>
+								{/}
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>담당자</th>
+						<td><input type="text" name="manager" valch="yes" msg="담당자" maxlength="50"></td>
+					</tr>
+					<tr>
+						<th>연락처</th>
+						<td><input type="text" name="contact" valch="yes" msg="연락처" maxlength="50"></td>
+					</tr>
+					<tr>
+						<th>이메일</th>
+						<td><input type="text" name="email" valch="yes" msg="이메일" maxlength="50"></td>
+					</tr>
+					<tr>
+						<th>제휴내용</th>
+						<td><textarea name="content" valch="yes" msg="제휴내용" style="width:100%;" rows="10"></textarea></td>
+					</tr>
+					</tbody>
+				</table>
+				<div class="button-box">
+					<button type="submit" class="btn-point big">문의하기</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	{#footer}
+
+	<script type="text/javascript">
+		$(document)
+			.on('submit', '#regiform', function(e) {
+				var re = check_form('regiform');
+				if (re) {
+					return confirm('등록 하시겠습니까?');
+				}
+				else {
+					return false;
+				}
+			});
+	</script>
+</body>
+</html>

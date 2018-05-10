@@ -1,0 +1,114 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+	<title>New All@Pay 카드인증해지</title>
+	<style><!--
+	body { font-family:굴림체; font-size:12px; }
+
+	td { font-family:굴림체; font-size:12px; height:22px; }
+
+	.title { font-family:굴림체; font-size:16px; }
+
+	.head { background-color:#EFF7FC; text-align:center; }
+
+	.body { background-color:#FFFFFF; padding:0 10 0 10 }
+
+	.nbody { background-color:#FFFFCC; padding:0 10 0 10 }
+
+	/
+	/
+	--></style>
+	<script language=JavaScript charset='euc-kr' src="http://tx.allatpay.com/common/NonAllatPayREPlus.js"></script>
+
+	<script language=Javascript>
+		function ftn_fix_cancel(dfm) {
+			Allat_Plus_Fix_Cancel(dfm, "0", "0");
+		}
+		function result_submit(result_cd, result_msg, enc_data) {
+			Allat_Plus_Close();
+			if (result_cd != '0000') {
+				alert(result_cd + " : " + result_msg);
+			} else {
+				fm.allat_enc_data.value = enc_data;
+				fm.action = "allat_fix_cancel.jsp";
+				fm.method = "post";
+				fm.target = "_self";
+				fm.submit();
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+	<p align=center class=title><u>New All@Pay™ 정기과금 카드해지 예제페이지</u></p>
+
+	<!------------- HTML : Form 설정 --------------//-->
+	<form name="fm" method=POST action="allat_fix_cancel.jsp"> <!-- 인증해지요청 및 결과수신페이지 지정 //-->
+		<table border=0 cellpadding=0 cellspacing=1 bgcolor="#606060" width=90% align=center>
+			<font color=red>◆ 인증해지 요청 정보 : <b>필수 정보</b></font>
+			<tr>
+				<td width=180 class="head">상점ID</td>
+				<td width=200 class="body"><input type=text name="allat_shop_id" value="" size=26 maxlength=20></td>
+				<td class="body">allat_shop_id</td>
+			</tr>
+			<tr>
+				<td class="head">카드인증 Key</td>
+				<td class="body"><input type=text name="allat_fix_key" value="" size=26 maxlength=24></td>
+				<td class="body">allat_fix_key : 해지할 카드인증키</td>
+			</tr>
+			<tr>
+				<td class="head">Receive URL<br>(shop_receive_url)</td>
+				<td class="body"><input type="text" name="shop_receive_url" value="" size="19"></td>
+				<td class="body">shop_receive_url</td>
+			</tr>
+			<tr>
+				<td class="head">주문정보암호화필드</td>
+				<td class="body">allat_enc_data</td>
+				<td class="body"><font color=red>&ltinput type=hidden name=allat_enc_data value=''&gt</font>
+					<input type=hidden name=allat_enc_data value=''>
+				</td>
+			</tr>
+			<tr>
+				<td class="head">올앳참조필드</td>
+				<td class="body">allat_opt_pin</td>
+				<td class="body"><font color=red>&ltinput type=hidden name=allat_opt_pin value='NOVIEW'&gt</font>
+					<input type=hidden name=allat_opt_pin value="NOVIEW">
+				</td>
+			</tr>
+			<tr>
+				<td class="head">올앳참조필드</td>
+				<td class="body">allat_opt_mod</td>
+				<td class="body"><font color=red>&ltinput type=hidden name=allat_opt_mod value='WEB'&gt</font>
+					<input type=hidden name=allat_opt_mod value="WEB">
+				</td>
+			</tr>
+		</table>
+		<br>
+		<table border=0 cellpadding=0 cellspacing=1 bgcolor="#606060" width=90% align=center>
+			<font color=blue>◆ 부가정보 : 옵션 </b></font>
+			<tr>
+				<td width=180 class="head">정기과금 타입</td>
+				<td width=200 class="body"><input type=text name="allat_fix_type" value="" size=26 maxlength=3></td>
+				<td class="body">allat_fix_type : FIX(상점정기과금), HOF(호스팅정기과금), Default(FIX)</td>
+			</tr>
+			<tr>
+				<td width=180 class="head">테스트 여부</td>
+				<td width=200 class="body"><input type=text name="allat_test_yn" value="N" size=26 maxlength=1></td>
+				<td class="body">allat_test_yn : 테스트(Y),서비스(N) - 테스트 승인 여부</td>
+			</tr>
+		</table>
+		<p align=center>
+		<table border=0 cellpadding=0 cellspacing=1 width=90% align=left>
+			<tr>
+				<td align=center>
+					<input type=button value=" 취소 요청" name=app_btn onClick="javascrt:ftn_fix_cancel(document.fm);">
+				</td>
+			</tr>
+		</table>
+		</p>
+	</form>
+
+</body>
+</html>
+

@@ -1,0 +1,13 @@
+@import '../common/popup';
+
+.pop-wrap {
+	.pop-content {
+		.pop-header {
+			h3 {margin:0;}
+			.pop-close {
+				&:after {@include sprite4x($m-cross-b);@include center($m-cross-b-width/4,$m-cross-b-height/4);}
+			}
+			&:after {@include sprite4x($m-ico-popup-header);top:12px;}
+		}
+	}
+}

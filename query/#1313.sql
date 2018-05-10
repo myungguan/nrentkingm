@@ -1,0 +1,1 @@
+UPDATE member SET id = 'kimsae10@naver.com' WHERE id = 'kinsae10@naver.com';

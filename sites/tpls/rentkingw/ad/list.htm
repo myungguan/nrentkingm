@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{#head}
+</head>
+<body>
+	{#header}
+	<div id="contentWrap" style="padding-top:50px;">
+		<table class="list" style="width:100%;">
+				<thead>
+				<tr>
+					<th style="width:120px;">번호</th>
+					<th class="etit">제목</th>
+					<th style="width:150px;">게시일</th>
+				</tr>
+				</thead>
+				<tbody>
+				{@ list}
+				<tr>
+					<td style="padding:14px 0;">{.idx}</td>
+					<td><a href="/ad/view.php?idx={.idx}">{.title}</a></td>
+					<td>{.dt_create}</td>
+				</tr>
+				{/}
+				</tbody>
+			</table><!--//boxTop-->
+	</div>
+
+	{#footer}
+</body>
+</html>

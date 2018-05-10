@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{#head}
+</head>
+<body>
+	{#header}
+	<div id="contentWrap">
+
+		<div class="form-box">
+			<h3>기본정보</h3>
+
+			<div class="form-field row-100-a only-text">
+				<div class="col">아이디</div>
+				<div class="col text-right">{member.id}</div>
+			</div>
+			<div class="form-field row-100-a">
+				<div class="col">비밀번호</div>
+				<div class="col text-right">********
+					<button class="btn btn-default small inline" id="openPwChange">변경</button>
+				</div>
+			</div>
+			<div class="form-field row-100-a">
+				<div class="col">휴대폰 번호</div>
+				<div class="col text-right">{=phone_number_format(member.cp)}
+					<button class="btn btn-default small inline" id="openHpChange">변경</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--비밀번호 변경 팝업-->
+	<div class="pop-wrap" id="popupPw">
+		<form class="pop-content" name="mod_form1" id="mod_form1" style="width:320px;">
+			<div class="pop-header">
+				<h3>비밀번호 변경</h3>
+				<button class="pop-close">닫기</button>
+			</div>
+			<div class="pop-body">
+				<input type="password" placeholder="현재 비밀번호" name="nowpasswd" id="nowpasswd" />
+				<input type="password" placeholder="변경할 비밀번호" name="passwd" id="passwd" />
+				<input type="password" placeholder="비밀번호 확인" name="repasswd" id="repasswd" />
+				<div class="text-center">
+					<button type="button" class="btn btn-default inline pop-close" style="padding:0 10px;">취소</button>
+					<button type="button" class="btn btn-primary inline" style="padding:0 10px;" onclick="set_passwd('mod_form1');">변경</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!--//비밀번호 변경 팝업-->
+
+	<!--전화번호변경팝업-->
+	<div class="pop-wrap" id="popupPhone">
+		<form class="pop-content" name="mod_form1" id="mod_cpform" style="width:320px;">
+			<input type='hidden' name='cpcheck' id='cpcheck' value="">
+			<div class="pop-header">
+				<h3>휴대폰번호 변경</h3>
+				<button class="pop-close">닫기</button>
+			</div>
+			<div class="pop-body">
+				<div class="text-center">
+					<input type="number" placeholder="변경할 전화번호" name="cp" id="cp"  />
+					<button type="button" class="btn btn-primary" onclick="set_sms()">인증번호 발송</button>
+					<input type="number" placeholder="인증번호" name="returnnum" id='returnnum' />
+					<button type="button" class="btn btn-default inline pop-close" style="padding:0 10px;">취소</button>
+					<button type="button" class="btn btn-primary inline" style="padding:0 10px;" onclick="set_cp('mod_cpform');">변경</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!--//전화번호변경팝업-->
+
+	{#footer}
+
+	<script type="text/javascript">
+		function set_passwd(f) {
+			if ($("#nowpasswd").val() == '') {
+				alert('현재 사용중인 비밀번호를 입력하세요');
+				$("#nowpasswd").focus();
+				return;
+			}
+			if ($("#passwd").val() == '') {
+				alert('변경하실 비밀번호를 입력하세요');
+				$("#passwd").focus();
+				return;
+			}
+			if ($("#passwd").val() != $("#repasswd").val()) {
+				alert('비밀번호가 맞지 않습니다');
+				return;
+			}
+
+			if (confirm('비밀번호를 변경하시겠습니까?')) {
+				var param = $("#" + f).serialize();
+
+				$.getJSON('/mo/proajax.php?modtype=mem_mod&han=passwd&' + param, function (result) {
+					if (result.res == 'ok') {
+						alert('비밀번호가 변경되었습니다');
+						$('#popupPw').trigger('close');
+					}
+					else {
+						alert(result.resmsg);
+					}
+				});
+			}
+		}
+
+		function set_sms() {
+			if ($("#cp").val() == '') {
+				alert('휴대폰번호를 입력하세요');
+				return;
+			}
+
+			var param = "cp=" + $("#cp").val() + "&memg=" + $("#memgrade").val();
+
+			$.getJSON('/mo/proajax.php?modtype=mem_common&han=cpcheck_mod&' + param, function (result) {
+				if (result.res == 'ok') {
+					alert('인증번호가 발송되었습니다');
+					$("#cpcheck").val(result.data);
+				}
+				else {
+					alert('다른회원이 사용중인 휴대폰번호 입니다.');
+				}
+			});
+		}
+
+		function set_cp(f) {
+			if ($("#cp").val() == '') {
+				alert('휴대폰번호를입력하세요');
+				$("#cp").focus();
+				return;
+			}
+			if ($("#returnnum").val() == '') {
+				alert('인증번호를 입력하세요');
+				$("#returnnum").focus();
+				return;
+			}
+			if (confirm('휴대폰번호를 변경하시겠습니까?')) {
+				var param = $("#" + f).serialize();
+				$.getJSON('/mo/proajax.php?modtype=mem_mod&han=cp&' + param, function (result) {
+					if (result.res == 'ok') {
+						alert('변경되었습니다');
+						$('#popupPhone').trigger('close');
+
+					}
+					else {
+						alert(result.resmsg);
+					}
+				});
+			}
+		}
+
+		$(function() {
+			var $popupPw = $('#popupPw');
+			var $popupPhone = $('#popupPhone');
+
+			$(document)
+				.on('click', '#openPwChange', function(e) {
+					$popupPw.trigger('open');
+				})
+				.on('click', '#openHpChange', function(e) {
+					$popupPhone.trigger('open');
+				});
+		});
+	</script>
+</body>
+</html>

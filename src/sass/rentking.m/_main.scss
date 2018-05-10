@@ -1,0 +1,141 @@
+html.main {min-height:100%;height:100%;background:#222;
+	body {min-height:100%;background:url(../imgs/rentking.m/header_bg.jpg) no-repeat center 0 fixed;background-size:100% 100%;}
+	header {background:none !important;
+		h1 {position:absolute;color:transparent;height:18.5px;width:90px;left:50%;top:10px;margin-left:-45px;
+			.logo-ci {display:block;@include sprite4x($m-logo-ci);}
+			.logo-text1 {display:block;@include sprite4x($m-logo-text1);}
+			.logo-text2 {display:block;@include sprite4x($m-logo-text2);}
+		}
+	}
+	#contentWrap {height:100%;padding-bottom:0;
+		.description {color:#fff;text-align:left;
+			.title {font-size:24px;margin-top:4px;
+				li {line-height:1.6;
+					.point {font-weight: 700;position:relative;
+						&:after {content:'';display:block;position:absolute;left:50%;top:-7px;margin-left:-1.5px;width:3px;height:3px;border-radius:50%;background:#fff;}
+					}
+				}
+			}
+		}
+
+		#searchBar {margin-top:25px;
+			.help-tooltip {display:inline-block;}
+			ul {
+				li {
+					label {
+						span.date {height:26px;line-height:22px;
+							&:before {margin-top:-11px;}
+						}
+						span.time {height:26px;line-height:22px;margin-top:11px;
+							&:before {margin-top:-12px;}
+							&:after {margin-top:-8px;}
+						}
+					}
+					&.edate {padding-top:20px;}
+				}
+			}
+		}
+
+		.data {color:#fff;margin:20px -17.5px 0;
+			li {width:33%;float:left;
+				span {display:block;text-align:center;font-size:13px;margin-bottom:4px;}
+				span.number {font-size:15px;font-weight:600;}
+			}
+			&:after {content:'';display:block;clear:both;float:none;}
+		}
+
+		/* 이벤트 영역 */
+		.eventKbcard001 {text-align:center;color:#fff;height:112px;
+			.description1, .description2 {@include transform(scale(0));@include transition($material-transition);}
+			.description1 {font-size:20px;line-height:24px;@include transition-delay(.3s);
+				.dot {display:inline-block;position:relative;
+					&:after {content:'';display:block;position:absolute;top:-5px;left:50%;margin-left:-2px;width:4px;height:4px;border-radius:2px;background:#fff;}
+				}
+			}
+			.description2 {font-size:26px;font-weight:600;margin-top:8px;line-height:30px;letter-spacing:0.05em;@include transition-delay(.4s);}
+		}
+
+		.eventSamsungcard001 {text-align:center;color:#fff;height:117px;
+			.title, .des, a {@include transform(scale(0));@include transition($material-transition);}
+			.title {font-size:20px;font-weight:400;@include transition-delay(.3s);}
+			.des {font-size:22px;font-weight:600;margin-top:11px;position:relative;line-height:1.2em;@include transition-delay(.4s);
+				&:before, &:after {content:'';display:block;position:absolute;width:4px;height:4px;border-radius:50%;background:#fff;border-width:0;top:14px;margin-top:-4px;}
+				&:before {left:28px;}
+				&:after {right:28px;}
+			}
+			a {color:#fff;display:inline-block;font-size:14px;margin-top:12px;padding:0 20px;position:relative;@include transition-delay(.5s);
+				&:hover, &:focus {text-decoration:none;}
+				&:after {content:'';position:absolute;@include sprite4x($m-arrow-right-w);right:4px;top:4px;}
+			}
+		}
+
+		.event201711 {text-align:center;color:#fff;height:117px;
+			.title, .des, a {@include transform(scale(0));@include transition($material-transition);}
+			.title {font-size:20px;font-weight:400;@include transition-delay(.3s);}
+			.des {font-size:22px;font-weight:600;margin-top:11px;position:relative;line-height:1.2em;@include transition-delay(.4s);}
+			a {color:#fff;display:inline-block;font-size:14px;margin-top:12px;padding:0 20px;position:relative;@include transition-delay(.5s);
+				&:hover, &:focus {text-decoration:none;}
+				&:after {content:'';position:absolute;@include sprite4x($m-arrow-right-w);right:4px;top:4px;}
+			}
+		}
+
+		.event201712 {text-align:center;color:#fff;height:117px;
+			.title, .des, a {@include transform(scale(0));@include transition($material-transition);}
+			.title {font-size:21px;margin-top:-5px;font-weight:400;letter-spacing:0.07em;line-height:1.3em;@include transition-delay(.3s);}
+			.des {font-size:22px;font-weight:600;margin-top:20px;position:relative;line-height:1.2em;letter-spacing:0.03em;@include transition-delay(.4s);}
+			a {color:#fff;display:inline-block;font-size:14px;margin-top:7px;padding:0 20px;position:relative;@include transition-delay(.5s);
+				&:hover, &:focus {text-decoration:none;}
+				&:after {content:'';position:absolute;@include sprite4x($m-arrow-right-w);right:4px;top:4px;}
+			}
+		}
+
+		.event201802 {text-align:center;color:#fff;height:117px;
+			.title, .des, a {@include transform(scale(0));@include transition($material-transition);}
+			.title {font-size:21px;margin-top:-5px;font-weight:400;letter-spacing:0.07em;line-height:1.3em;@include transition-delay(.3s);}
+			.des {font-size:22px;font-weight:600;margin-top:20px;position:relative;line-height:1.2em;letter-spacing:0.03em;@include transition-delay(.4s);}
+			a {color:#fff;display:inline-block;font-size:14px;margin-top:7px;padding:0 20px;position:relative;@include transition-delay(.5s);
+				&:hover, &:focus {text-decoration:none;}
+				&:after {content:'';position:absolute;@include sprite4x($m-arrow-right-w);right:4px;top:4px;}
+			}
+		}
+
+		.event201804 {text-align:center;color:#fff;height:117px;
+			.title, .des, a {@include transform(scale(0));@include transition($material-transition);}
+			.title {font-size:21px;margin-top:-5px;font-weight:400;letter-spacing:0.07em;line-height:1.3em;@include transition-delay(.3s);}
+			.des {font-size:22px;font-weight:600;margin-top:20px;position:relative;line-height:1.2em;letter-spacing:0.03em;@include transition-delay(.4s);}
+			a {color:#fff;display:inline-block;font-size:14px;margin-top:7px;padding:0 20px;position:relative;@include transition-delay(.5s);
+				&:hover, &:focus {text-decoration:none;}
+				&:after {content:'';position:absolute;@include sprite4x($m-arrow-right-w);right:4px;top:4px;}
+			}
+		}
+
+		&.load {
+			.eventKbcard001 {
+				.description1, .description2 {@include transform(scale(1));}
+			}
+
+			.eventSamsungcard001 {
+				.title, .des, a {@include transform(scale(1));}
+			}
+
+			.event201711 {
+				.title, .des, a {@include transform(scale(1));}
+			}
+
+			.event201712 {
+				.title, .des, a {@include transform(scale(1));}
+			}
+
+			.event201802 {
+				.title, .des, a {@include transform(scale(1));}
+			}
+
+			.event201804 {
+				.title, .des, a {@include transform(scale(1));}
+			}
+		}
+		/* 이벤트 영역 */
+	}
+
+
+}

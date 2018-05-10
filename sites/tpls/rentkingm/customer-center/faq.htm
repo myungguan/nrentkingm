@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{#head}
+</head>
+<body>
+	{#header}
+	<div id="contentWrap">
+		<ul class="faq">
+			{@ faq }
+			<li>
+				<a href="#{.idx}" class="handle" data-idx="{.idx}">{.title}</a>
+				<div class="content">
+					{.content}
+				</div>
+			</li>
+			{/}
+		</ul>
+	</div>
+	{#footer}
+
+	<script type="text/javascript">
+		$(function() {
+			var headerHeight = $('header').outerHeight();
+			$(document)
+				.on('click', 'a.handle', function(e) {
+					e.preventDefault();
+					var $handle = $(this);
+					$handle.parent().toggleClass('on').siblings().removeClass('on');
+					if ($handle.parent().hasClass('on')){
+						plusReadCount($(this).data('idx'));
+					}
+
+					setTimeout(function() {
+						$(window).scrollTop($handle.offset().top - headerHeight);
+					}, 100);
+				});
+
+			function plusReadCount(idx) {
+				var param = {
+					mode : 'plusReadCount',
+					idx : idx
+				};
+				$.post(location.href, param);
+			}
+		});
+	</script>
+</body>
+</html>

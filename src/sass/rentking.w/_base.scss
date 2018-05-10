@@ -1,0 +1,178 @@
+/*인재채용*/
+.recruit-part {
+	li {width:33.33%;float:left;font-size:14px;padding:80px 10px 0;
+		&.part1 {background:url(../imgs/rentking.w/about/recruit4_1.gif) no-repeat center 0;}
+		&.part2 {background:url(../imgs/rentking.w/about/recruit4_2.gif) no-repeat center 17px;}
+		&.part3 {background:url(../imgs/rentking.w/about/recruit4_3.gif) no-repeat center 5px;}
+		h4 {text-align:center;font-size:16px;font-weight:600;}
+	}
+	&:after {content:'';display:block;float:none;clear:both;}
+}
+
+
+/*회사소개*/
+.ofi{height: 550px;}
+.ofi .re2{line-height: 2;font-weight: 600;}
+.ofi{height: 500px;}
+.ofi ul{ margin-top: 20px;overflow: hidden}
+.ofi ul li{width: 200px;font-weight: 600;line-height: 1.5; float: left}
+.ofi ul li h2{}
+
+.ofi .ofiMap{margin-top: 10px}
+.ofi .ofiMap img{max-width: 710px;}
+
+
+
+
+.btn-danger, .btn-default, .btn-info, .btn-primary, .btn-success, .btn-warning {
+	text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+}
+.btn-group-sm>.btn, .btn-sm {
+	padding: 5px 10px;
+	font-size: 12px;
+	line-height: 1.5;
+	border-radius: 3px;
+}
+.btn {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+input[type="radio"], input[type="checkbox"] {margin-top:0;}
+
+.inqBody input[type=text], .inqBody input[type=password], .inqBody textarea,
+.cuBody input[type=text], .cuBody input[type=password], .cuBody textarea,
+.ejoinBody input[type=text], .ejoinBody input[type=password], .ejoinBody textarea
+{padding:4px;}
+.inqBody select, .cuBody select, .ejoinBody select
+{padding:4px;vertical-align:middle;}
+
+
+//--------------------------------------- old ------------------------------------------
+
+html {height:100%;}
+body {color:$default-color;min-height:100%;line-height:1.7;/* letter-spacing:-.05em; */font-family: "Nanum Gothic","sans-serif"; font-size: 12px;}
+
+//link
+a {color: $default-color;}
+a:hover, a:focus {color:inherit; text-decoration:underline;}
+
+//form
+input, select, textarea {padding-left:8px;padding-right:8px;border:solid 1px $line-color;outline:none;@include transition(border-color $transitionDuration);
+	&:focus, &:active {border-color:$primary-color;}
+	&::placeholder {color:$muted-color;}
+}
+input {
+	&[type=text], &[type=password], &[type=email], &[type=number] {width:160px;height:30px;}
+}
+select {width:160px;height:30px;padding-right:0;}
+input[type=radio], input[type=checkbox] {vertical-align:middle;}
+label {font-weight:normal;}
+
+//util
+.image-box {background-size:contain;background-repeat:no-repeat;background-position: center;}
+
+//컨텐츠 배너
+.conBanner {min-height:194px;
+	.txt {float:left;line-height:1.8;margin:40px 0 0 0;
+		h2 {font-size:24px;}
+		strong{font-size:18px;font-weight:600;line-height:30px;}
+		p{font-size:14px;line-height:28px;}
+	}
+	span img{max-width:120px; margin:50px 0 0 0;float:right;}
+	&:after {content:'';display:block;float:none;clear:both;}
+}
+
+//타이틀
+h3 {font-size:18px;font-weight:600;margin-bottom:6px;}
+.sub-title {
+	h3 {float:left;}
+	.description {float:right;padding-top:5px;}
+	ul {float:none;clear:both;width:100%;margin-bottom:6px;
+		li {padding-left:0;position:relative;
+			//&:after {content:'';position:absolute;width:4px;height:1px;background:$default-color;left:0;top:50%;}
+		}
+	}
+	&:after {content:'';display:block;float:none;clear:both;}
+}
+
+
+//테이블
+table {
+	&.list {width:100%;
+		border-top:solid 1px $table-line-color;border-bottom:solid 1px $table-line-color;
+		>tbody, >thead {
+			>tr {
+				>th {background:$table-header-bg;}
+				>th, >td {padding:6px 10px;font-weight:normal;vertical-align:middle;}
+				&.border-b {
+					>th, >td {border-bottom:solid 1px $table-line-color;}
+				}
+			}
+		}
+
+		.pop-content & {border-top:none;border-bottom:none;
+			>tbody, >thead {
+				>tr {
+					>th {background:none;}
+				}
+			}
+		}
+	}
+}
+
+//게시판
+.boardView {
+	.detail {
+		p {line-height:24px;}
+		img {max-width:100%;}
+		a {text-decoration:underline;
+			&:visited {color:$visited-color;}
+		}
+	}
+}
+
+
+//페이징
+.paging {height:25px; margin-top:60px; text-align:center;
+	a {display:inline-block;border:solid 1px transparent;padding:0 5px;line-height:21px;vertical-align:top;
+		&.on {font-weight:bold;text-decoration:underline;}
+		&.prev, &.next {border:solid 1px $line-color;width:24px;height:24px;position:relative;
+			&:after {content:'';position:absolute;left:50%;top:50%;margin-top:-6px;margin-left:-4.5px;}
+			img {display:none;}
+			&:hover, &:active {border:solid 1px $primary-color;}
+		}
+		&.prev {margin-right:6px;
+			&:after {@include sprite($arrow-left-paging);}
+			&:hover:after {@include sprite($arrow-left-paging-on);}
+		}
+		&.next {margin-left:6px;
+			&:after {@include sprite($arrow-right-paging);}
+			&:hover:after {@include sprite($arrow-right-paging-on);}
+		}
+	}
+}
+
+//약관
+.clause, .clause2 {width: 100%; height: 120px; overflow-y: scroll; border: 1px solid $line-color; margin: 10px 0 0 0; padding: 5px 0 5px 5px;}
+.clause img{max-width: 570px;}
+.clause2 img{max-width:800px;}

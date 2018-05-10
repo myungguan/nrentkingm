@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{#head}
+	<style>
+		.boardView table { width:100%; }
+		.boardView table th { background-color: #f8f8f8;width:100px;border-bottom: 1px solid #dadada;padding:10px 0 10px 10px;height:25px; }
+		.boardView table td { border-bottom: 1px solid #dadada;padding:10px 0 10px 10px;height:25px; }
+
+	</style>
+</head>
+<body>
+	{#header}
+	<div id="contentWrap" style="padding-top:50px;">
+		<table class="list" summary="">
+			<tbody>
+			<tr>
+				<th scope="row">제목</th>
+				<td>{item.title}</td>
+			</tr>
+			<tr class="date">
+				<th scope="row">작성일</th>
+				<td>{item.dt_create}</td>
+			</tr>
+			<tr>
+				<th scope="row">링크URL</th>
+				<td><a href="{item.link}" target="_blank">{item.link}</a></td>
+			</tr>
+			<tr>
+				<th scope="row">이미지</th>
+				<td>
+					<a href="{=global.imgserver}/download.php?idx={item.file_idx}">다운로드: {item.name}</a><br />
+					<img src="{=global.imgserver}/files{item.path}" style="max-width:100%;margin-top:10px;" />
+				</td>
+			</tr>
+			</tbody>
+		</table>
+		<div class="btnArea">
+			<a href="/ad/list.php" class="btn-point">목록</a>
+		</div><!--//btnWrap-->
+	</div>
+	{#footer}
+</body>
+</html>
+

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../js/jquery-ui-1.12.1.custom-English/jquery-ui.css" rel="stylesheet">
+    <title>English</title>
+</head>
+<body>
+    <header>
+       <div class="util">
+            <ul>
+                <li><a href="../login/index.html">로그인</a></li>
+                <li><a href="../join/index.html">회원가입</a></li>
+                <li><a href="../mypage/myInfo.html">마이페이지</a></li>
+                <li><a href="../utilMenu/notice.html">공지사항</a></li>
+            </ul>
+        </div><!--//util-->
+        <div class="headerInner">
+            <div class="logo">
+                <a href="../index.html"><img src="../img/logo3.png" alt="렌트킹"></a>
+            </div><!--//logo-->
+            <div class="gnb">
+                <ul>
+                    <li><a href="../reservation/reservation.html"></a></li>
+                    <li><a href="../gnbMenu/estimate.html"></a></li>
+                    <li><a href="../gnbMenu/service.html"></a></li>
+                    <li><a href="../gnbMenu/English.html" class="active"></a></li>
+                </ul>
+            </div><!--//gnb-->
+        </div><!--//headerInner-->
+    </header>
+    <div class="gnbConWrap">
+        <div class="gnbContent">
+           <div class="subNoConinner">
+                <div class="engConBanner">
+                   <div class="txt">
+                       <h1>Make a Reservation & Rates Quotation</h1>
+                        <strong>
+                            Welcome to Rentking!.
+                        </strong>
+                        <p>
+                            We are a national-wide rent-a-car network in Korea.<br>
+                            You can enjoy the various car rental service from us. If you want to reserve a car rental,
+                            you can use the below reservation form or call to +82-2-3476-3313 or leave a message to info@rentking.co.kr
+                        </p>
+                        <p></p>
+                   </div><!--//txt-->
+                    <span>
+                        <img src="../img/faqTopicon.jpg" alt="Icon">
+                    </span>
+                </div><!--//conBanner-->
+                <div class="ejoinBody">
+                    <div class="eTabWrap">
+                        <ul class="tabTh">
+                            <li class="tbOn">
+                                <a href="#tab1">RESERVATION</a>
+                            </li>
+                            <li>
+                                <a href="#tab2">1</a>
+                            </li>
+                            <li>
+                                <a href="#tab3">2</a>
+                            </li>
+                        </ul>
+                        <div id="tab1">
+                            <div class="engCons">
+                                <div class="eCon1">
+                                    <h2>START A RESERVATION</h2>
+                                    <table>
+                                       <tr>
+                                           <th>
+                                               LOCATION
+                                           </th>
+                                           <td>
+                                               <input type="text" size="45" placeholder="ex. Incheon Int’l Airport, Seoul, Hyatt, city hall">
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                            <th></th>
+                                           <td>
+                                               <input type="text" placeholder="PICK-UP Date/Time" class="mDate md1" onclick="mDateShow_layer();">
+                                               <input type="text" placeholder="RETURN Date/Time" class="mDate">
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <th>VEHICLE CLASS</th>
+                                           <td>
+                                               <select>
+                                                    <option>Ecomony</option>
+                                                    <option>Compact</option>
+                                                    <option>Intermediate</option>
+                                                    <option>Full size</option>
+                                                    <option>SUV</option>
+                                                    <option>Minivan 9 Pax</option>
+                                                    <option>Minivan 12 Pax</option>
+                                                    <option>Passenger Van </option>
+                                                </select>
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <th>DRIVE TYPE</th>
+                                           <td >
+                                               <select>
+                                                    <option>Self drive</option>
+                                                    <option>Chauffeur drive</option>
+                                                </select>
+                                           </td>
+                                       </tr>
+                                    </table>
+                                </div><!--//eCon1-->
+                                <div class="eCon2">
+                                    <h2>CONTACT DETAILS</h2>
+                                    <table>
+                                       <tr>
+                                            <th rowspan="3">RENTER DETAILS</th>
+                                           <td>
+                                                <input type="text" placeholder="first Name">
+                                                <input type="text" placeholder="last Name">
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td>
+                                               <input type="text" placeholder="Phone Number">
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td >
+                                               <input type="text" placeholder="E-mail Address" size="30">
+                                           </td>
+                                       </tr>
+                                        <tr>
+                                            <th>
+                                                RENTER AGE
+                                            </th>
+                                            <td>
+                                                <select>
+                                                    <option>21+</option>
+                                                    <option>26+</option>
+                                                    <option>30+</option>
+                                                </select>
+                                            </td>
+                                       </tr>
+                                    </table>
+                                </div><!--//eCon2-->
+                                <div class="eCon3">
+                                    <h2>SAVE TIME AT THE COUNTER</h2>
+                                    <p>*Optional - provide addtional information now and save time when you arrive.</p>
+                                    <table>
+                                       <tr>
+                                            <th>RESIDENT OF</th>
+                                           <td>
+                                                <input type="text">
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                            <th>International Driving Permit</th>
+                                           <td class="file_input">
+                                                <label>Search file
+                                                    <input type="file" onchange="javascript:document.getElementById('file_route').value=this.value">
+                                                </label>
+                                                <input type="text" readonly="readonly" title="File Route" id="file_route">
+                                           </td>
+                                       </tr>
+                                    </table>
+                                </div><!--//eCon3-->
+                                <div class="eCon4">
+                                    <h2>FLIGHT DETAILS</h2>
+                                    <p>*Optional - providing your flight information will help us keep your car ready upon arrival.</p>
+                                    <table>
+                                       <tr>
+                                            <th>FLIGHT DETAILS</th>
+                                            <td >
+                                                <input type="text" placeholder="Airline Name">
+                                                <input type="text" placeholder="Flight Number">
+                                            </td>
+                                       </tr>
+                                    </table>
+                                </div><!--//eCon4-->
+                                <div class="bigBbtn">SUBMIT</div>
+                            </div>
+                        </div><!--//tab1-->
+                        <div id="tab2">
+                            <div>
+                                <h2>진행</h2>
+                            </div>
+                        </div><!--//tab2-->
+                        <div id="tab3">
+                            <div>
+                                <h2>종료</h2>
+                            </div>
+                        </div><!--//tab3-->
+                    </div><!--//eTabWrap-->
+                </div><!--//payBody-->
+            </div><!--//Coninner-->
+        </div><!--//payContent-->
+    </div><!--//payConWrap--> 
+    <footer>
+       <div class="footertop">
+           <ul>
+               <li><a href="../footMenu/office.html">회사소개</a></li>
+               <li><a href="../footMenu/recruitment.html">인재채용</a></li>
+               <li><a href="../footMenu/inquiry.html">입점/제휴문의</a></li>
+               <li><a href="../footMenu/agreement_of_utilization.html">이용약관</a></li>
+               <li><a href="../footMenu/personal_information.html">개인정보취급방침</a></li>
+               <li><a href="../footMenu/customer.html">고객의소리</a></li>
+           </ul>
+        </div><!--//footertop-->
+        <div class="footerInner">
+           <div class="footCont">
+               <ul class="txt">
+                    <li class="footerLogo">
+                        <img src="../img/footerLogo.png" alt="렌트킹로고">
+                    </li>
+                    <li>
+                       <dl>
+                           <dd>주식회사 렌트킹, 대표이사 : 윤영진</dd>
+                           <dd>주소 : 서울특별시 서대문구 연세로 50<br>(신촌동, 연세대학교 공학원)</dd>
+                           <dd class="busLie cp"><a href="javascript:void(0);"  onclick='function();'>사업자등록번호 : 813-81-00123</a></dd>
+                           <dd class="mod cp"><a href="javascript:void(0);"  onclick='function();'>통신판매업신고 : 제 2016-서울서대문 - 0597호</a></dd>
+                           <dd class="ventu cp"><a href="javascript:void(0);"  onclick='function();'>벤처기업인증 : 제 2016113295 호</a></dd>
+                       </dl>
+                    </li>
+                    <li>
+                        <strong>고객센터<br>
+                        1661-3313
+                        </strong><br>
+                        <span>Fax : 0303-0955-3313<br>
+                        이메일 : info@rentking.co.kr<br>
+                        개인정보관리책임자 : 신윤호
+                        </span>
+                    </li>
+                    <li>
+
+                    </li>
+                </ul>
+                <div class="footerSns">
+                    <ul>
+                        <li><a href="#"><img src="../img/sns1.png" alt="kakaokalk"></a></li>
+                        <li><a href="#"><img src="../img/sns2.png" alt="facebook"></a></li>
+                        <li><a href="#"><img src="../img/sns3.png" alt="messenger"></a></li>
+                        <li><a href="#"><img src="../img/sns4.png" alt="line"></a></li>
+                    </ul>
+                </div>
+                <div class="lastTxt">
+                    <small>Copyright © Rentking Co. All rights reserved.</small>
+                </div>
+           </div><!--//footCont-->
+        </div><!--//footerInner-->
+        <div class="fI">
+            <div class="busLieIMG"><img src="../img/business_license.jpg" alt="사업자등록증"><span><img src="../img/close.png" alt="X"></span></div>
+            <div class="modIMG"><img src="../img/mail_order.jpg" alt="통신판매신고증"><span><img src="../img/close.png" alt="X"></span></div>
+            <div class="ventuIMG"><img src="../img/venture.jpg" alt="벤처기업확인서"><span><img src="../img/close.png" alt="X"></span></div>
+        </div>
+    </footer>
+    
+    <!--예약 달력 팝업 부분-->
+    <div class="mdatePop">
+        <div class="calendar">
+            <img src="../img/monthS.png" alt="예약달력">
+        </div><!--//calendar-->
+        <div class="calenBtn">
+            <div class="cancelBtn">cancel</div>
+            <div class="choiceBtn">OK</div>
+        </div><!--//calenBtn-->
+    </div><!--//largePop-->
+    <!--//예약 달력 팝업 부분-->
+    
+    
+    
+    <script src="../js/jquery-3.1.0.js"></script>
+    
+    <!--달력팝업 -->
+    <script>
+        $(function(){
+            $(".mDate").click(function(){
+                $(".mdatePop").show();
+            });
+            $(".cancelBtn").click(function(){
+                $(".mdatePop").hide();
+            });
+        });
+        /*function mDateShow_layer() {
+        var lay_pop = $('.mdatePop');
+        var pos = $('.md1').position();    // 버튼의 위치에 레이어를 띄우고자 할 경우, 위치 정보 가져옴
+        lay_pop.css('top', (pos.top+448)+'px');    // 레이어 위치 지정
+        lay_pop.css('left', (pos.left+482)+'px');
+        lay_pop.show();
+        lay_pop.focus();
+        };*/
+    </script>
+    <!--//달력팝업 -->
+     
+     
+    <!--이벤트 내용탭-->
+    <script src="../js/tab.js"></script>
+    <!--//이벤트 내용탭-->
+    <!--footer IMG팝업-->
+    <script>
+        $(function(){
+            $(".busLie").click(function(){
+                $(".busLieIMG").show();
+                $(".fI>div>span>img").click(function(){
+                    $(".fI>div").hide();
+                });
+            });
+            $(".mod").click(function(){
+                $(".modIMG").show();
+                $(".fI>div>span>img").click(function(){
+                    $(".fI>div").hide();
+                });
+            });
+            $(".ventu").click(function(){
+                $(".ventuIMG").show();
+                $(".fI>div>span>img").click(function(){
+                    $(".fI>div").hide();
+                });
+            });
+        });
+    </script>
+    <!--//footer IMG팝업-->
+    
+    
+</body>
+</html>

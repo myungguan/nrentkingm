@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<title> ALL@Pay MOBILE 결제 샘플 페이지입니다. </title>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" /> 
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width" /> 
+
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+
+<style type="text/css">
+body { font-size: 10px; text-decoration:none; overflow:scroll; border:0px;margin:0;}
+</style>
+
+<script type="text/javascript" src="https://tx.allatpay.com/common/AllatPayM.js"></script>
+
+<script type="text/javascript">
+	// 결제페이지 호출
+	function approval(sendFm) {
+		Allat_Mobile_Approval(sendFm,0,0); /* 포지션 지정 (결제창 크기, 320*360) */ 
+	}
+
+	// 결과값 반환( receive 페이지에서 호출 )
+	function result_submit(result_cd,result_msg,enc_data) {
+
+		Allat_Mobile_Close();
+
+		if( result_cd != '0000' ){
+			alert(result_cd + " : " + result_msg);
+		} else {
+			sendFm.allat_enc_data.value = enc_data;
+
+			sendFm.action = "allat_approval.php";
+			sendFm.method = "post";
+			sendFm.target = "_self";
+			sendFm.submit();
+		}
+	}
+
+</script>
+
+<table border=0 cellpadding=0 cellspacing=0 width=320 bgcolor=8d8d8d>
+	<tr color=bbbbbb>
+		<td align=center colspan=2 height=25 style='font-size:14px'><b>ALL@Pay MOBILE 결제 샘플 페이지입니다. </b></td>
+	</tr>
+</table>
+<br>
+
+<form name="sendFm" method="post">
+<font color=red>◆ 필수정보 : <b>결제 필수 항목</b></font>
+<table border=0 cellpadding=3 cellspacing=1 bgcolor=8d8d8d width=320>
+	<tr bgcolor=d3d3d3>
+		<td width=135>상점아이디<br>(allat_shop_id)</td>
+		<td>&nbsp;<input type=text name="allat_shop_id" value="rentking"></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>주문번호<br>(allat_order_no)</td>
+		<td>&nbsp;<input type=text name="allat_order_no" value="39"></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>승인금액<br>(allat_amt)</td>
+		<td>&nbsp;<input type="text" name="allat_amt" value="500000"></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>회원ID<br>(allat_pmember_id)</td>
+		<td>&nbsp;<input type="text" name="allat_pmember_id" value="123"></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>상품코드<br>(allat_product_cd)</td>
+		<td>&nbsp;<input type="text" name="allat_product_cd" value="39호3939"></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>상품명<br>(allat_product_nm)</td>
+		<td>&nbsp;<input type="text" name="allat_product_nm" value="39호3939"></td>
+	</tr>
+
+	<tr bgcolor=d3d3d3>
+		<td>결제자성명<br>(allat_buyer_nm)</td>
+		<td>&nbsp;<input type="text" name="allat_buyer_nm" value="서상구"></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>수취인성명<br>(allat_recp_nm)</td>
+		<td>&nbsp;<input type="text" name="allat_recp_nm" value="서상구"></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>수취인주소<br>(allat_recp_addr)</td>
+		<td>&nbsp;<input type="text" name="allat_recp_addr" value="상구주소"></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>인증정보수신URL<br>(shop_receive_url)</td>
+		<td>&nbsp;<input type="text" name="shop_receive_url" value="http://www.dev.rentking.co.kr/allat/basic/allat_receive.php"></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>주문정보암호화필드<br>(allat_enc_data)</td>
+		<td>&nbsp;<input type="hidden" name="allat_enc_data"></td>
+	</tr>
+</table>
+
+<br>
+<font color=blue>◆ 옵션정보(값이나 필드가 없을 경우 상점 속성이나 Default값 반영)</font>
+<table border=0 cellpadding=3 cellspacing=1 bgcolor=8d8d8d width=320>
+	<tr bgcolor=d3d3d3>
+		<td width=135>결제창크기자동조절 사용여부<br>(allat_autoscreen_yn)</td>
+		<td>&nbsp;<input type=text name="allat_autoscreen_yn" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>신용카드 결제 사용여부<br>(allat_card_yn)</td>
+		<td>&nbsp;<input type=text name="allat_card_yn" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>계좌이체 결제 사용여부<br>(allat_abank_yn)</td>
+		<td>&nbsp;<input type=text name="allat_abank_yn" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>가상계좌 결제 사용여부<br>(allat_vbank_yn)</td>
+		<td>&nbsp;<input type=text name="allat_vbank_yn" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>휴대폰 결제 사용여부<br>(allat_hp_yn)</td>
+		<td>&nbsp;<input type=text name="allat_hp_yn" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>상품권 결제 사용여부<br>(allat_ticket_yn)</td>
+		<td>&nbsp;<input type=text name="allat_ticket_yn" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>과세여부<br>(allat_tax_yn)</td>
+		<td>&nbsp;<input type=text name="allat_tax_yn" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>할부 사용여부<br>(allat_sell_yn)</td>
+		<td>&nbsp;<input type=text name="allat_sell_yn" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>일반/무이자할부 사용여부<br>(allat_zerofee_yn)</td>
+		<td>&nbsp;<input type=text name="allat_zerofee_yn" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>포인트 사용여부<br>(allat_bonus_yn)</td>
+		<td>&nbsp;<input type=text name="allat_bonus_yn" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>현금영수증 발급여부<br>(allat_cash_yn)</td>
+		<td>&nbsp;<input type=text name="allat_cash_yn" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>결제정보 수신 E-Mail<br>(allat_email_addr)</td>
+		<td>&nbsp;<input type=text name="allat_email_addr" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>테스트여부<br>(allat_test_yn)</td>
+		<td>&nbsp;<input type=text name="allat_test_yn" value="Y"></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>상품 실물 여부<br>(allat_real_yn)</td>
+		<td>&nbsp;<input type=text name="allat_real_yn" value="Y"></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>신용카드 에스크로 적용여부<br>(allat_cardes_yn)</td>
+		<td>&nbsp;<input type=text name="allat_cardes_yn" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>계좌이체 에스크로 적용여부<br>(allat_abankes_yn)</td>
+		<td>&nbsp;<input type=text name="allat_abankes_yn" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>가상계좌 에스크로 적용여부<br>(allat_vbankes_yn)</td>
+		<td>&nbsp;<input type=text name="allat_vbankes_yn" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>휴대폰 에스크로 적용여부<br>(allat_hpes_yn)</td>
+		<td>&nbsp;<input type=text name="allat_hpes_yn" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>상품권 에스크로 적용여부<br>(allat_ticketes_yn)</td>
+		<td>&nbsp;<input type=text name="allat_ticketes_yn" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>성별<br>(allat_gender)</td>
+		<td>&nbsp;<input type=text name="allat_gender" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>생년월일<br>(allat_birth_ymd)</td>
+		<td>&nbsp;<input type=text name="allat_birth_ymd" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>제공기간<br>(allat_provide_date)</td>
+		<td>&nbsp;<input type=text name="allat_provide_date" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>선택결제수단<br>(allat_select_pay_type)</td>
+		<td>&nbsp;<input type=text name="allat_select_pay_type" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>간편결제수단<br>(allat_spay_type)</td>
+		<td>&nbsp;<input type=text name="allat_spay_type" value=""></td>
+	</tr>
+	<tr bgcolor=d3d3d3>
+		<td>부가세<br>(allat_vat_amt)</td>
+		<td>&nbsp;<input type=text name="allat_vat_amt" value=""></td>
+	</tr>
+</table>
+
+<br>
+
+<table border=0 cellpadding=3 cellspacing=1 bgcolor=8d8d8d width=320>
+	<tr bgcolor=bbbbbb>
+		<td align=center style='font-size:14px'>
+			<a href="javascript:approval(sendFm);"><b>[결제하기]</b></a>
+		</td>
+	</tr>
+</table>
+</form>
+</html>

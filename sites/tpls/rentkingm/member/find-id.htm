@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	{#head}
+</head>
+<body>
+	{#header}
+	<div id="contentWrap">
+		{? find.result=='Y' }
+			{? find.resultcount=='0' }
+				입력하신 정보로 가입된 내역이 없습니다.
+			{:}
+				입력하신 정보로 가입된 아이디입니다.<br /><br />
+				{@ findrs }
+				<span class="text-bold">{.id}</span> <br />
+				<span class="text-muted">({.signdate} 가입)</span>
+				{/}
+			{/}
+			<div class="row" style="margin-top:20px;">
+				<div class="col-xs-6">
+					<a href="/member/login.php?url=/" class="btn btn-primary">로그인</a>
+				</div>
+				<div class="col-xs-6">
+					<a href="/member/find-password.php" class="btn btn-primary">비밀번호찾기</a>
+				</div>
+			</div>
+		{:}
+		<form name="findform" id="findform" action="/member/find-id.php" method="post" onsubmit="return findid('findform');">
+			<input type="hidden" name="mode" value="w">
+			<input type='hidden' name="find_chk" value="2">
+			<div class="row-80-a">
+				<div class="col" style="padding:8px 0">이름</div>
+				<div class="col"><input type="text" id="name" name="name" value="" maxlength="30" title="이름" placeholder="" msg="이름" valch="yes"></div>
+			</div>
+			<div class="row-80-a">
+				<div class="col" style="padding:8px 0">휴대폰번호</div>
+				<div class="col"><input type="number" id="cp" name="cp" value="" maxlength="11" title="휴대폰번호" placeholder="'-' 구분없이 입력해 주세요" msg="휴대폰번호" valch="yes"></div>
+			</div>
+			<button  type="submit" class="btn btn-primary big" style="margin-top:20px;">아이디찾기</button>
+		</form>
+		{/}
+	</div>
+	{#footer}
+</body>
+</html>

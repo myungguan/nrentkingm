@@ -1,0 +1,20 @@
+CREATE TABLE `site_linkprice` (
+	`lpinfo` VARCHAR(300) NOT NULL,
+	`dt` DATETIME NOT NULL,
+	`order_code` VARCHAR(100) NULL DEFAULT NULL,
+	`product_code` VARCHAR(100) NULL DEFAULT NULL,
+	`item_count` INT(11) NULL DEFAULT NULL,
+	`price` INT(11) NULL DEFAULT NULL,
+	`product_name` VARCHAR(100) NULL DEFAULT NULL,
+	`category_code` VARCHAR(100) NULL DEFAULT NULL,
+	`id` VARCHAR(50) NULL DEFAULT NULL,
+	`name` VARCHAR(10) NULL DEFAULT NULL,
+	`remote_addr` VARCHAR(100) NULL DEFAULT NULL,
+	`status` INT(11) NULL DEFAULT '0',
+	`type` CHAR(3) NOT NULL DEFAULT 'cps',
+	PRIMARY KEY (`lpinfo`, `dt`)
+)
+COMMENT='링크프라이스 데이터'
+COLLATE='utf8_general_ci'
+ENGINE=MyISAM
+;

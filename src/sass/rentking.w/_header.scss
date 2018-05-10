@@ -1,0 +1,49 @@
+.header-wrap {background:url(../imgs/rentking.w/header_bg.jpg) no-repeat center top;background-size:100% auto;position:relative;z-index:3000;box-shadow:$default-shadow;min-width:940px;
+	header {width:100%;color:#fff;position:relative;z-index:2000;border-bottom:solid 1px rgba(255,255,255,.2);
+		.inner {width:940px;margin:0 auto;height:58px;position:relative;
+			a {outline:none;}
+			.logo {color:transparent;text-indent:-4000px;width:154px;height:32px;position:absolute;left:0;top:13px;
+				.logo-ci {@include sprite($logo-ci);}
+				.logo-text1 {@include sprite($logo-text1);}
+				.logo-text2 {@include sprite($logo-text2);}
+			}
+			ul.menu {position:absolute;top:0;left:250px;height:100%;
+				li {display:inline-block;position:relative;
+					a { color: #fff;text-decoration:none;font-size:14px;font-weight:600;display:block;padding:0 30px;line-height:58px;
+						&:before {content:'';display:block;height:1px;background:#fff;position:absolute;left:100px;right:100px;bottom:0;@include transition(left $transitionDuration, right $transitionDuration);}
+						&:hover:before, &:active:before, &:focus:before {left:0;right:0;}
+					}
+					&:hover a:before {left:0;right:0;}
+
+					ul {position:absolute;width:110%;margin-top:10px;overflow:hidden;height:0;@include transition(height $transitionDuration);
+						li {width:100%;float:none;
+							a {font-size:13px;color:#aaa;display:block;width:100%;font-weight:600;padding:5px 0 5px 30px;line-height:20px;white-space: nowrap;
+								&:before {display:none;}
+								&:hover, &:active, &:focus {color:#fff;}
+							}
+						}
+					}
+				}
+			}
+			ul.side {position:absolute;top:22px;right:0;
+				li {display:inline-block;position:relative;
+					a {color:#fff;text-decoration:none;font-size:12px;display:inline-block;padding:0 5px;
+						&:hover, &:active, &:focus {text-decoration:underline;}
+						&:after {content:'';display:block;position:absolute;left:0;top:5px;width:1px;height:10px;background:#fff;}
+					}
+					&:first-child a:after {display:none;}
+					&:last-child a {padding-right:0;}
+				}
+			}
+		}
+		&:before {content:'';display:block;width:100%;height:0;background:#000;position:absolute;left:0;top:0;@include transition(height .3s);box-shadow:$default-shadow}
+		&.on {
+			.inner ul.menu li ul {height:150px;@include transition(height $transitionDuration .1s);}
+			&:before {height:236px;}
+		}
+	}
+
+
+	.searchbar-wrap {width:940px;margin:0 auto;}
+}
+

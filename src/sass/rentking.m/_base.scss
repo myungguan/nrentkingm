@@ -1,0 +1,102 @@
+$header-height: 77px;
+$footer-height: 45px;
+
+html, body {margin:0;padding:0;color:#222;font-size:13px;}
+ul, ol, li, dt, dd {margin:0;padding:0;list-style:none;}
+
+* {outline:none;}
+
+a {color:#222;text-decoration:none;
+	&:hover, &:active {color:$primary-color;text-decoration:none;}
+}
+
+input[type=text], input[type=password], input[type=number], input[type=email], select {border:solid 1px #ccc;border-radius:0;box-shadow:none;height:29px;font-size:13px;padding:0 7.5px;outline:none;display:block;width:100%;margin-bottom:7.5px;background:#fff; background-clip: padding-box;
+	&:focus {border-color:$primary-color;}
+}
+select {-webkit-appearance:none;background:url(../imgs/rentking.m/m_arrow_bottom.png) no-repeat right 4px center;background-size:13px auto;padding-right:20px;
+	&:focus {background-image:url(../imgs/rentking.m/m_arrow_bottom_on.png);}
+}
+
+input[type=checkbox], input[type=radio] {opacity:0;position:absolute;
+	+ label {display:inline-block;cursor:pointer;position:relative;padding-left:18px;margin-right:15px;font-weight:400;
+		&:before {content:'';display:block;width:13px;height:13px;position:absolute;left:0;top:50%;border:solid 1px #ccc;margin-top:-7px}
+		&:after {content:'';position:absolute;top:50%;}
+	}
+	&:focus, &:active {
+		+ label:before {border-color:$primary-color;}
+	}
+	&:checked + label {
+		&:before {border-color:$primary-color;}
+	}
+}
+
+input[type=checkbox] {
+	+ label {
+		&:before {margin-top:-8.5px;}
+		&:after {@include sprite4x($m-ico-checkbox);left:2px;top:4px;}
+	}
+
+	&:checked + label {
+		&:after {@include sprite4x($m-ico-checkbox-on);}
+	}
+}
+
+input[type=radio] {
+	+ label {
+		&:before {border-radius:6.5px;}
+		&:after {width:5px;height:5px;border-radius:2.5px;background:$primary-color;left:4px;margin-top:-3px;display:none;}
+	}
+
+	&:checked + label {
+		&:after {display:block;}
+	}
+}
+
+.btn {text-align:center;height:29px;width:100%;font-size:14px;display:block;line-height:29px;margin-bottom:7.5px;border:none;
+	&.big {font-size:16px;margin-bottom:7.5px;height:47px;line-height:47px;}
+	&.small {font-size:12px;height:22px;line-height:22px;}
+	&.btn-default {background:#fff;color:#222;border:solid 1px #ccc;
+		&:hover, &:active {border-color:$primary-color;}
+	}
+	&.btn-primary {background:$primary-color;color:#fff;border:solid 1px $primary-color;}
+	&.btn-secondary {background:$secondary-color;color:#fff;border:solid 1px $secondary-color;}
+	&.btn-error {background:$error-color;color:#fff;border:solid 1px $error-color;}
+	&.inline {display:inline-block;width:auto;}
+}
+
+
+//row util
+@for $i from 1 through 20 {
+	.row-#{($i * 10)}-a {position:relative;
+		.col:nth-child(2n+1) {position:absolute;left:0;top:0;width:($i * 10px);}
+		.col:nth-child(2n) {margin-left:($i * 10px + 6px);}
+		&:not(.only-text).form-field {
+			.col:nth-child(2n+1) {line-height:29px;}
+		}
+	}
+
+	.row-a-#{($i * 10)} {position:relative;
+		.col:nth-child(2n+1) {margin-right:($i * 10px + 6px);}
+		.col:nth-child(2n) {position:absolute;right:0;top:0;width:($i * 10px);}
+	}
+}
+
+
+
+
+//form-box
+.form-box {border:solid 1px #ccc;font-size:13px;margin-bottom:10px;
+	a, button {font-size:13px;}
+	h3 {font-size:14px;height:34.5px;line-height:34.5px;padding:0 10px;border-bottom:solid 1px #ccc;background:#f2f2f2;margin:0;}
+	.form-field {padding-bottom:2.5px;margin:10px 10px 0;border-bottom:solid 1px #ccc;
+		&:last-child, &.last-child {border-bottom:none;}
+		&.only-text {
+			padding-bottom:6px;margin-top:8px;
+		}
+	}
+}
+
+#debugger {position:fixed;bottom:$footer-height;height:100px;width:100%;background:yellow;z-index:5000;overflow:auto;box-shadow:$default-shadow;
+	span {display:block;padding:4px;}
+}
+

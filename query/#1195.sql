@@ -1,0 +1,1 @@
+UPDATE vehicle SET outdate = LEFT(outdate, 4) WHERE LENGTH(outdate) = 7;

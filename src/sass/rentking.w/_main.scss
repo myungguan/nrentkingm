@@ -1,0 +1,309 @@
+html.main {
+	body {padding-bottom:248px;}
+	.header-wrap {box-shadow:none;position:absolute;top:0;left:0;width:100%;background:none !important;}
+
+	.visual-area {height:1200px;overflow:hidden;position:relative;min-width:940px;
+		.visual-image {position:fixed;display:block;width:100%;height:auto;left:0;top:0;@include transition(width $transitionDuration, height $transitionDuration, left $transitionDuration, top $transitionDuration)}
+		.inner {width:940px;height:100%;position:relative;margin:0 auto;
+			.description {width:100%;position:absolute;left:0;top:50%;z-index:100;margin-top:-195px;color:#fff;
+				.title {font-size:42px;font-weight:400;margin-bottom:30px;line-height:1.33em;
+					li {opacity:0;@include transform(translate3d(0, -50px, 0));@include transition($material-transition, opacity .3s);letter-spacing:.1em;line-height:1.83;
+						&:nth-child(1) {@include transition-delay(.1s);}
+						&:nth-child(2) {@include transition-delay(.2s);}
+						&:nth-child(3) {@include transition-delay(.3s);}
+
+						.point {font-weight: 700;position:relative;
+							&:after {content:'';display:block;position:absolute;left:50%;top:-9px;margin-left:-2.5px;width:5px;height:5px;border-radius:50%;background:#fff;}
+						}
+					}
+				}
+			}
+			.data {width:500px;position:absolute;left:0;top:50%;z-index:100;margin-top:92px;
+				.data-title {
+					color:white;
+					font-size:30px;
+					text-align: center;
+				}
+
+				li {width:33%;float:left;text-align:center;color:#fff;
+					.number {font-size:32px;display:block;font-weight:600;margin-bottom:0;line-height:1.5em;}
+					.title {font-size:18.21px;display:block;}
+					&:first-child {margin-left:-29px;}
+				}
+			}
+
+			.appLink {width:500px;position:absolute;left:60px;top:50%;z-index:100;margin-top:125px;
+				.google-play {margin-right:25px;}
+			}
+
+			#searchBar {position:absolute;right:0;top:50%;width:396px;height:518px;background:rgba(0,0,0,.6);margin-top:-259px;z-index:200;@include transform(scale(0));@include transition($material-transition);@include transition-delay(.3s);overflow:hidden;
+				ul.search {
+					> li {width:100%;height:209px;
+						label {padding:17px 40px 0;
+							.placeholder, .date, .time {display:block;}
+							.date, .time {border-bottom:solid 1px #ccc;font-size:26px;margin-left:0;padding-left:43px;line-height:48px;height:48px;
+								&:after {@include sprite($arrow-bottom-w-big);bottom:15px;}
+							}
+
+							.placeholder {font-size:18px;font-weight:400;
+								&:after {display:none;}
+							}
+
+							.date {margin-top:12px;
+								&:before {@include sprite($ico-date-big);margin-top:-13px;}
+							}
+							.time {margin-top:19px;
+								&:before {@include sprite($ico-time-big);margin-top:-14px;}
+							}
+						}
+
+						input[type=text] {left:60px;top:-1025px;height:1040px;}
+						button[type=submit] {height:50px;font-size:18px;}
+						&.submit {padding:14px 40px 0;height:auto;}
+						&.edate {
+							input[type=text] {top:-1235px;}
+						}
+					}
+				}
+				.help-tooltip {display:inline-block;}
+			}
+		}
+
+		&.load {
+			.inner {
+				.description {
+					.title {
+						li {@include transform(translate3d(0, 0, 0));opacity:1;}
+					}
+				}
+				#searchBar {@include transform(scale(1)); }
+			}
+		}
+
+		/* 이벤트 영역 */
+		.inner {
+			.eventKbcard001 {z-index:200;position:absolute;left:0;top:50%;width:450px;height:346px;margin-top:-249px;color:#fff;text-align:center;
+				.title, .description1, .description2 {@include transform(translate3d(0, -80px, 0));@include transition(transform .3s, opacity .3s);opacity:0;}
+				.title {font-size:24px;font-weight:600;border-top:solid 2px #fff;border-bottom:solid 2px #fff;line-height:43px;@include transition-delay(.3s);}
+				.description1 {font-size:24px;font-weight:600;margin-top:40px;letter-spacing:0.05em;@include transition-delay(.4s);
+					.dot {display:inline-block;position:relative;
+						&:after {content:'';display:block;position:absolute;top:-5px;left:50%;margin-left:-2.5px;width:5px;height:5px;border-radius:3px;background:#fff;}
+					}
+				}
+				.description2 {font-size:42px;font-weight:600;margin-top:-6px;@include transition-delay(.4s);}
+				&:after {content:'';display:block;width:332px;height:134px;position:absolute;bottom:0;left:50%;margin-left:-176px;background:url(../imgs/rentking.w/main/eventKbcard001.png) no-repeat center;@include transform(scale(0));@include transition($material-transition);@include transition-delay(.6s);@include transform-origin(50% 100%);}
+			}
+
+			.eventSamsungcard001 {z-index:200;position:absolute;left:0;top:50%;width:442px;height:334px;margin-top:-236px;color:#fff;text-align:center;
+				.title, .des, a {@include transform(translate3d(0, -80px, 0));@include transition(transform .3s, opacity .3s);opacity:0;}
+				.title {font-size:30px;font-weight:600;@include transition-delay(.3s);}
+				.des {font-size:42px;font-weight:600;margin-top:-10px;position:relative;@include transition-delay(.4s);
+					&:before, &:after {content:'';display:block;position:absolute;width:7px;height:7px;border-radius:50%;background:#fff;border-width:0;top:50%;margin-top:-4px;}
+					&:before {left:20px;}
+					&:after {right:20px;}
+				}
+				a {color:#fff;border:solid 1px #fff;display:inline-block;font-size:14px;margin-top:10px;padding:4px 24px;@include transition-delay(.5s);
+					&:hover, &:focus {text-decoration:none;background:rgba(#fff, .2);}
+				}
+				&:after {content:'';display:block;width:340px;height:141px;position:absolute;bottom:0;left:50%;margin-left:-170px;background:url(../imgs/rentking.w/main/eventSamsungcard001.png) no-repeat center;@include transform(scale(0));@include transition($material-transition);@include transition-delay(.6s);@include transform-origin(50% 100%);}
+			}
+
+			.event201711 {z-index:200;position:absolute;left:0;top:50%;width:450px;height:404px;margin-top:-260px;color:#fff;text-align:center;
+				.title, .des1, .des2, a {@include transform(translate3d(0, -80px, 0));@include transition(transform .3s, opacity .3s);opacity:0;}
+				.title {font-size:24px;font-weight:600;border-top:solid 2px #fff;border-bottom:solid 2px #fff;line-height:43px;@include transition-delay(.3s);}
+				.des1 {font-size:24px;font-weight:600;margin-top:19px;@include transition-delay(.4s);}
+				.des2 {font-size:40px;font-weight:600;line-height:1em;margin-top:8px;@include transition-delay(.5s);
+					.small {font-size:34px;display:inline-block;margin-top:8px;margin-left:9px;}
+				}
+				a {color:#fff;border:solid 1px #fff;display:inline-block;font-size:14px;margin-top:20px;padding:3px 23px;@include transition-delay(.6s);
+					&:hover, &:focus {text-decoration:none;background:rgba(#fff, .2);}
+				}
+				&:after {content:'';display:block;width:381px;height:117px;position:absolute;bottom:0;left:50%;margin-left:-209px;background:url(../imgs/rentking.w/main/event201711.png) no-repeat center;@include transform(scale(0));@include transition($material-transition);@include transition-delay(.6s);@include transform-origin(50% 100%);}
+			}
+
+			.event201712 {z-index:200;position:absolute;left:0;top:50%;width:450px;height:404px;margin-top:-260px;color:#fff;text-align:center;
+				.title, .des1, .des2 {@include transform(translate3d(0, -80px, 0));@include transition(transform .3s, opacity .3s);opacity:0;}
+				.icon1, .icon2, .icon3 {@include transform(scale(0));@include transition($material-transition);}
+				.title {font-size:24px;font-weight:600;border-top:solid 2px #fff;border-bottom:solid 2px #fff;line-height:41px;letter-spacing:-0.06em;@include transition-delay(.3s);}
+				.des1 {font-size:24px;font-weight:600;margin-top:19px;@include transition-delay(.4s);}
+				.des2 {font-size:26px;font-weight:600;line-height:1em;margin-top:20px;letter-spacing:-0.06em;@include transition-delay(.5s);
+					.large {font-size:34px;display:inline-block;margin-top:12px;line-height:1.2em;}
+				}
+				.icon1, .icon2, .icon3 {display:block;position:absolute;width:110px;height:145px;left:50%;margin-left:-55px;bottom:0;@include transition-delay(.7s);
+					&:before, &:after {display:block;position:absolute;width:100%;text-align:center;color:#fff;font-size:12px;}
+					&:before {top:5px;}
+					&:after {bottom:0;line-height:1.45em;padding-bottom:17px;letter-spacing:-0.05em;}
+				}
+				.icon1 {margin-left:-165px;background:url(../imgs/rentking.w/main/event201712_icon1.png) no-repeat center 32px;@include transform-origin(150% 100%);
+					&:before {content: '[1등/3명]';}
+					&:after {content: '이상한나라의 솜사탕 아이스크림 케이크';padding-bottom:0;}
+				}
+				.icon2 {background:url(../imgs/rentking.w/main/event201712_icon2.png) no-repeat center 33px;@include transform-origin(50% 100%);
+					&:before {content: '[2등/5명]';}
+					&:after {content: '2인 예매권';}
+				}
+				.icon3 {margin-left:55px;background:url(../imgs/rentking.w/main/event201712_icon3.png) no-repeat center 33px;@include transform-origin(-50% 100%);
+					&:before {content: '[3등/30명]';}
+					&:after {content: '아메리카노';}
+				}
+			}
+
+			.event201802 {z-index:200;position:absolute;left:0;top:50%;width:500px;height:404px;margin-top:-260px;color:#fff;text-align:center;
+				.title, .des1, .des2 {@include transform(translate3d(0, -80px, 0));@include transition(transform .3s, opacity .3s);opacity:0;}
+				.title {font-size:24px;font-weight:600;border-top:solid 2px #fff;border-bottom:solid 2px #fff;line-height:41px;letter-spacing:-0.06em;@include transition-delay(.3s);}
+				.des1 {font-size:24px;font-weight:600;margin-top:13px;@include transition-delay(.4s);}
+				.des2 {font-size:26px;font-weight:600;margin-top:-65px;line-height:1em;letter-spacing:-0.06em;@include transition-delay(.5s);
+					img {width:300px;height:300px;}
+					p {margin-top:-50px;}
+					.large {font-size:33px;display:inline-block;margin-top:12px;line-height:1.2em;}
+				}
+
+				.event-content {
+					font-size: 24px;
+					background-color:rgba(0,0,0,0.2);
+					padding: 10px;
+				}
+
+				.event-btn {
+					background-color: rgba(0,0,0,0.2);
+					border: 1px solid #fff;
+					border-radius: 20px;
+					color: white;
+					padding: 10px 15px;
+					text-decoration: none;
+					font-size: 14px;
+					line-height: 14px;
+					display: inline-block;
+				}
+			}
+
+			.event201804 {z-index:200;position:absolute;left:0;top:50%;width:500px;height:404px;margin-top:-260px;color:#fff;text-align:center;
+				.event-content {@include transform(translate3d(0, -80px, 0));@include transition(transform .3s, opacity .3s);opacity:0;}
+				.event-content {
+					font-size: 24px;
+					background-color:rgba(0,0,0,0.2);
+					padding: 10px;
+				}
+
+				.event-btn {
+					background-color: rgba(0,0,0,0.2);
+					border: 1px solid #fff;
+					border-radius: 20px;
+					color: white;
+					padding: 10px 15px;
+					text-decoration: none;
+					font-size: 14px;
+					line-height: 14px;
+					display: inline-block;
+				}
+			}
+		}
+
+		&.load {
+			.inner {
+				.eventKbcard001 {
+					.title, .description1, .description2 {@include transform(translate3d(0,0,0));opacity:1}
+					&:after {@include transform(scale(1));}
+				}
+
+				.eventSamsungcard001 {
+					.title, .des, a {@include transform(translate3d(0,0,0));opacity:1}
+					&:after {@include transform(scale(1));}
+				}
+
+				.event201711 {
+					.title, .des1, .des2, a {@include transform(translate3d(0,0,0));opacity:1}
+					&:after {@include transform(scale(1));}
+				}
+
+				.event201712 {
+					.title, .des1, .des2, a {@include transform(translate3d(0,0,0));opacity:1}
+					.icon1, .icon2, .icon3 {@include transform(scale(1));}
+				}
+
+				.event201802 {
+					.title, .des1, .des2, .event-content .event-btn a {@include transform(translate3d(0,0,0));opacity:1}
+					&:after {@include transform(scale(1));}
+				}
+
+				.event201804 {
+					.event-content {@include transform(translate3d(0,0,0));opacity:1}
+				}
+			}
+		}
+		/* 이벤트 영역 */
+	}
+
+	.service-area {height:420px;position:relative;z-index:1000;background:#fff;
+		.inner {width:940px;height:100%;margin:0 auto;
+			h2 {text-align:center;font-size:30px;font-weight:600;padding-top:45px;position:relative;padding-bottom:21px;
+				&:after {content:'';display:block;position:absolute;width:30px;height:2px;bottom:0;left:50%;margin-left:-15px;background:$default-color;}
+			}
+			ul {height:180px;margin-top:49px;
+				li {height:100%;width:25%;float:left;text-align:center;position:relative;padding-top:86px;
+					.title {font-size:22px;font-weight:600;margin-bottom:5px;}
+					.description {font-size:18px;line-height:1.44;}
+
+					&.service1 {background:url(../imgs/rentking.w/main/ico_service1.gif) no-repeat center 8px;}
+					&.service2 {background:url(../imgs/rentking.w/main/ico_service2.gif) no-repeat center 8px;}
+					&.service3 {background:url(../imgs/rentking.w/main/ico_service3.gif) no-repeat center 8px;}
+					&.service4 {background:url(../imgs/rentking.w/main/ico_service4.gif) no-repeat center 8px;}
+				}
+				&:after {content:'';display:block;float:none;clear:both;}
+			}
+		}
+
+	}
+
+	.event-area {height:420px;position:relative;z-index:1000;min-width:940px;@include transition(background .3s);overflow:hidden;
+		.swiper-slide {}
+
+		button.swiper-button-prev, button.swiper-button-next {outline:none;position:absolute;z-index:100;top:50%;left:50%;margin-top:-13px;display:block;width:25px;height:44px;background:url(../imgs/rentking.w/main/arrow.png) no-repeat;border:none;color:transparent;text-indent:-100px;overflow:hidden;}
+		button.swiper-button-prev {margin-left:-470px;
+			@include mq(1280px) {margin-left:-600px;}
+			&:hover, &:active, &:focus {background-position:0 -44px;}
+		}
+		button.swiper-button-next {background-position:-25px 0;margin-left:445px;
+			@include mq(1280px) {margin-left:575px;}
+			&:hover, &:active, &:focus {background-position:-25px -44px;}
+		}
+
+		.swiper-pagination {position:absolute;bottom:20px;right:10px;text-align:right;padding-right:20px;
+			.swiper-pagination-bullet {margin:0 4px;width:14px;height:14px;border:solid 1px #fff;border-radius:7px;background:none;position:relative;opacity:1;
+				&:after {content:'';position:absolute;left:-1px;top:-1px;width:14px;height:14px;background:#fff;border-radius:7px;@include transform(scale(0));@include transition(transform .3s);}
+				&.swiper-pagination-bullet-active:after {@include transform(scale(1));}
+			}
+		}
+
+		@include keyframes(rotation) {
+			from {
+				@include transform(rotate(0deg));
+			}
+			to {
+				@include transform(rotate(360deg));
+			}
+		}
+
+		.event-join {width:100%;height:100%;background:#80b9d2;padding-top:40px;
+			.inner {width:940px;margin:0 auto;
+				.title {color:#fff;font-size:50px;font-weight:600;text-align:center;line-height:1;height:50px;
+					.new {display:inline-block;width:45px;height:100%;margin-right:20px;background:url(../imgs/rentking.w/main/join_icon_title.jpg) no-repeat center;vertical-align:top;@include animation(rotation 2s infinite linear);}
+				}
+				.icon {color:#3a7390;font-weight:600;text-align:center;width:768px;margin:44px auto 0;
+					li {float:left;width:224px;line-height:1;font-size:13px;padding-top:136px;margin-right:48px;position:relative;
+						&.icon1:after {content:'';display:block;width:100%;height:120px;position:absolute;left:0;top:0;background:url(../imgs/rentking.w/main/join_icon1.jpg) no-repeat center top;}
+						&.icon2:after {content:'';display:block;width:100%;height:120px;position:absolute;left:0;top:0;background:url(../imgs/rentking.w/main/join_icon2.jpg) no-repeat center top;}
+						&.icon3:after {content:'';display:block;width:100%;height:120px;position:absolute;left:0;top:0;background:url(../imgs/rentking.w/main/join_icon3.jpg) no-repeat center top;}
+						&.icon3 {margin-right:0;}
+					}
+					&:after {content:'';display:block;float:none;clear:both;}
+				}
+				.description {color:#fff;font-size:18px;text-align:center;margin-top:40px;
+					.big {font-size:30px;line-height:1.5;}
+				}
+			}
+		}
+	}
+
+	.rentkingLoading {background:#000;position:fixed;top:0;left:0;}
+}

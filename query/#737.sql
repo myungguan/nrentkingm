@@ -1,0 +1,1 @@
+INSERT INTO `rentking`.`app` (`idx`, `platform`, `version`, `dt_release`, `force_update`) VALUES ('3', 'ios', '1.2.1030', '2017-06-02', 'N');

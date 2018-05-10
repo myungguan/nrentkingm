@@ -1,0 +1,134 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>New All@Pay 주문정보 입력</title>
+<style><!--
+body { font-family:굴림체; font-size:12px; }
+td   { font-family:굴림체; font-size:12px; }
+.title { font-family:굴림체; font-size:16px; }
+.head { background-color:#EFF7FC; padding: 3 3 0 5 }
+.body { background-color:#FFFFFF; padding: 3 3 0 5  }
+.nbody { background-color:#FFFFCC; padding: 3 3 0 5  }
+//--></style>
+<script language=JavaScript charset='euc-kr' src="https://tx.allatpay.com/common/NonAllatPayREPlus.js"></script>
+<script language=Javascript>
+	// 결제페이지 호출
+	function ftn_approval(dfm) {
+		Allat_Plus_Api(dfm);
+	}
+
+	// 결과값 반환( receive 페이지에서 호출 )
+	function result_submit(result_cd,result_msg,enc_data) {
+
+		if( result_cd != '0000' ){
+			window.setTimeout(function(){alert(result_cd + " : " + result_msg);},1000);
+		} else {
+			fm.allat_enc_data.value = enc_data;
+
+			fm.action = "allat_cashregistry.php";
+			fm.method = "post";
+			fm.target = "_self";
+			fm.submit();
+		}
+	}
+</script>
+</head>
+
+<body>
+    <p align=center class=title><u>New All@Pay™ 현금영수증 사용신청요청 예제페이지</u></p>
+
+    <!------------- HTML : Form 설정 --------------//-->
+    <form name="fm"> <!--승인요청 및 결과수신페이지 지정 //-->
+
+    <table border="0" cellpadding="0" cellspacing="1" bgcolor="#606060" width="1152" align="center" style="TABLE-LAYOUT: fixed;">
+		<font color=red><b>◆ 필수정보</b></font>
+		<tr>
+			<td width="140" class="head">항목</td>
+			<td width="160" class="body">예시 값</td>
+			<td width="70" class="body">최대길이<br>(영문기준)</td>
+			<td width="150" class="body">변수명</td>
+			<td class="body">변수 설명</td>
+		</tr>
+		<tr>
+			<td class="head">CROSSKEY</td>
+			<td class="nbody"><input type=text name="test_cross_key" value="" size="19" maxlength=200></td>
+			<td class="nbody">200</td>
+			<td class="nbody">allat_cross_key</td>
+			<td class="nbody">테스트에서만 사용</td>
+		</tr>
+		<tr>
+			<td class="head">상점 ID</td>
+			<td class="body"><input type=text name="allat_shop_id" value="" size="19" maxlength=20></td>
+			<td class="body">20</td>
+			<td class="body">allat_shop_id</td>
+			<td class="body">Allat에서 발급한 고유 상점 ID</td>
+		</tr>
+		<tr>
+			<td class="head">등록사업자번호</td>
+			<td class="body"><input type=text name="allat_reg_business_no" value="" size="19" maxlength="10"></td>
+			<td class="body">10</td>
+			<td class="body">allat_reg_business_no</td>        
+			<td class="body"></td>
+		</tr>
+		<tr>
+			<td class="head">거래요청일자</td>
+			<td class="body"><input type=text name="allat_apply_ymdhms" value="" size="19" maxlength=14></td>
+			<td class="body">14</td>
+			<td class="body">allat_apply_ymdhms</td>
+			<td class="body">YYYYMMDDHH24MISS 형식 : 발행일자는 요청일자로 진행, 거래요청일자는 정보성 필드</td>
+		</tr>
+		<tr>
+			<td class="head">인증정보수신URL</td>
+			<td class="body"><input type=text name="shop_receive_url" value="" size="19"></td>
+			<td class="body">120</td>
+			<td class="body">shop_receive_url</td>        
+			<td class="body"></td>
+		</tr>
+		<tr>
+			<td class="head">주문정보암호화필드</td>
+			<td class="body"><font color=red>값은 자동으로 설정됨</font><input type=hidden name=allat_enc_data value=''></td>
+			<td class="body">-</td>
+			<td class="body">allat_enc_data</td>
+			<td class="body"><font color=red>&ltinput type=hidden name=allat_enc_data value=''&gt<br>
+							  ※hidden field로 설정해야함</font>
+							  &nbsp;&nbsp<a target=_new href="http://210.118.112.86/servlet/AllatBiz/support/sp_install_guide_scriptapi.jsp#enc_data"><b>[설명]</b></a></td>
+		</tr>
+		<tr>
+			<td class="head">올앳참조필드</td>
+			<td class="body">NOUSE<input type="hidden" name="allat_opt_pin" value="NOUSE" size="19"></td>
+			<td class="body">-</td>
+			<td class="body">allat_opt_pin</td>
+			<td class="body"></td>
+		</tr>
+		<tr>
+			<td class="head">올앳참조필드</td>
+			<td class="body">APP<input type="hidden" name="allat_opt_mod" value="APP" size="19"></td>
+			<td class="body">-</td>
+			<td class="body">allat_opt_mod</td>
+			<td class="body"></td>
+		</tr>
+    </table>
+    <br>
+
+	<!-- 결제 옵션 정보 -->
+	<table border="0" cellpadding="0" cellspacing="1" bgcolor="#606060" width="1152" align="center" style="TABLE-LAYOUT: fixed;">
+		<font color=blue><b>◆ 옵션정보</b></font>
+		<tr>
+			<td class="head">테스트 여부</td>
+			<td class="body"><input type=text name="allat_test_yn" value="N" size="19" maxlength="1"></td>
+			<td class="body">1</td>
+			<td class="body">allat_test_yn</td>
+			<td class="body"></td>
+		</tr>
+	</table>
+
+    <p align=center>
+    <table border=0 cellpadding=0 cellspacing=1 width=1152 align=center>
+    <tr>
+		<td align=center><input type=button value="  결  제  " name=app_btn onClick="javascript:ftn_approval(document.fm);"></td>
+	</tr>
+    </table>
+    </p>
+    </form>
+</body>
+</html>

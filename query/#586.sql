@@ -1,0 +1,29 @@
+CREATE TABLE `site_advertisement` (
+	`idx` INT(11) NOT NULL AUTO_INCREMENT COMMENT '인덱스',
+	`title` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '타이틀',
+	`link` VARCHAR(255) NULL DEFAULT NULL COMMENT '링크',
+	`dt` DATETIME NULL DEFAULT NULL COMMENT '게시일',
+	`dt_delete` DATETIME NULL DEFAULT NULL COMMENT '삭제일',
+	PRIMARY KEY (`idx`)
+)
+COMMENT='광고 배너 게시판'
+ENGINE=MyISAM
+;
+
+CREATE TABLE `site_file` (
+	`idx` INT(11) NOT NULL AUTO_INCREMENT,
+	`article_type` VARCHAR(10) NOT NULL DEFAULT '' COMMENT '게시물 타입',
+	`article_idx` INT(11) NULL DEFAULT '0' COMMENT '연관된 게시물',
+	`name` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '파일명',
+	`path` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '경로',
+	`type` VARCHAR(50) NULL DEFAULT NULL COMMENT 'MIME 타입',
+	`size` INT(11) NOT NULL DEFAULT '0' COMMENT '파일 size',
+	`width` INT(11) NOT NULL DEFAULT '0' COMMENT '이미지 width',
+	`height` INT(11) NOT NULL DEFAULT '0' COMMENT '이미지 height',
+	`down` INT(11) NOT NULL DEFAULT '0' COMMENT '다운로드 count',
+	`dt` DATETIME NULL DEFAULT NULL,
+	PRIMARY KEY (`idx`)
+)
+COMMENT='파일'
+ENGINE=MyISAM
+;
